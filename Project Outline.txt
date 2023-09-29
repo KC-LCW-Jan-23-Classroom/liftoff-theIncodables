@@ -1,0 +1,20 @@
+﻿Project Outline
+Project Name - rpgvibes
+Project Description — 
+* We want to enhance the experience of the Game Master in tabletop role-playing games by providing a web application that allows GMs to create a soundboard for their sessions. GMs will be able to select from royalty-free tracks to play during their sessions at the click of a button. We know that each campaign is different, and GMs are often at the mercy of their players’ whims. Our application makes it easy to adapt to the unpredictable twists and turns your players take you on. 
+Feature List — 
+* Users can create and login to account
+* Ability to search through a track database
+* Users can select from royalty free tracks
+* Users can manage multiple campaigns & sessions
+Tech Stack — 
+Java, HTML/CSS, SQL, Bootstrap, MVC, APIs
+Group Members and Work Division
+Project Links
+* GitHub: https://github.com/KC-LCW-Jan-23-Classroom/liftoff-theIncodables
+* Link to Project Management Platform: https://github.com/orgs/KC-LCW-Jan-23-Classroom/projects/2/views/1
+* Presentations
+   * Group Presentation
+      *  Group Project Presentation Template
+   * Individual Presentations
+      * Individual Project Presentation Template

@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "IM-Fell-DW";
+    src: url(../Fonts/IMFellDWPicaSC-Regular.ttf);
+}
+@font-face {
+    font-family: "Lato";
+    src: url(../Fonts/Lato-Regular.ttf);
+}
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+}
+.header{
+    text-align:center; 
+    color:crimson;
+    font: 20px "IM-Fell-DW";
+}
+.login{
+    text-align:left;
+    font: 15px "Lato";
+}
+.registration{
+    text-align:left;
+    font: 15px "Lato";
+}
+.about-us{
+    text-align:left;
+    font: 15px "Lato";
+}

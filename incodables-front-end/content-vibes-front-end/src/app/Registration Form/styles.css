@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&family=Lato:wght@300;400&display=swap');
+
+  .registration-form {
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .registration-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: Lato;
+  }
+  
+  .registration-form p {
+    font-size: 16px;
+    font-family: Lato;
+    margin-bottom: 10px;
+  }
+  
+  .registration-form input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    font-family: Lato;
+}
+  
+
+.registration-form button {
+    width: 99%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: Lato;
+    margin-bottom: 10px;
+  }
+
+  .registration-form button:hover {
+    background-color: #e4e5dfdd;
+    color: #000;
+    letter-spacing: 10px;
+    font-family: Lato;
+
+  }

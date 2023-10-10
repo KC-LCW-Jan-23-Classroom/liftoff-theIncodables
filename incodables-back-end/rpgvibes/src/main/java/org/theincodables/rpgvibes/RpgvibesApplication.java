@@ -1,13 +1,13 @@
-package com.theIncodables.The.Incodables;
+package org.theincodables.rpgvibes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TheIncodablesApplication {
+public class RpgvibesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TheIncodablesApplication.class, args);
+		SpringApplication.run(RpgvibesApplication.class, args);
 	}
 
 }

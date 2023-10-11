@@ -11,7 +11,7 @@ body {
     font-family:Arial, Helvetica, sans-serif;
 }
 .header{
-    text-align:center; 
+    text-align:center;
     color:crimson;
     font: 20px "IM-Fell-DW";
 }
@@ -25,21 +25,21 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+
   .registration-form h2 {
     font-size: 24px;
     margin-bottom: 10px;
     font-family: Lato;
   }
-  
+
   .registration-form p {
     font-size: 16px;
     font-family: Lato;
     margin-bottom: 10px;
   }
-  
+
   .registration-form input {
-    width: 95%;
+    width: 96%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -47,10 +47,10 @@ body {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     font-family: Lato;
 }
-  
+
 
 .registration-form button {
-    width: 99%;
+    width: 100%;
     padding: 10px;
     background-color: #000;
     color: #fff;

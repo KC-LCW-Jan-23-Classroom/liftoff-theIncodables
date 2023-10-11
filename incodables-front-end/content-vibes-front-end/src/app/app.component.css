@@ -15,7 +15,7 @@ body {
     color:crimson;
     font: 20px "IM-Fell-DW";
 }
-.login, .registration, .about-us{
+.login-section, .registration-section, .about-us-section{
     text-align:left;
     font: 15px "Lato";
 }

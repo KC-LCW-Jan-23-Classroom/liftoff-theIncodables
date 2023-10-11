@@ -6,4 +6,8 @@
   <component name="ProjectType">
     <option name="id" value="jpab" />
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
 </project>

@@ -1,0 +1,71 @@
+@font-face {
+    font-family: "IM-Fell-DW";
+    src: url(../Fonts/IMFellDWPicaSC-Regular.ttf);
+}
+@font-face {
+    font-family: "Lato";
+    src: url(../Fonts/Lato-Regular.ttf);
+}
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+}
+.header{
+    text-align:center;
+    color:crimson;
+    font: 20px "IM-Fell-DW";
+}
+.login-section, .registration-section, .about-us-section{
+    text-align:left;
+    font: 15px "Lato";
+}
+.registration-form {
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .registration-form h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-family: Lato;
+  }
+
+  .registration-form p {
+    font-size: 16px;
+    font-family: Lato;
+    margin-bottom: 10px;
+  }
+
+  .registration-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    font-family: Lato;
+}
+
+
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: Lato;
+    margin-bottom: 10px;
+  }
+
+  .registration-form button:hover {
+    background-color: #e4e5dfdd;
+    color: #000;
+    letter-spacing: 10px;
+    font-family: Lato;
+
+  }

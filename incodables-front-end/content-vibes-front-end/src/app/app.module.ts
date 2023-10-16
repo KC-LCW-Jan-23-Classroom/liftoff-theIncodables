@@ -13,7 +13,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AboutUsComponent
+    AboutUsComponent,
     HomepageComponent,
     RegistrationComponent,
     LoginComponent,

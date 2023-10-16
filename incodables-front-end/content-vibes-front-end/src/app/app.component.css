@@ -41,7 +41,7 @@ body {
   }
 
   .registration-form input {
-    width: 100%;
+    width: 96%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -50,11 +50,17 @@ body {
     font-family: Lato;
 }
 
+.registration-form input:focus, textarea:focus {
+  border-color:#d333ff;
+  outline: #9933ff;
+  box-shadow: 0 0 10px  #d333ff;
+}
+
 
 .registration-form button {
     width: 100%;
     padding: 10px;
-    background-color: #000;
+    background-color: #cdab7e;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -65,9 +71,9 @@ body {
   }
 
   .registration-form button:hover {
-    background-color: #e4e5dfdd;
+    background-color: #e2cfb6;
     color: #000;
     letter-spacing: 10px;
     font-family: Lato;
-
+    box-shadow: 0 0 10px  #d333ff;
   }

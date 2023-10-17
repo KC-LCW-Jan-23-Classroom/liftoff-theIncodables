@@ -41,7 +41,7 @@ body {
   }
 
   .registration-form input {
-    width: 96%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -56,12 +56,11 @@ body {
   box-shadow: 0 0 10px  #d333ff;
 }
 
-
 .registration-form button {
     width: 100%;
     padding: 10px;
     background-color: #cdab7e;
-    color: #fff;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -72,8 +71,24 @@ body {
 
   .registration-form button:hover {
     background-color: #e2cfb6;
-    color: #000;
+    color:  #d333ff;
     letter-spacing: 10px;
     font-family: Lato;
     box-shadow: 0 0 10px  #d333ff;
+  }
+
+  .registration-form button:focus {
+    border-color: #d333ff;
+    outline: #9933ff;
+    box-shadow: 0 0 10px #d333ff;
+  }
+
+  .registration-form button:active {
+    background-color: #cdab7e;
+    color: black;
+  }
+
+  .registration-form button:focus:not(:active) {
+    border-color: #ccc;
+    box-shadow: none;
   }

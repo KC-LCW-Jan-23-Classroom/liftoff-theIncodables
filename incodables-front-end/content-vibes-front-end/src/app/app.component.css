@@ -17,6 +17,7 @@ body {
     color:crimson;
     font: 20px "IM-Fell-DW";
 }
+
 .login-section, .registration-section, .about-us-section{
     text-align:left;
     font: 15px "Lato";
@@ -77,3 +78,11 @@ body {
     font-family: Lato;
     box-shadow: 0 0 10px  #d333ff;
   }
+.nav-link {
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+}
+
+.nav-link:hover {
+    color: crimson !important;
+}

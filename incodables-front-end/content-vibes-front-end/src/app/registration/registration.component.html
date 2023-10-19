@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration Form</title>
-    <link rel="stylesheet" href="../app.component.css">
-</head>
-<body>
-    <div class="registration-form">
-        <h2>Register for an Account</h2>
-        <p>Create an account to manage sound and lighting for your game session.</p>
-        <form action="http://localhost:8080/user" (ngSubmit)="onSubmit()">
-        <input type="text" name="name" placeholder="Name">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="password_confirmation" placeholder="Confirm Password">
+    <link rel="stylesheet" href="../app.component.css" />
+  </head>
+  <body>
+    <div class="registration-form col-md-12">
+      <h2>Register for an Account</h2>
+      <p>
+        Create an account to manage sound and lighting for your game session.
+      </p>
+      <form action="http://localhost:8080/user" (ngSubmit)="onSubmit()">
+        <p>Create an account to manage sound for your game session.</p>
+
+        <input type="text" name="name" placeholder="Name" />
+        <input type="email" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <input
+          type="password"
+          name="password_confirmation"
+          placeholder="Confirm Password"
+        />
 
         <button type="submit" class="registration-form-button">Register</button>
-        
-        </form>
+      </form>
     </div>
-    
-</body>
+  </body>
 </html>

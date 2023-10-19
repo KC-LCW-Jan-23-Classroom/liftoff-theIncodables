@@ -106,8 +106,11 @@ body {
 .nav-link {
     font-family: "Lato", sans-serif;
     font-size: 15px;
+    cursor: pointer; /* show a pointer cursor on hover */
+    margin: 5px;
 }
 
-.nav-link:hover {
+ .nav-link:hover {
     color: crimson !important;
 }
+

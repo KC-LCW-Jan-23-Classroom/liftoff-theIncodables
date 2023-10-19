@@ -1,31 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="../app.component.css" />
-  </head>
-  <body>
-    <div class="registration-form col-md-12">
-      <h2>Register for an Account</h2>
-      <p>
-        Create an account to manage sound and lighting for your game session.
-      </p>
-      <form action="http://localhost:8080/user" (ngSubmit)="onSubmit()">
-        <p>Create an account to manage sound for your game session.</p>
+<body>
+  <div class="registration-form col-md-12">
+    <h2>Register for an Account</h2>
+    <p>Create an account to manage sound and lighting for your game session.</p>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <p>Create an account to manage sound for your game session.</p>
 
-        <input type="text" name="name" placeholder="Name" />
-        <input type="email" name="email" placeholder="Email" />
-        <input type="password" name="password" placeholder="Password" />
-        <input
-          type="password"
-          name="password_confirmation"
-          placeholder="Confirm Password"
-        />
-
-        <button type="submit" class="registration-form-button">Register</button>
-      </form>
-    </div>
-  </body>
-</html>
+      <input
+        type="text"
+        [(ngModel)]="user.username"
+        class="form-control"
+        id="username"
+        name="username"
+        placeholder="Enter your username"
+        required
+        #username="ngModel"
+      />
+      <input
+        type="text"
+        [(ngModel)]="user.email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter your email address"
+        required
+        #email="ngModel"
+      />
+      <input
+        type="text"
+        [(ngModel)]="user.password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+        #password="ngModel"
+      />
+      <input
+        type="text"
+        [(ngModel)]="user.verify"
+        class="form-control"
+        id="verify"
+        name="verify"
+        placeholder="Enter your verify"
+        required
+        #verify="ngModel"
+      />
+      <button type="submit" class="registration-form-button">Register</button>
+    </form>
+  </div>
+</body>

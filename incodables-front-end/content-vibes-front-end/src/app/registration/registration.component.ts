@@ -1,36 +1,34 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserServiceService } from '../user-service.service';
-
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['../app.component.css', '../app.component.css']
+  styleUrls: ['../app.component.css'],
 })
 export class RegistrationComponent {
   user: User;
 
-
-  
-  constructor(private userService: UserServiceService) {
-    this.user = new User();}
-
-  onSubmit() {
-  
-  console.log('called')
-    this.userService.register(this.user)
-      .subscribe(
-        response => {
-          // Handle successful registration
-          console.log("success", response);
-        },
-        error => {
-          // Handle registration error
-          console.log("failure", error);
-        }
-      );
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+  ) {
+    this.route.params.subscribe((data) => {
+      const id = this.route.snapshot.paramMap.get('token');
+      console.log('router subscription fired token:' + id);
+      if (null == id) return;
+    });
+    this.user = new User();
   }
 
+  onSubmit() {
+    this.userService.save(this.user).subscribe((result) => console.log('test'));
+  }
+
+  // gotoHomePage() {
+  //   this.router.navigate(['/']);
+  // }
 }

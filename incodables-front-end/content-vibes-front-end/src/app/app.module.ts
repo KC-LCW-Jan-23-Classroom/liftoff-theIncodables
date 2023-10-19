@@ -9,7 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule // Include AppRoutingModule here
+    AppRoutingModule, // Include AppRoutingModule here
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

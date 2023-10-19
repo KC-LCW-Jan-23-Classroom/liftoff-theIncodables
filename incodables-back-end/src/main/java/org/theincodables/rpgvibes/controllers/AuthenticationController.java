@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.UserRepository;
 import org.theincodables.rpgvibes.models.User;
 import org.theincodables.rpgvibes.models.dto.LoginFormDTO;
@@ -17,7 +15,9 @@ import org.theincodables.rpgvibes.models.dto.RegisterFormDTO;
 
 import java.util.Optional;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/user")
 public class AuthenticationController {
 
     @Autowired
@@ -81,7 +81,7 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:";
+        return "newUser";
     }
 
     @GetMapping("/login")

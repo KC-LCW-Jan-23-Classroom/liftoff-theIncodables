@@ -10,14 +10,15 @@
     <div class="registration-form">
         <h2>Register for an Account</h2>
         <p>Create an account to manage sound and lighting for your game session.</p>
-
+        <form action="http://localhost:8080/user" (ngSubmit)="onSubmit()">
         <input type="text" name="name" placeholder="Name">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="password_confirmation" placeholder="Confirm Password">
 
         <button type="submit" class="registration-form-button">Register</button>
-    
+        
+        </form>
     </div>
     
 </body>

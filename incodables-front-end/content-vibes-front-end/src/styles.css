@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@font-face {
+    font-family: "IM-Fell-DW";
+    src: url(./Fonts/IMFellDWPicaSC-Regular.ttf);
+}
+@font-face {
+    font-family: "Lato";
+    src: url(./Fonts/Lato-Regular.ttf);
+}
+
+body h1,h2  {
+    text-align: center;
+    color: #B92121ff !important;
+    font: 20px "IM-Fell-DW" !important;
+}
+
+body {
+    font-family: Lato, Helvetica, sans-serif;
+}
+
+
+.login-section, .registration-section, .about-us-section{
+    text-align:left;
+    font: 15px "Lato";
+}
+
+
+.nav-link {
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+}
+
+.nav-link:hover {
+    color: crimson !important;
+}
+
+p {
+font-family: "Lato", Helvetica, sans-serif;
+color: #2D231Eff;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5D576Bff !important;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: Lato !important;
+    margin-bottom: 10px;
+  }
+
+  .primary-submit-button:hover {
+    background-color: #e2cfb6;
+    color: #000;
+    letter-spacing: 10px;
+    font-family: Lato;
+    box-shadow: 0 0 10px  #d333ff;
+  }
+
+
+/*
+ --Primary accent red: #B92121ff;
+--Tan light: #EBDFCBff;
+--Tan medium: #C9B79Cff;
+--purple: #5D576Bff;
+--black: #2D231Eff; */

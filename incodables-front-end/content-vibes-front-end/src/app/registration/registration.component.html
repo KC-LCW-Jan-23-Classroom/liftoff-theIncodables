@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="../app.component.css">
 </head>
 <body>
     <div class="registration-form">
@@ -16,9 +15,50 @@
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="password_confirmation" placeholder="Confirm Password">
 
-        <button type="submit" class="registration-form-button">Register</button>
+        <button type="submit" class="primary-submit-button">Register</button>
     
     </div>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card bg-dark-custom text-white" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+      
+                  <div class="mb-md-5 mt-md-4 pb-5">
+      
+                    <h2 class="fw-bold mb-2 text-uppercase text-center indented-text">Login</h2>
+                    <p class="mb-5 text-center indented-text">Please enter your login and password!</p>
+      
+                    <div class="form-outline form-white mb-4 text-center indented-text">
+                      <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                      <label class="form-label" for="typeEmailX">Email</label>
+                    </div>
+      
+                    <div class="form-outline form-white mb-4 text-center indented-text">
+                      <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                      <label class="form-label" for="typePasswordX">Password</label>
+                    </div>
+      
+                    <p class="small mb-5 pb-lg-2 text-center indented-text"><a href="#!">Forgot password?</a></p>
+      
+                    <!-- <button class="btn btn-outline-light btn-lg px-5 indented-text" type="submit">Login</button> -->
+                    <button id="btn-outline-custom" class="primary-submit-button" type="submit" >Login</button>
+                    <!-- style="margin-left: 0; text-indent: 40;" -->
+
+                  </div>
+      
+                  <div>
+                    <p class="mb-0 text-center indented-text">Don't have an account? <a href="#!" class="fw-bold">Sign Up</a>
+                    </p>
+                  </div>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     
 </body>
 </html>

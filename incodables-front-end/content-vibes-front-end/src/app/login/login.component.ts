@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { User } from '../user';
+import { RegisterDTO } from '../register';
 import { UserService } from '../user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginDTO } from '../login-dto';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -25,4 +28,29 @@ export class LoginComponent {
   //         }
   //       );
   //   }
+
+  user: LoginDTO;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+  ) {
+    // this.route.params.subscribe((data) => {
+    //   const id = this.route.snapshot.paramMap.get('token');
+    //   console.log('router subscription fired token:' + id);
+    //   if (null == id) return;
+    // });
+    this.user = new LoginDTO();
+  }
+
+  onSubmit() {
+    //handle emtpy fields etc
+
+    this.userService.findByUsername(this.user).subscribe((result) => {
+      if (result.ok) {
+        this.router.navigate(['/']);
+      }
+    });
+  }
 }

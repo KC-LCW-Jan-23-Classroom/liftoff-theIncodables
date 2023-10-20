@@ -1,6 +1,8 @@
 package org.theincodables.rpgvibes;
 
 
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -14,6 +16,7 @@ import org.theincodables.rpgvibes.models.User;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
 
 public class AuthenticationFilter implements HandlerInterceptor {
 
@@ -34,10 +37,12 @@ public class AuthenticationFilter implements HandlerInterceptor {
         return false;
     }
 
-    @Override
+    //@Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
-                             Object handler) throws IOException {
+                             Object handler,
+                             FilterChain filterChain
+                            ) throws IOException, ServletException {
 
         // Don't require sign-in for whitelisted pages
         if (isWhitelisted(request.getRequestURI())) {
@@ -52,9 +57,9 @@ public class AuthenticationFilter implements HandlerInterceptor {
         if (user != null) {
             return true;
         }
-
+        filterChain.doFilter(request, response);
         // The user is NOT logged in
-        response.sendRedirect("/login");
+       // response.sendRedirect("/login");
         return false;
     }
 

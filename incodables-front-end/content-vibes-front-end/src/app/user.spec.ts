@@ -1,7 +1,7 @@
-import { User } from './user';
+import { RegisterDTO } from './register';
 
 describe('User', () => {
   it('should create an instance', () => {
-    expect(new User()).toBeTruthy();
+    expect(new RegisterDTO()).toBeTruthy();
   });
 });

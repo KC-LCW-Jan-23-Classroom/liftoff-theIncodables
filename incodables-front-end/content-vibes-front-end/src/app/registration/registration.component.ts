@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../user';
+import { RegisterDTO } from '../register';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['../app.component.css'],
 })
 export class RegistrationComponent {
-  user: User;
+  user: RegisterDTO;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,11 +21,11 @@ export class RegistrationComponent {
       console.log('router subscription fired token:' + id);
       if (null == id) return;
     });
-    this.user = new User();
+    this.user = new RegisterDTO();
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe((result) => console.log('test'));
+    this.userService.save(this.user).subscribe((result) => console.log(result));
   }
 
   // gotoHomePage() {

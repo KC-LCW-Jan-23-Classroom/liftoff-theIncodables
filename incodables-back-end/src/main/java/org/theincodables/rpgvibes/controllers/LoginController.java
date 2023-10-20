@@ -1,9 +1,13 @@
 package org.theincodables.rpgvibes.controllers;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -16,14 +20,14 @@ import org.theincodables.rpgvibes.models.dto.RegisterFormDTO;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/login")
 @CrossOrigin(origins = "http://localhost:4200")
-public class AuthenticationController {
+public class LoginController {
 
     @Autowired
     UserRepository userRepository;
 
-    private static final String userSessionKey = "user";
+    public static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -40,44 +44,36 @@ public class AuthenticationController {
         return user.get();
     }
 
-    private static HttpSession setUserInSession(HttpSession session, User user) {
+    public static HttpSession setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
         return session;
     }
 
 
 
-
     @PostMapping("")
-    public String processRegistrationForm(@RequestBody RegisterFormDTO registerFormDTO,
-                                          Errors errors, HttpServletRequest request,
-                                          Model model) {
+    public ResponseEntity processLoginForm(@RequestBody LoginFormDTO loginFormDTO,
+                                           Errors errors, HttpServletRequest request,
+                                           Model model) {
+        System.out.println(loginFormDTO.toString());
+        LoginFormDTO convertedLoginDTO = new LoginFormDTO(loginFormDTO.username,loginFormDTO.password);
 
-        RegisterFormDTO convertedRegisterDTO = new RegisterFormDTO(registerFormDTO.verify,registerFormDTO.email,registerFormDTO.username,registerFormDTO.password);
 
-//        if (errors.hasErrors()) {
-//            model.addAttribute("title", "Register");
-//            return "register";
-//        }
-//
-//        User existingUser = userRepository.findByUsername(convertedRegisterDTO.getUsername());
-//
-//        if (existingUser != null) {
-//            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
-//            model.addAttribute("title", "Register");
-//            return "register";
-//        }
-//
+        User theUser = userRepository.findByUsername(convertedLoginDTO.getUsername());
 
-        User newUser = new User(convertedRegisterDTO.getUsername(), convertedRegisterDTO.getPassword(), convertedRegisterDTO.getEmail());
-        userRepository.save(newUser);
-        setUserInSession(request.getSession(), newUser);
 
-        return "newUser";
+        String password = convertedLoginDTO.getPassword();
+
+        if (!theUser.isMatchingPassword(password)) {
+            return new ResponseEntity<>(
+                    "login failed",
+                    HttpStatus.BAD_REQUEST);
+        }
+
+        HttpSession session = setUserInSession(request.getSession(), theUser);
+        return ResponseEntity.ok(session);
+
     }
-
-
-
 
 
 //    @PostMapping("/login")

@@ -7,7 +7,7 @@ import { UserService } from '../service/user-service/user.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['../app.component.css'],
+  styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
   user: RegisterDTO;

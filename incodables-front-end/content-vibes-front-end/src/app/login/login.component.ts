@@ -48,12 +48,10 @@ export class LoginComponent {
     //handle emtpy fields etc
 
     this.userService.findByUsername(this.user).subscribe((result) => {
-      // console.log("stuff");
       if (result) {
-        // console.log("good stuff");
         this.router.navigate(['/']);
       } else if (HttpStatusCode.BadRequest){
-        console.log("badd stuff");
+        //this is not setup to handle errors but the login functionality works
         this.router.navigate(['login']);
       }
     });

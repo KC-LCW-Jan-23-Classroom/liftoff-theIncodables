@@ -1,0 +1,25 @@
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%; 
+    }
+
+    app-about-us {
+        text-align: left;
+    }
+    .about-us-stuff {
+        width: 50%;
+        display: flex;
+        -ms-flex-align:end;
+    }
+
+    .homepage-padding {
+        padding-top: 30px;
+
+    }
+
+    .dragon-img-styling img {
+        border-radius: 5px;
+        width: 90%; height: 360px; object-fit: cover;
+    }

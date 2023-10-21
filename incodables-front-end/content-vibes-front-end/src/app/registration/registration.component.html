@@ -1,51 +1,57 @@
-<body>
-  <div class="registration-form col-md-12">
-    <h2>Register for an Account</h2>
-    <p>Create an account to manage sound and lighting for your game session.</p>
-    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-      <p>Create an account to manage sound for your game session.</p>
+    <div class="rpg-forms-style bg-dark-custom text-white col-lg-5 col-md-8 col-sm-10 col-xs-12">
+        <h2>Register for an Account</h2>
+        <p>Create an account to manage sound for your game session.</p>
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+          <p>Create an account to manage sound for your game session.</p>
+    
+          <input
+            type="text"
+            [(ngModel)]="user.username"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+            #username="ngModel"
+          />
+          <input
+            type="email"
+            [(ngModel)]="user.email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+            #email="ngModel"
+          />
+          <input
+            type="password"
+            [(ngModel)]="user.password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+            #password="ngModel"
+          />
+          <input
+            type="password"
+            [(ngModel)]="user.verify"
+            class="form-control"
+            id="verify"
+            name="verify"
+            placeholder="Enter your verify"
+            required
+            #verify="ngModel"
+          />
+          <button type="submit" class="primary-submit-button">Register</button>
+        </form>
+    
+    </div>
 
-      <input
-        type="text"
-        [(ngModel)]="user.username"
-        class="form-control"
-        id="username"
-        name="username"
-        placeholder="Enter your username"
-        required
-        #username="ngModel"
-      />
-      <input
-        type="text"
-        [(ngModel)]="user.email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Enter your email address"
-        required
-        #email="ngModel"
-      />
-      <input
-        type="text"
-        [(ngModel)]="user.password"
-        class="form-control"
-        id="password"
-        name="password"
-        placeholder="Enter your password"
-        required
-        #password="ngModel"
-      />
-      <input
-        type="text"
-        [(ngModel)]="user.verify"
-        class="form-control"
-        id="verify"
-        name="verify"
-        placeholder="Enter your verify"
-        required
-        #verify="ngModel"
-      />
-      <button type="submit" class="registration-form-button">Register</button>
-    </form>
-  </div>
+    <div class="home-link">
+        <a class="register page link" routerLink="/homepage">Home</a>
+    </div>
+
 </body>
+</html>

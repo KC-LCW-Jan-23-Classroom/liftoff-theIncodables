@@ -1,1 +1,202 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@font-face {
+    font-family: "IM-Fell-DW";
+    src: url(./Fonts/IMFellDWPicaSC-Regular.ttf);
+}
+@font-face {
+    font-family: "Lato";
+    src: url(./Fonts/Lato-Regular.ttf);
+}
+
+body h1,h2  {
+    text-align: center;
+    color: #B92121ff !important;
+    font: 20px "IM-Fell-DW" !important;
+}
+
+body {
+    font-family: Lato, Helvetica, sans-serif;
+}
+
+
+.login-section, .registration-section, .about-us-section{
+    text-align:left;
+    font: 15px "Lato";
+}
+
+
+.nav-link {
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+}
+
+.nav-link:hover {
+    color: crimson !important;
+}
+
+p {
+font-family: "Lato", Helvetica, sans-serif;
+color: #2D231Eff;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5D576Bff !important;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: Lato !important;
+    margin-bottom: 10px;
+  }
+
+  .primary-submit-button:hover {
+    background-color: #e2cfb6;
+    color: #000;
+    letter-spacing: 10px;
+    font-family: Lato;
+    box-shadow: 0 0 10px  #d333ff;
+  }
+
+
+/*
+ --Primary accent red: #B92121ff;
+--Tan light: #EBDFCBff;
+--Tan medium: #C9B79Cff;
+--purple: #5D576Bff;
+--black: #2D231Eff; */
+
+/* CSS reset or normalize styles go here if needed */
+
+body {
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.header {
+    text-align: center;
+    color: crimson;
+    font-size: 20px;
+    font-family: "IM-Fell-DW";
+}
+
+.login-section,
+.registration-section,
+.about-us-section {
+    text-align: left;
+    font-size: 15px;
+    font-family: "Lato";
+}
+
+.rpg-forms-style {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rpg-forms-style h2 {
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: "Lato";
+}
+
+.rpg-forms-style p {
+    font-size: 16px;
+    font-family: Lato;
+    margin-bottom: 10px;
+}
+
+.rpg-forms-style input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    font-family: Lato;
+}
+
+.rpg-forms-style input:focus, textarea:focus {
+  border-color:#d333ff;
+  outline: #9933ff;
+  box-shadow: 0 0 10px  #d333ff;
+}
+
+.rpg-forms-style button {
+    width: 100%;
+    padding: 10px;
+    background-color: #cdab7e;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: Lato;
+    margin-bottom: 40px;
+}
+
+.rpg-forms-style button:hover {
+    background-color: #e2cfb6;
+    color:  #d333ff;
+    letter-spacing: 10px;
+    font-family: Lato;
+    box-shadow: 0 0 10px  #d333ff;
+}
+
+.rpg-forms-style button:focus {
+    border-color: #d333ff;
+    outline: #9933ff;
+    box-shadow: 0 0 10px #d333ff;
+}
+
+.rpg-forms-style button:active {
+    background-color: #cdab7e;
+    color: black;
+}
+
+.rpg-forms-style button:focus:not(:active) {
+    border-color: #ccc;
+    box-shadow: none;
+}
+
+.nav-link {
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    cursor: pointer; /* show a pointer cursor on hover */
+    margin: 5px;
+}
+
+ .nav-link:hover {
+    color: crimson !important;
+}
+
+div.bg-dark-custom {
+    background-color: #EBDFCBff;
+}
+
+p, label {
+    color: #2D231Eff;
+}
+
+.home-link {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;  
+  }
+
+  .home-link:hover {
+    color:#9933ff;
+  }

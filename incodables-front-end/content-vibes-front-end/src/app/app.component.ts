@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'content-vibes-front-end';
+  isLoggedIn: boolean = false; //login user status
 }
+
+

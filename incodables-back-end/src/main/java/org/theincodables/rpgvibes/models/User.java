@@ -7,8 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Entity
 public class User extends AbstractEntity {
 
-    @NotNull //not-null fields must be initialized error. Want to ask TAs about this.
+    @NotNull
     private String username;
+    @NotNull
+    private String email;
 
     @NotNull
     private String pwHash;
@@ -17,8 +19,9 @@ public class User extends AbstractEntity {
 
     public User() {}
 
-    public User(String username, String password) {
+    public User(String username, String password, String email) {
         this.username = username;
+        this.email = email;
         this.pwHash = encoder.encode(password);
     }
 

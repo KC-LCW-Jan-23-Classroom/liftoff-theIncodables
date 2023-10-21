@@ -20,10 +20,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'mysql:mysql-connector-java:8.0.25'
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.2'
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	//implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.3'
 	implementation 'org.springframework.security:spring-security-crypto'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

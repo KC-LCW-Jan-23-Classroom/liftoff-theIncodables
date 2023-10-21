@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { UserService } from './user.service';
+import { UserService } from './service/user-service/user.service';
 @NgModule({
   declarations: [
     AppComponent,

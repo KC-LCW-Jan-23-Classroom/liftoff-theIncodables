@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RegisterDTO } from '../register';
-import { UserService } from '../user.service';
+import { RegisterDTO } from '../model/register';
+import { UserService } from '../service/user-service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginDTO } from '../login-dto';
-import { HttpResponse } from '@angular/common/http';
+import { LoginDTO } from '../model/login-dto';
+import { HttpResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -48,8 +48,13 @@ export class LoginComponent {
     //handle emtpy fields etc
 
     this.userService.findByUsername(this.user).subscribe((result) => {
-      if (result.ok) {
+      // console.log("stuff");
+      if (result) {
+        // console.log("good stuff");
         this.router.navigate(['/']);
+      } else if (HttpStatusCode.BadRequest){
+        console.log("badd stuff");
+        this.router.navigate(['login']);
       }
     });
   }

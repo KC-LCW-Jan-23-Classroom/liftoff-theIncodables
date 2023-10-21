@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -49,9 +50,8 @@ public class AuthenticationController {
 
 
     @PostMapping("")
-    public String processRegistrationForm(@RequestBody RegisterFormDTO registerFormDTO,
-                                          Errors errors, HttpServletRequest request,
-                                          Model model) {
+    public User processRegistrationForm(@RequestBody RegisterFormDTO registerFormDTO,
+                                          HttpServletRequest request) {
 
         RegisterFormDTO convertedRegisterDTO = new RegisterFormDTO(registerFormDTO.verify,registerFormDTO.email,registerFormDTO.username,registerFormDTO.password);
 
@@ -73,7 +73,7 @@ public class AuthenticationController {
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "newUser";
+        return newUser;
     }
 
 

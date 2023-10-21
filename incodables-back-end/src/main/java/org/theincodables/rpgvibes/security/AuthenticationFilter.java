@@ -1,4 +1,4 @@
-package org.theincodables.rpgvibes;
+package org.theincodables.rpgvibes.security;
 
 
 import jakarta.servlet.FilterChain;

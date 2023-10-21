@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RegisterDTO } from '../register';
+import { RegisterDTO } from '../model/register';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user-service/user.service';
+
 
 @Component({
   selector: 'app-registration',

@@ -17,6 +17,8 @@ import org.theincodables.rpgvibes.models.User;
 import org.theincodables.rpgvibes.models.dto.LoginFormDTO;
 import org.theincodables.rpgvibes.models.dto.RegisterFormDTO;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -26,6 +28,8 @@ public class LoginController {
 
     @Autowired
     UserRepository userRepository;
+
+
 
     public static final String userSessionKey = "user";
 
@@ -53,8 +57,7 @@ public class LoginController {
 
     @PostMapping("")
     public ResponseEntity processLoginForm(@RequestBody LoginFormDTO loginFormDTO,
-                                           Errors errors, HttpServletRequest request,
-                                           Model model) {
+                                           HttpServletRequest request) {
         System.out.println(loginFormDTO.toString());
         LoginFormDTO convertedLoginDTO = new LoginFormDTO(loginFormDTO.username,loginFormDTO.password);
 
@@ -64,14 +67,15 @@ public class LoginController {
 
         String password = convertedLoginDTO.getPassword();
 
-        if (!theUser.isMatchingPassword(password)) {
-            return new ResponseEntity<>(
-                    "login failed",
-                    HttpStatus.BAD_REQUEST);
+        if (theUser == null || !theUser.isMatchingPassword(password)) {
+            Map<String, String> responseBody = new HashMap<>();
+            responseBody.put("message", "Bad Request");
+            return ResponseEntity.badRequest().build();
         }
 
+
         HttpSession session = setUserInSession(request.getSession(), theUser);
-        return ResponseEntity.ok(session);
+        return ResponseEntity.ok(theUser);
 
     }
 

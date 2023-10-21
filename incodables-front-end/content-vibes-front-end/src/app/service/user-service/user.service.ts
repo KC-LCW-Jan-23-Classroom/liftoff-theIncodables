@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { RegisterDTO } from './register';
+import { RegisterDTO } from '../../model/register';
 import { Observable } from 'rxjs';
-import { LoginDTO } from './login-dto';
+import { LoginDTO } from '../../model/login-dto';
 
 @Injectable()
 export class UserService {
@@ -18,8 +18,9 @@ export class UserService {
     return this.http.get<RegisterDTO[]>(this.usersUrl);
   }
 
-  public findByUsername(user: LoginDTO) {
-    return this.http.post<HttpResponse<any>>(this.loginUrl, user);
+
+  public findByUsername(user: LoginDTO):Observable<any> {
+    return this.http.post(this.loginUrl, user);
   }
 
   public save(user: RegisterDTO) {

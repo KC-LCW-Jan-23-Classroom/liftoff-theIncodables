@@ -97,6 +97,10 @@ body {
     margin-top: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .rpg-forms-style h2 {
@@ -183,3 +187,16 @@ div.bg-dark-custom {
 p, label {
     color: #2D231Eff;
 }
+
+.home-link {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;  
+  }
+
+  .home-link:hover {
+    color:#9933ff;
+  }

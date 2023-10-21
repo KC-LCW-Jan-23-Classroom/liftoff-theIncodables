@@ -78,7 +78,7 @@ body {
 
 .header {
     text-align: center;
-    color: crimson;
+    color: #B92121ff;
     font-size: 20px;
     font-family: "IM-Fell-DW";
 }
@@ -97,10 +97,10 @@ body {
     margin-top: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /* position: absolute; */
+    /* top: 40%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
 }
 
 .rpg-forms-style h2 {
@@ -128,7 +128,7 @@ body {
 
 .rpg-forms-style input:focus, textarea:focus {
   border-color:#d333ff;
-  outline: #9933ff;
+  outline: #5D576Bff;
   box-shadow: 0 0 10px  #d333ff;
 }
 
@@ -155,7 +155,7 @@ body {
 
 .rpg-forms-style button:focus {
     border-color: #d333ff;
-    outline: #9933ff;
+    outline:#5D576Bff;
     box-shadow: 0 0 10px #d333ff;
 }
 
@@ -177,7 +177,7 @@ body {
 }
 
  .nav-link:hover {
-    color: crimson !important;
+    color: #B92121ff !important;
 }
 
 div.bg-dark-custom {
@@ -198,5 +198,5 @@ p, label {
   }
 
   .home-link:hover {
-    color:#9933ff;
+    color:#5D576Bff;
   }

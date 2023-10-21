@@ -6,6 +6,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { UserService } from './service/user-service/user.service';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -14,13 +18,13 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AboutUsComponent,
     HomepageComponent,
     RegistrationComponent,
+    LoginComponent,
     NavBarComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  providers: [UserService],
+  
+
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

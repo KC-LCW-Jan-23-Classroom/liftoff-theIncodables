@@ -11,6 +11,7 @@ import { UserService } from '../service/user-service/user.service';
 })
 export class RegistrationComponent {
   user: RegisterDTO;
+  errors: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +27,17 @@ export class RegistrationComponent {
   }
 
   onSubmit() {
+
+    if (!this.user.username || !this.user.email || !this.user.password || !this.user.verify) {
+    
+      if (!this.user.username) this.errors.push('Username is required.');
+      if (!this.user.email) this.errors.push('Email is required.');
+      if (!this.user.password) this.errors.push('Password is required.');
+      if (!this.user.verify) this.errors.push('Verification password is required.');
+   
+      return;
+    }
+
     this.userService.save(this.user).subscribe((result) => console.log(result));
   }
 

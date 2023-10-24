@@ -4,7 +4,7 @@
         <h2>REGISTER FOR AN ACCOUNT</h2>
         <p>Create an account to manage sound for your game session.</p>
         <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-          <p>Create an account to manage sound for your game session.</p>
+          <!--<p>Create an account to manage sound for your game session.</p>-->
     
           <input
             type="text"
@@ -48,10 +48,16 @@
           />
           <button type="submit" class="primary-submit-button">Register</button>
         </form>
+
+        <div class="error-messages">
+          <ul *ngIf="errors.length > 0">
+            <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
+        </div>
     
     </div>
 
-  
+   
 
 </body>
 </html>

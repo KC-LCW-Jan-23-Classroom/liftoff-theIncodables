@@ -200,3 +200,8 @@ p, label {
   .home-link:hover {
     color:#5D576Bff;
   }
+
+  .error-messages {
+    color: red;
+    font-size: 14px;
+  }

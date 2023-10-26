@@ -18,7 +18,7 @@
             #username="ngModel"
           />
           <input
-            type="text"
+            type="password"
             [(ngModel)]="user.password"
             class="form-control"
             id="password"
@@ -31,5 +31,10 @@
             Login
           </button>
         </form>
-
+        
+        <div class="error-messages">
+          <ul *ngIf="errors.length > 0">
+            <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
+        </div>
     </div>

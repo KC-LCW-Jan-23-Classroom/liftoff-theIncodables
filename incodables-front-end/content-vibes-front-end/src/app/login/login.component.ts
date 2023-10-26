@@ -30,6 +30,7 @@ export class LoginComponent {
   //   }
 
   user: LoginDTO;
+  errors: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -44,16 +45,23 @@ export class LoginComponent {
     this.user = new LoginDTO();
   }
 
-  onSubmit() {
-    //handle emtpy fields etc
 
-    this.userService.findByUsername(this.user).subscribe((result) => {
-      if (result) {
-        this.router.navigate(['/']);
-      } else if (HttpStatusCode.BadRequest){
-        //this is not setup to handle errors but the login functionality works
-        this.router.navigate(['login']);
+
+  onSubmit() {
+    // Reset the errors array
+    this.errors = [];
+
+    if (!this.user.username || !this.user.password) {
+      if (!this.user.username) this.errors.push('Username is required.');
+      if (!this.user.password) this.errors.push('Password is required.');
+      return; // Don't proceed with form submission if there are errors.
+    }
+
+    this.userService.save(this.user).subscribe(
+      (result) => console.log(result),
+      (error) => {
+        // Handle any additional error handling here if needed.
       }
-    });
+    );
   }
 }

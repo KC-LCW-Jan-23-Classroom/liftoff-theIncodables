@@ -1,0 +1,38 @@
+<div class="rpg-forms-style bg-dark-custom text-white col-lg-5 col-md-8 col-sm-10 col-xs-12">
+    <h2>Create New Game Session</h2>
+    <form (ngSubmit)="onSubmit()" #gameForm="ngForm">
+        <input
+            type="text"
+            [(ngModel)]="gameName"
+            class="form-control"
+            id="gameName"
+            name="gameName"
+            placeholder="Enter Name of Game"
+            required
+        />
+        <input
+            type="text"
+            [(ngModel)]="description"
+            class="form-control"
+            id="gameDescription"
+            name="gameDescription"
+            placeholder="Enter Description of Game"
+            required
+        />
+        <input
+            type="date"
+            [(ngModel)]="date"
+            class="form-control"
+            id="gameDate"
+            name="gameDate"
+            required
+        />
+        <button type="submit" class="create-session-button">Let's go!</button>
+    </form>
+
+    <div class="error-messages">
+        <ul *ngIf="errors.length > 0">
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+    </div>
+</div>

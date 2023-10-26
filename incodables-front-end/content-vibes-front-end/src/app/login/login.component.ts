@@ -30,7 +30,7 @@ export class LoginComponent {
   //   }
 
   user: LoginDTO;
-  errors: string[] = [];
+  errors: string[] = []; 
 
   constructor(
     private route: ActivatedRoute,

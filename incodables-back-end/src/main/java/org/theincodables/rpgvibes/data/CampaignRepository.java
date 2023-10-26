@@ -2,10 +2,7 @@ package org.theincodables.rpgvibes.data;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import org.theincodables.rpgvibes.models.User;
+import org.theincodables.rpgvibes.models.Campaign;
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
-
-    User findByUsername(String username);
-
+public interface CampaignRepository extends CrudRepository<Campaign, Integer> {
 }

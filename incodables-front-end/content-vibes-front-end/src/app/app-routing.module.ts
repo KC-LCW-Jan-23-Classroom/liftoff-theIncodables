@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { GameSessionComponent } from './game-session/game-session.component';
+import { UserLandingPageComponent } from './user-landing-page/user-landing-page.component';
 
 const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: '', redirectTo: '/homepage', pathMatch: 'full' }, // Default route
   { path: 'game-session', component: GameSessionComponent },
+  {path: 'user-landing-page', component: UserLandingPageComponent}
 ];
 
 @NgModule({

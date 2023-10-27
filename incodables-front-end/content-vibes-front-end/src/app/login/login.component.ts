@@ -57,9 +57,10 @@ export class LoginComponent {
       return; // Don't proceed with form submission if there are errors.
     }
 
-    this.userService.save(this.user).subscribe(
-      (result) => console.log(result),
-      (error) => {
+    this.userService.findByUsername(this.user).subscribe((result) => {
+      if (result) {
+        this.router.navigate(['/']);
+      }
         // Handle any additional error handling here if needed.
       }
     );

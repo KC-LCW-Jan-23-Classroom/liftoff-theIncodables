@@ -1,40 +1,39 @@
+<div class="rpg-forms-style bg-dark-custom text-white col-lg-5 col-md-8 col-sm-10 col-xs-12">
+  <h2>Welcome Back</h2>
 
-    <div class="rpg-forms-style bg-dark-custom text-white col-lg-5 col-md-8 col-sm-10 col-xs-12">
-        <h2>Welcome Back</h2>
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <p>
+      Create an account to manage sound for your game session.
+    </p>
 
-        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-          <p>
-            Create an account to manage sound for your game session.
-          </p>
+    <input
+      type="text"
+      [(ngModel)]="user.username"
+      class="form-control"
+      id="username"
+      name="username"
+      placeholder="Enter your username"
+      required
+      #username="ngModel"
+    />
+    <input
+      type="text"
+      [(ngModel)]="user.password"
+      class="form-control"
+      id="password"
+      name="password"
+      placeholder="Enter your password"
+      required
+      #password="ngModel"
+    />
+    <button type="submit" class="primary-submit-button">
+      Login
+    </button>
+  </form>
+  <div class="error-messages">
+    <ul *ngIf="errors.length > 0">
+      <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
+  </div>
 
-          <input
-            type="text"
-            [(ngModel)]="user.username"
-            class="form-control"
-            id="username"
-            name="username"
-            placeholder="Enter your username"
-            required
-            #username="ngModel"
-          />
-          <input
-            type="password"
-            [(ngModel)]="user.password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            required
-            #password="ngModel"
-          />
-          <button type="submit" class="primary-submit-button">
-            Login
-          </button>
-        </form>
-        
-        <div class="error-messages">
-          <ul *ngIf="errors.length > 0">
-            <li *ngFor="let error of errors">{{ error }}</li>
-          </ul>
-        </div>
-    </div>
+</div>

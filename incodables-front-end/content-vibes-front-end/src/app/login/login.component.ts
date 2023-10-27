@@ -30,30 +30,36 @@ export class LoginComponent {
   //   }
 
   user: LoginDTO;
+  errors: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService
   ) {
-    // this.route.params.subscribe((data) => {
-    //   const id = this.route.snapshot.paramMap.get('token');
-    //   console.log('router subscription fired token:' + id);
-    //   if (null == id) return;
-    // });
+    this.route.params.subscribe((data) => {
+      const id = this.route.snapshot.paramMap.get('token');
+      console.log('router subscription fired token:' + id);
+      if (null == id) return;
+    });
     this.user = new LoginDTO();
   }
 
   onSubmit() {
     //handle emtpy fields etc
 
+    if (!this.user.username || !this.user.password) {
+    
+      if (!this.user.username) this.errors.push('Username is required.');
+      if (!this.user.password) this.errors.push('Password is required.');
+   
+      return;
+    }
+
     this.userService.findByUsername(this.user).subscribe((result) => {
       if (result) {
         this.router.navigate(['/']);
-      } else if (HttpStatusCode.BadRequest){
-        //this is not setup to handle errors but the login functionality works
-        this.router.navigate(['login']);
-      }
+      } 
     });
   }
 }

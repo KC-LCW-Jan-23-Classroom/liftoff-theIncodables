@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './service/user-service/user.service';
 import { LoginComponent } from './login/login.component';
+import { GameSessionComponent } from './game-session/game-session.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { LoginComponent } from './login/login.component';
     RegistrationComponent,
     LoginComponent,
     NavBarComponent,
+    GameSessionComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [UserService],

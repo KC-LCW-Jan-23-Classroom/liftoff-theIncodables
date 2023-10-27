@@ -39,9 +39,7 @@ export class RegistrationComponent {
     }
 
     this.userService.save(this.user).subscribe((result) => console.log(result));
+  
+      this.router.navigate(['/']);
+    }
   }
-
-  // gotoHomePage() {
-  //   this.router.navigate(['/']);
-  // }
-}

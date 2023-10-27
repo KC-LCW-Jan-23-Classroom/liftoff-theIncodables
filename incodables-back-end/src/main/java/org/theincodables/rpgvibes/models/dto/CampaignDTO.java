@@ -1,4 +1,4 @@
-package org.theincodables.rpgvibes.data;
+package org.theincodables.rpgvibes.models.dto;
 
 public class CampaignDTO {
     private String campaignName;

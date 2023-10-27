@@ -5,12 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.theincodables.rpgvibes.data.CampaignDTO;
 import org.theincodables.rpgvibes.data.CampaignRepository;
 import org.theincodables.rpgvibes.models.Campaign;
 import org.theincodables.rpgvibes.models.User;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController

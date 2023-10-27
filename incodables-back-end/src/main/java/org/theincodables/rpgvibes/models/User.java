@@ -1,8 +1,13 @@
 package org.theincodables.rpgvibes.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User extends AbstractEntity {
@@ -14,10 +19,14 @@ public class User extends AbstractEntity {
 
     @NotNull
     private String pwHash;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Campaign> campaigns = new ArrayList<>();
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User() {}
+    public User() {
+    }
 
     public User(String username, String password, String email) {
         this.username = username;

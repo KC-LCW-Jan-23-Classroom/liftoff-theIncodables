@@ -2,13 +2,17 @@ package org.theincodables.rpgvibes.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.CampaignRepository;
 import org.theincodables.rpgvibes.models.Campaign;
 import org.theincodables.rpgvibes.models.User;
+import org.theincodables.rpgvibes.models.dto.CampaignDTO;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,34 +25,36 @@ public class CampaignController {
     @Autowired
     private CampaignRepository campaignRepository;
 
+
     @GetMapping("/all")
-    public ResponseEntity<Optional<Campaign>> getAllCampaigns(HttpServletRequest request) {
+    public ResponseEntity<ArrayList<Campaign>> getAllCampaigns(HttpServletRequest request) {
         User currentUser = loginController.getUserFromSession(request.getSession());
         if (currentUser == null) {
             // Handle the case where there is no authenticated user
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        Optional<Campaign> campaigns = campaignRepository.findById(currentUser.getId());
+        ArrayList<Campaign> campaigns = (ArrayList<Campaign>) currentUser.getCampaigns();
         return new ResponseEntity<>(campaigns, HttpStatus.OK);
     }
 
-//    @PostMapping("/create")
-//    public ResponseEntity<Campaign> createCampaign(@RequestBody CampaignDTO campaignDTO, HttpServletRequest request) {
-//        User currentUser = loginController.getUserFromSession(request.getSession());
-//        if (currentUser == null) {
-//            // Handle the case where there is no authenticated user
-//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//        }
-//        // Create a new campaign using data from campaignDTO
-//        Campaign newCampaign = new Campaign();
-//        newCampaign.setCampaignName(campaignDTO.getCampaignName());
-//        newCampaign.setOwner(currentUser);
-//
-//        campaignRepository.save(newCampaign);
-//        // Set the owner, save to the database, and return the result
-//        // ...
-//
-//        return new ResponseEntity<>(newCampaign, HttpStatus.CREATED);
-//    }
+    @PostMapping("/create")
+    public ResponseEntity<Campaign> createCampaign(@RequestBody CampaignDTO campaignDTO, HttpServletRequest request) {
+        User currentUser = loginController.getUserFromSession(request.getSession());
+        if (currentUser == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        // Create a new Campaign object
+        Campaign newCampaign = new Campaign();
+        newCampaign.setCampaignName(campaignDTO.getCampaignName());
+        // Set the owner (user)
+        newCampaign.setOwner(currentUser);
+
+        // Save the new campaign to the database using the repository
+        newCampaign = campaignRepository.save(newCampaign);
+
+        // Return the created campaign with its generated ID
+        return new ResponseEntity<>(newCampaign, HttpStatus.CREATED);
+    }
 }

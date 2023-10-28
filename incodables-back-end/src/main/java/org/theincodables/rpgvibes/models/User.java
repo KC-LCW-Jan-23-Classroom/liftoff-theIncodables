@@ -20,7 +20,7 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
     @OneToMany
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "username")
     private List<Campaign> campaigns = new ArrayList<>();
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -36,6 +36,14 @@ public class User extends AbstractEntity {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Campaign> getCampaigns() {
+        return campaigns;
     }
 
     public boolean isMatchingPassword(String password) {

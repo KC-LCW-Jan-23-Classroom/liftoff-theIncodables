@@ -238,4 +238,11 @@ p, label {
         filter: drop-shadow(3px 3px 3px #d333ff);
     }
 }
+.campaign-header {
+    font-size:30px;
+    text-align: center;
+    font-family: "IM-Fell-DW", serif;
+    margin: 1em 0 1em 0;
+    color:  #5D576Bff;
+}
 

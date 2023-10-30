@@ -37,11 +37,11 @@ export class LoginComponent {
     private router: Router,
     private userService: UserService
   ) {
-    // this.route.params.subscribe((data) => {
-    //   const id = this.route.snapshot.paramMap.get('token');
-    //   console.log('router subscription fired token:' + id);
-    //   if (null == id) return;
-    // });
+    this.route.params.subscribe((data) => {
+      const id = this.route.snapshot.paramMap.get('token');
+      console.log('router subscription fired token:' + id);
+      if (null == id) return;
+    });
     this.user = new LoginDTO();
   }
 

@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './service/user-service/user.service';
 import { LoginComponent } from './login/login.component';
+import { GameSessionComponent } from './game-session/game-session.component';
+import { UserLandingPageComponent } from './user-landing-page/user-landing-page.component';
+import { CampaignSessionComponent } from './campaign-session/campaign-session.component';
 
 
 @NgModule({
@@ -20,6 +23,9 @@ import { LoginComponent } from './login/login.component';
     RegistrationComponent,
     LoginComponent,
     NavBarComponent,
+    GameSessionComponent,
+    UserLandingPageComponent,
+    CampaignSessionComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [UserService],

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.CampaignRepository;
+import org.theincodables.rpgvibes.data.UserRepository;
 import org.theincodables.rpgvibes.exceptions.UnauthorizedException;
 import org.theincodables.rpgvibes.models.Campaign;
 import org.theincodables.rpgvibes.models.User;
@@ -34,6 +35,7 @@ public class CampaignController {
         }
         return currentUser;
     }
+
     @PostMapping("/create")
     public ResponseEntity<Campaign> createCampaign(@RequestBody CampaignDTO campaignDTO, HttpServletRequest request) {
         //check if user is authorized
@@ -93,5 +95,26 @@ public class CampaignController {
         Campaign campaign = campaignOptional.get();
 
         return new ResponseEntity<>(campaign, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{campaignId}")
+    public ResponseEntity<Void> deleteCampaignById(@PathVariable Integer campaignId, HttpServletRequest request) {
+        //check if user is authorized
+        User currentUser;
+        try {
+            currentUser = checkAuthorization(request);
+            // Your code for authorized access here
+        } catch (UnauthorizedException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        Optional<Campaign> campaignOptional = campaignRepository.findById(campaignId);
+        // Check if the campaign exists, and handle not found cases
+        if (campaignOptional.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        // Delete the campaign
+        campaignRepository.deleteById(campaignId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

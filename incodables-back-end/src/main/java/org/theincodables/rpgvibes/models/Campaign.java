@@ -33,4 +33,8 @@ public class Campaign extends AbstractEntity {
     public void setOwner(User owner) {
         this.owner = owner;
     }
+
+//    public Object getOwner() {
+//        return owner;
+//    }
 }

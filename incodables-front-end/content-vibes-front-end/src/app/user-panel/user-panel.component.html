@@ -1,0 +1,22 @@
+<div class="user-panel" [ngClass]="{'expanded': isExpanded}">
+    <div class="header">
+        <h1 class="title">
+            Placeholder
+        </h1>
+        <div class="toggle" (click)="handleUserPanelToggle()">
+            <span class="chevron"></span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="link">
+            <div class="content" [routerLink]="['/user-landing-page']" [routerLinkActive]="'active'">
+                <div class="title">Home</div>
+            </div>
+        </div>
+        <div class="link campaign">
+            <div class="content" [routerLink]="['/campaign-session']" [routerLinkActive]="'active'">
+                <div class="title">Campaigns</div>
+            </div>
+        </div>
+    </div>
+</div>

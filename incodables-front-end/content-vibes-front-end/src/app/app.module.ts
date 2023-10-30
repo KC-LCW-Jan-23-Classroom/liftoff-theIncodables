@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { GameSessionComponent } from './game-session/game-session.component';
 import { UserLandingPageComponent } from './user-landing-page/user-landing-page.component';
 import { CampaignSessionComponent } from './campaign-session/campaign-session.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CampaignSessionComponent } from './campaign-session/campaign-session.co
     GameSessionComponent,
     UserLandingPageComponent,
     CampaignSessionComponent,
+    UserPanelComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [UserService],

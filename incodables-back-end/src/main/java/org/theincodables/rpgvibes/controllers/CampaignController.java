@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.CampaignRepository;
+import org.theincodables.rpgvibes.exceptions.UnauthorizedException;
 import org.theincodables.rpgvibes.models.Campaign;
 import org.theincodables.rpgvibes.models.User;
 import org.theincodables.rpgvibes.models.dto.CampaignDTO;
@@ -19,29 +20,28 @@ import java.util.Optional;
 @RequestMapping("/campaigns")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CampaignController {
+    //autowired for .getUserFromSession method
     @Autowired
     private LoginController loginController;
 
     @Autowired
     private CampaignRepository campaignRepository;
 
-
-    @GetMapping("/all")
-    public ResponseEntity<List<Campaign>> getAllCampaigns(HttpServletRequest request) {
+    private User checkAuthorization(HttpServletRequest request) {
         User currentUser = loginController.getUserFromSession(request.getSession());
         if (currentUser == null) {
-            // Handle the case where there is no authenticated user
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            throw new UnauthorizedException("User not authorized."); // Create a custom exception for unauthorized access
         }
-
-        List<Campaign> campaigns = currentUser.getCampaigns();
-        return new ResponseEntity<>(campaigns, HttpStatus.OK);
+        return currentUser;
     }
-
     @PostMapping("/create")
     public ResponseEntity<Campaign> createCampaign(@RequestBody CampaignDTO campaignDTO, HttpServletRequest request) {
-        User currentUser = loginController.getUserFromSession(request.getSession());
-        if (currentUser == null) {
+        //check if user is authorized
+        User currentUser;
+        try {
+            currentUser = checkAuthorization(request);
+            // Your code for authorized access here
+        } catch (UnauthorizedException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
@@ -58,15 +58,35 @@ public class CampaignController {
         return new ResponseEntity<>(newCampaign, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{campaignId}")
-    public ResponseEntity<Campaign> getCampaignById(@PathVariable Integer campaignId, HttpServletRequest request) {
-        User currentUser = loginController.getUserFromSession(request.getSession());
-        if (currentUser == null) {
+    @GetMapping("/all")
+    public ResponseEntity<List<Campaign>> getAllCampaigns(HttpServletRequest request) {
+        //check if user is authorized
+        User currentUser;
+        try {
+            currentUser = checkAuthorization(request);
+            // Your code for authorized access here
+        } catch (UnauthorizedException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        Optional<Campaign> campaignOptional = campaignRepository.findById(campaignId);
+        List<Campaign> campaigns = currentUser.getCampaigns();
+        return new ResponseEntity<>(campaigns, HttpStatus.OK);
+    }
 
+
+    @GetMapping("/{campaignId}")
+    public ResponseEntity<Campaign> getCampaignById(@PathVariable Integer campaignId, HttpServletRequest request) {
+        //check if user is authorized
+        User currentUser;
+        try {
+            currentUser = checkAuthorization(request);
+            // Your code for authorized access here
+        } catch (UnauthorizedException ex) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        //find campaign by its id
+        Optional<Campaign> campaignOptional = campaignRepository.findById(campaignId);
+        //handle case where campaign is empty
         if (campaignOptional.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

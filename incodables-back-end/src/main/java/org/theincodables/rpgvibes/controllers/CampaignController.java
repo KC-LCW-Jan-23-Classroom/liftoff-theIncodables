@@ -57,4 +57,21 @@ public class CampaignController {
         // Return the created campaign with its generated ID
         return new ResponseEntity<>(newCampaign, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{campaignId}")
+    public ResponseEntity<Campaign> getCampaignById(@PathVariable Integer campaignId, HttpServletRequest request) {
+        User currentUser = loginController.getUserFromSession(request.getSession());
+        if (currentUser == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        Optional<Campaign> campaignOptional = campaignRepository.findById(campaignId);
+
+        if (campaignOptional.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Campaign campaign = campaignOptional.get();
+
+        return new ResponseEntity<>(campaign, HttpStatus.OK);
+    }
 }

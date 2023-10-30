@@ -19,9 +19,8 @@ public class User extends AbstractEntity {
 
     @NotNull
     private String pwHash;
-    @OneToMany
-    @JoinColumn(name = "username")
-    private List<Campaign> campaigns = new ArrayList<>();
+    @OneToMany(mappedBy = "owner")
+    private List<Campaign> campaigns = new ArrayList<>();;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -32,6 +31,7 @@ public class User extends AbstractEntity {
         this.username = username;
         this.email = email;
         this.pwHash = encoder.encode(password);
+
     }
 
     public String getUsername() {
@@ -45,6 +45,7 @@ public class User extends AbstractEntity {
     public List<Campaign> getCampaigns() {
         return campaigns;
     }
+
 
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);

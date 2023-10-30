@@ -1,13 +1,18 @@
 package org.theincodables.rpgvibes.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
+
+import java.sql.Date;
+
 @Entity
 public class Campaign extends AbstractEntity {
     @NotNull
     private String campaignName;
     @ManyToOne
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
 
 

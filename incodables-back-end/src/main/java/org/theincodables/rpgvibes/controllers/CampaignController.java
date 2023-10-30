@@ -27,14 +27,14 @@ public class CampaignController {
 
 
     @GetMapping("/all")
-    public ResponseEntity<ArrayList<Campaign>> getAllCampaigns(HttpServletRequest request) {
+    public ResponseEntity<List<Campaign>> getAllCampaigns(HttpServletRequest request) {
         User currentUser = loginController.getUserFromSession(request.getSession());
         if (currentUser == null) {
             // Handle the case where there is no authenticated user
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        ArrayList<Campaign> campaigns = (ArrayList<Campaign>) currentUser.getCampaigns();
+        List<Campaign> campaigns = currentUser.getCampaigns();
         return new ResponseEntity<>(campaigns, HttpStatus.OK);
     }
 

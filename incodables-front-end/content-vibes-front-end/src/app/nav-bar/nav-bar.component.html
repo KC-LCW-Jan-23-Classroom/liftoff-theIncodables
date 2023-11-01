@@ -19,7 +19,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
@@ -33,12 +33,10 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
-        <li class="nav-item"><h2 class="nav-link">Welcome, User</h2></li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/about-us">About Us</a>
-          </li> -->
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <h2 class="nav-link">Welcome, {{ username }}</h2>
+        </li>
       </ul>
     </div>
   </div>
-  <!--</div>-->
 </nav>

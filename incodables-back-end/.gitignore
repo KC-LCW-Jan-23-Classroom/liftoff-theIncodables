@@ -1,5 +1,6 @@
 HELP.md
-rpgvibes/.gradle
+incodables-back-end/
+.gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/

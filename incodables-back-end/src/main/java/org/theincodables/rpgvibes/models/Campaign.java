@@ -1,11 +1,11 @@
 package org.theincodables.rpgvibes.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Campaign extends AbstractEntity {
@@ -14,6 +14,9 @@ public class Campaign extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
+
+    @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<GameSession> gameSessions = new ArrayList<>();
 
 
     public Campaign() {}
@@ -34,7 +37,5 @@ public class Campaign extends AbstractEntity {
         this.owner = owner;
     }
 
-//    public Object getOwner() {
-//        return owner;
-//    }
+
 }

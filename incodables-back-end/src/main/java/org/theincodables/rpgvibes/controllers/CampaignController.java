@@ -72,6 +72,9 @@ public class CampaignController {
         }
 
         List<Campaign> campaigns = currentUser.getCampaigns();
+        if (campaigns.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(campaigns, HttpStatus.OK);
     }
 

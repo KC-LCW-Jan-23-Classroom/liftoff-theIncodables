@@ -3,9 +3,9 @@ package org.theincodables.rpgvibes.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class GameSession extends AbstractEntity{
@@ -15,13 +15,17 @@ public class GameSession extends AbstractEntity{
 //    @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<MusicTrack> musicTracks = new ArrayList<>();
 
-    private Date date;
+    private LocalDate dateCreated;
 
     @ManyToOne
     @JoinColumn(name = "campaign_id", referencedColumnName = "id")
     private Campaign campaign;  // Reference to the Campaign entity
 
     public GameSession() {}
+
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
+    }
 
     public String getGameSessionName() {
         return gameSessionName;
@@ -31,11 +35,11 @@ public class GameSession extends AbstractEntity{
         this.gameSessionName = gameSessionName;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDate getDate() {
+        return dateCreated;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(LocalDateTime date) {
+        this.dateCreated = date.toLocalDate();
     }
 }

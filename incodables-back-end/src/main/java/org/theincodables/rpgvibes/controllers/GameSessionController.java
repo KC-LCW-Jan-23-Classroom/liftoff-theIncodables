@@ -12,11 +12,8 @@ import org.theincodables.rpgvibes.exceptions.UnauthorizedException;
 import org.theincodables.rpgvibes.models.Campaign;
 import org.theincodables.rpgvibes.models.GameSession;
 import org.theincodables.rpgvibes.models.User;
-import org.theincodables.rpgvibes.data.GameSessionRepository;
-import org.theincodables.rpgvibes.models.dto.CampaignDTO;
 import org.theincodables.rpgvibes.models.dto.GameSessionDTO;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;

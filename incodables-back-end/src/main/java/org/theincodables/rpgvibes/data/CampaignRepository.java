@@ -10,8 +10,5 @@ import org.theincodables.rpgvibes.models.User;
 
 @Repository
 public interface CampaignRepository extends CrudRepository<Campaign, Integer> {
-//    @Modifying
-//    @Query("DELETE FROM Campaign c WHERE c.id = :campaignId")
-//    void deleteCampaign(@Param("campaignId") Integer campaignId);
-//void deleteById(Integer campaignId);
+
 }

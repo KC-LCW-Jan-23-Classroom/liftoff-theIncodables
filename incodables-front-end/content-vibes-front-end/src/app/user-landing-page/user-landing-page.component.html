@@ -1,12 +1,18 @@
 <p class="campaign-header">Game Sessions</p>
+<h1>Welcome, {{ username }}!</h1>
 <div class="user-landing container">
  
 <div class="user-landing-ngfor" *ngFor="let session of sessions">
 
-    <div class="text-white col-lg-12 game-session-card-style">{{session.name}}</div>
+   
+  <div class="text-white col-lg-12 game-session-card-style">{{session.name}}</div>
 </div>
 
   <div class="text-white col-lg-2 game-session-card-style">
+    <div>
+   
+      <!-- Other content for the user landing page -->
+    </div>
     <a href="/game-session" class="add-session-button" title="Create new game session">
       <svg
         xmlns="http://www.w3.org/2000/svg"

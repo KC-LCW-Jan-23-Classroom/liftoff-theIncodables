@@ -11,6 +11,11 @@ import { HttpResponse, HttpStatusCode } from '@angular/common/http';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  user: LoginDTO;
+  errors: any[] = [];
+  isLoggedIn: boolean = false; 
+  username: string = '';
+
   //   credentials: any = {}; // Data binding with your login form
   //
   //   constructor(private userService: UserService) {}
@@ -29,8 +34,7 @@ export class LoginComponent {
   //       );
   //   }
 
-  user: LoginDTO;
-  errors: any[] = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -49,17 +53,17 @@ export class LoginComponent {
     //handle emtpy fields etc
 
     if (!this.user.username || !this.user.password) {
-    
       if (!this.user.username) this.errors.push('Username is required.');
       if (!this.user.password) this.errors.push('Password is required.');
-   
       return;
     }
 
     this.userService.findByUsername(this.user).subscribe((result) => {
       if (result) {
-        this.router.navigate(['/']);
-      } 
+        this.router.navigate(['/user-landing-page', { username: this.user.username }]);
+      } else {
+        console.log("Login failed.");
+      }
     });
   }
 }

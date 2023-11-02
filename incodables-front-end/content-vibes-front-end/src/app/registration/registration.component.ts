@@ -43,3 +43,5 @@ export class RegistrationComponent {
       this.router.navigate(['/']);
     }
   }
+
+

@@ -9,9 +9,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-landing-page.component.css'],
 })
 export class UserLandingPageComponent implements OnInit {
-  sessions: any[] = [/*{ name: 'test', date: '50/69/78' }, { name: 'test', date: '50/69/78' }, { name: 'test', date: '50/69/78' }*/];
+  username: string | null;
+  sessions: any[] = [ 
+    { name: 'test', date: '50/69/78' }, 
+    { name: 'test', date: '50/69/78' }, 
+    { name: 'test', date: '50/69/78' }];
 
-  constructor(private http: HttpClient) {}
+    constructor(private route: ActivatedRoute, private http: HttpClient) {
+      this.username = null;
+      this.route.params.subscribe((params) => {
+        this.username = params['username'];
+      });
+    }
 
   ngOnInit(): void {
     this.getSessions().subscribe((sessions: any[]) => {
@@ -22,4 +31,6 @@ export class UserLandingPageComponent implements OnInit {
   getSessions(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:8080/campaigns/all');
   }
+
+  
 }

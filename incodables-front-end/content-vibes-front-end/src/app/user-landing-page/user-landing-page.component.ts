@@ -10,27 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserLandingPageComponent implements OnInit {
   username: string | null;
-  sessions: any[] = [ 
-    { name: 'test', date: '50/69/78' }, 
-    { name: 'test', date: '50/69/78' }, 
-    { name: 'test', date: '50/69/78' }];
 
-    constructor(private route: ActivatedRoute, private http: HttpClient) {
-      this.username = null;
-      this.route.params.subscribe((params) => {
-        this.username = params['username'];
-      });
-    }
-
-  ngOnInit(): void {
-    this.getSessions().subscribe((sessions: any[]) => {
-      this.sessions = sessions;
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
+    this.username = null;
+    this.route.params.subscribe((params) => {
+      this.username = params['username'];
     });
   }
 
-  getSessions(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8080/campaigns/all');
-  }
-
-  
+  ngOnInit(): void {}
 }

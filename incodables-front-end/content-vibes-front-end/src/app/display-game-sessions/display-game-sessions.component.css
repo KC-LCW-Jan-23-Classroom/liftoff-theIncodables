@@ -1,0 +1,8 @@
+.user-landing {
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+.user-landing-ngfor {
+    margin-right: 15px;
+} 

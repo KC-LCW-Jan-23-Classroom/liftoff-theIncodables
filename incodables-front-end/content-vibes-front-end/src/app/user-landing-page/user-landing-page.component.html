@@ -1,29 +1,54 @@
-<p class="campaign-header">Game Sessions</p>
-<h1>Welcome, {{ username }}!</h1>
-<div class="user-landing container">
- 
-<div class="user-landing-ngfor" *ngFor="let session of sessions">
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
-   
-  <div class="text-white col-lg-12 game-session-card-style">{{session.name}}</div>
-</div>
-
-  <div class="text-white col-lg-2 game-session-card-style">
-    <div>
-   
-      <!-- Other content for the user landing page -->
-    </div>
-    <a href="/game-session" class="add-session-button" title="Create new game session">
+  <!--Sidebar-->
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
+    <h3 class="w3-bar-item">Campaigns</h3>
+    <a href="#" class="w3-bar-item w3-button">Campaign 1</a>
+    <a href="#" class="w3-bar-item w3-button">Campaign 2 Electric Boogaloo</a>
+    <a href="#" class="w3-bar-item w3-button">Campaign 3 Return of the DM</a>
+    <a href="/campaign" class="add-campaign-button" title="Create new campaign">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        class="bi bi-plus"
-        viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      class="bi bi-plus"
       >
-        <path
-          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-        />
-      </svg>
+    </svg>
     </a>
   </div>
-</div>
+  
+  <!--Page Content-->
+  <div style="margin-left:15%">
+    <p class="campaign-header">Game Sessions</p>
+    <h1>Welcome, {{ username }}!</h1>
+    <div class="user-landing container">
+     
+    <div class="user-landing-ngfor" *ngFor="let session of sessions">
+    
+       
+      <div class="text-white col-lg-12 game-session-card-style">{{session.name}}</div>
+    </div>
+    
+      <div class="text-white col-lg-2 game-session-card-style">
+        <div>
+       
+          <!-- Other content for the user landing page -->
+        </div>
+        <a href="/game-session" class="add-session-button" title="Create new game session">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            class="bi bi-plus"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</body> 

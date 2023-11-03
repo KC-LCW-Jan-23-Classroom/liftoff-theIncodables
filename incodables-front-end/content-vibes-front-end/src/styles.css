@@ -246,3 +246,19 @@ p, label {
     color:  #5D576Bff;
 }
 
+
+/* Add Campaign Button (in progress. someone help please)*/
+.add-campaign-button > svg {
+    width:20px;
+    height:20px;
+}
+
+.add-campaign-button {
+    color: white
+}
+
+.add-campaign-button:hover {
+    color:  #5D576Bff;
+    text-shadow: #d333ff;
+    transition: width .2s, height .2s, color .2s ease-in-out;
+}

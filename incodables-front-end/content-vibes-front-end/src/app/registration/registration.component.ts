@@ -40,7 +40,8 @@ export class RegistrationComponent {
 
     this.userService.save(this.user).subscribe((result) => console.log(result));
   
-      this.router.navigate(['/']);
+    this.router.navigate(['/user-landing-page', { username: this.user.username }]);
+
     }
   }
 

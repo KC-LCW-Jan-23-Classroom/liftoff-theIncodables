@@ -68,7 +68,7 @@ public class GameSessionController {
         GameSession newGameSession = new GameSession();
         newGameSession.setGameSessionName(gameSessionDTO.getGameSessionName());
         newGameSession.setCampaign(campaign);
-        newGameSession.setDate(LocalDateTime.now());
+        newGameSession.setDate(gameSessionDTO.getDate());
 
 
         // Save the new game session to the database

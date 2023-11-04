@@ -15,7 +15,7 @@ public class GameSession extends AbstractEntity{
 //    @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<MusicTrack> musicTracks = new ArrayList<>();
 
-    private LocalDate dateCreated;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "campaign_id", referencedColumnName = "id")
@@ -35,11 +35,11 @@ public class GameSession extends AbstractEntity{
         this.gameSessionName = gameSessionName;
     }
 
-    public LocalDate getDate() {
-        return dateCreated;
+    public String getDate() {
+        return date;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.dateCreated = date.toLocalDate();
+    public void setDate(String date) {
+        this.date = date;
     }
 }

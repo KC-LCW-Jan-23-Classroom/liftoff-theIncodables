@@ -10,6 +10,10 @@ import java.util.List;
 public class Campaign extends AbstractEntity {
     @NotNull
     private String campaignName;
+
+    private String campaignDescription;
+
+    private String date;
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
@@ -24,12 +28,29 @@ public class Campaign extends AbstractEntity {
         this.campaignName = campaignName;
     }
 
+
     public String getCampaignName() {
         return campaignName;
     }
 
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
+    }
+
+    public String getCampaignDescription() {
+        return campaignDescription;
+    }
+
+    public void setCampaignDescription(String campaignDescription) {
+        this.campaignDescription = campaignDescription;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setOwner(User owner) {

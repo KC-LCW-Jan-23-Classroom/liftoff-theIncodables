@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class GameSessionDTO {
     private String gameSessionName;
-    private Date date;
+    private String date;
 
     private Integer campaignId;
 
@@ -16,14 +16,13 @@ public class GameSessionDTO {
         this.gameSessionName = gameSessionName;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
-
 
     public Integer getCampaignId() {
         return campaignId;

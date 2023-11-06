@@ -1,4 +1,7 @@
-<div class="rpg-forms-style bg-dark-custom text-white col-lg-5 col-md-8 col-sm-10 col-xs-12">
+<div class="header" *ngIf="registrationSuccessful">
+    <p>Welcome! Create your first campaign session below:</p>
+</div>
+  <div class="rpg-forms-style bg-dark-custom text-white col-lg-5 col-md-8 col-sm-10 col-xs-12">
     <h2>Create A New Campaign</h2>
     <form (ngSubmit)="onSubmit()" #gameForm="ngForm">
         <input

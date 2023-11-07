@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RegisterDTO } from '../model/register';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../service/user-service/user.service';
@@ -8,13 +8,18 @@ import { UserService } from '../service/user-service/user.service';
   templateUrl: './campaign-session.component.html',
   styleUrls: ['./campaign-session.component.css']
 })
-export class CampaignSessionComponent {
+export class CampaignSessionComponent implements OnInit{
   campaignName: string = "";
   description: string = "";
   date: string = "";
   errors: string[] = []; // Initialize the errors array
+  registrationSuccessful: boolean | undefined;
 
-  constructor(private userService: UserService) {} // Inject UserService
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute ,
+    private router: Router
+  ) {}
 
   updateCampaignName(newName: string) {
     this.campaignName = newName;
@@ -38,4 +43,11 @@ export class CampaignSessionComponent {
       date: this.date,
     };
   }
+  
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.registrationSuccessful = params['registrationSuccessful'] === 'true';
+      console.log(this.registrationSuccessful); 
+    });
+}
 }

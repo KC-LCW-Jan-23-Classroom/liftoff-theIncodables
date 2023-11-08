@@ -4,10 +4,6 @@ public class CampaignDTO {
     private String campaignName;
 
     private String campaignDescription;
-
-    private String date;
-
-
     public String getCampaignName() {
         return campaignName;
     }
@@ -24,11 +20,4 @@ public class CampaignDTO {
         this.campaignDescription = campaignDescription;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

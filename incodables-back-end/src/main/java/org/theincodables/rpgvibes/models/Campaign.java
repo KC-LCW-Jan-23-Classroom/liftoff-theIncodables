@@ -13,7 +13,6 @@ public class Campaign extends AbstractEntity {
 
     private String campaignDescription;
 
-    private String date;
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
@@ -44,15 +43,6 @@ public class Campaign extends AbstractEntity {
     public void setCampaignDescription(String campaignDescription) {
         this.campaignDescription = campaignDescription;
     }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public void setOwner(User owner) {
         this.owner = owner;
     }

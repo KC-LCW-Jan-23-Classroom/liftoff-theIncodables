@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RegisterDTO } from '../model/register';
 import { UserService } from '../service/user-service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginDTO } from '../model/login-dto';
-import { HttpResponse, HttpStatusCode } from '@angular/common/http';
+import { UserContext } from '../model/user-context';
+
 
 @Component({
   selector: 'app-login',
@@ -12,28 +12,10 @@ import { HttpResponse, HttpStatusCode } from '@angular/common/http';
 })
 export class LoginComponent {
   user: LoginDTO;
+  userContext: UserContext;
   errors: any[] = [];
   isLoggedIn: boolean = false; 
-  username: string = '';
-
-  //   credentials: any = {}; // Data binding with your login form
-  //
-  //   constructor(private userService: UserService) {}
-  //
-  //   login() {
-  //     this.userService.login(this.credentials)
-  //       .subscribe(
-  //         response => {
-  //           // Handle successful login
-  //           console.log("success")
-  //         },
-  //         error => {
-  //           // Handle login error
-  //           console.log("failure")
-  //         }
-  //       );
-  //   }
-
+  
 
 
   constructor(
@@ -47,6 +29,7 @@ export class LoginComponent {
       if (null == id) return;
     });
     this.user = new LoginDTO();
+    this.userContext = new UserContext();
   }
 
   onSubmit() {
@@ -58,9 +41,12 @@ export class LoginComponent {
       return;
     }
 
-    this.userService.findByUsername(this.user).subscribe((result) => {
+    this.userService.login(this.user).subscribe((result) => {
       if (result) {
+        this.userService.setUserContext(result.id);
+        console.log(this.userService.getUserContext());
         this.router.navigate(['/user-landing-page', { username: this.user.username }]);
+    
       } else {
         console.log("Login failed.");
       }

@@ -18,7 +18,6 @@ import java.util.Optional;
 @RequestMapping("/campaigns")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CampaignController {
-    //autowired for .getUserFromSession method
     @Autowired
     private LoginController loginController;
 

@@ -5,9 +5,9 @@
   <!--Sidebar-->
   <div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%">
     <h3 class="w3-bar-item">Campaigns</h3>
-    <a href="#" class="w3-bar-item w3-button">Campaign 1</a>
-    <a href="#" class="w3-bar-item w3-button">Campaign 2 Electric Boogaloo</a>
-    <a href="#" class="w3-bar-item w3-button">Campaign 3 Return of the DM</a>
+    <a href="#" class="w3-bar-item w3-button" *ngFor="let campaign of campaigns">
+      {{ campaign.name }}
+    </a>
     <a href="/campaign" class="add-campaign-button" title="Create new campaign">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,11 @@
   <div style="margin-left: 15%">
     <p class="campaign-header">Game Sessions</p>
     <h1>Welcome, {{ username }}!</h1>
-    <app-display-game-sessions></app-display-game-sessions>
+  
+    <button type="submit" class="primary-submit-button" *ngFor="let campaign of campaigns" (click)="onCampaignClick(campaign.id)">
+      {{ campaign.name }}
+    </button>
+  
+    <app-display-game-sessions [campaignId]="selectedCampaignId"></app-display-game-sessions>
   </div>
 </body>

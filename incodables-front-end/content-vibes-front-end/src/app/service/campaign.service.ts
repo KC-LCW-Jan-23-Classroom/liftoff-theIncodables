@@ -9,17 +9,22 @@ import { CampaignDTO } from '../model/campaign-dto';
 })
 export class CampaignService {
   private baseUrl = 'http://localhost:8080'; // Update with your Spring Boot backend URL
+  userService: any;
 
   constructor(private http: HttpClient) {}
 
   createCampaign(campaignDTO: CampaignDTO): Observable<Campaign> {
-
-    return this.http.post<Campaign>(`${this.baseUrl}/campaigns/create`, campaignDTO);
+    console.log('campaign dto', campaignDTO);
+    return this.http.post<Campaign>(
+      `${this.baseUrl}/campaigns/create`,
+      campaignDTO,
+      { withCredentials: true }
+    );
   }
 
   getAllCampaigns(): Observable<Campaign[]> {
 
-    return this.http.get<Campaign[]>(`${this.baseUrl}/campaigns/all`);
+    return this.http.get<Campaign[]>(`${this.baseUrl}/campaigns/all`,{ withCredentials: true });
   }
 
   getCampaignById(campaignId: number): Observable<Campaign> {

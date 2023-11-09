@@ -10,7 +10,7 @@ import java.util.List;
 public class Campaign extends AbstractEntity {
     @NotNull
     private String campaignName;
-
+    @NotNull
     private String campaignDescription;
 
     @ManyToOne
@@ -21,10 +21,12 @@ public class Campaign extends AbstractEntity {
     private List<GameSession> gameSessions = new ArrayList<>();
 
 
-    public Campaign() {}
+    public Campaign() {
+    }
 
-    public Campaign(@NotNull String campaignName) {
+    public Campaign(@NotNull String campaignName, @NotNull String campaignDescription) {
         this.campaignName = campaignName;
+        this.campaignDescription = campaignDescription;
     }
 
 

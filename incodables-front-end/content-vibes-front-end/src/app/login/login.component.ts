@@ -45,7 +45,7 @@ export class LoginComponent {
       if (result) {
 ;
         console.log(result);
-   
+
         this.router.navigate(['/user-landing-page', { username: this.user.username }]);
     
       } else {

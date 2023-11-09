@@ -9,6 +9,7 @@ import { LoginDTO } from '../../model/login-dto';
 export class UserService {
   private usersUrl: string;
   private loginUrl: string;
+  private user: any;
   
 
   constructor(private http: HttpClient) {
@@ -37,7 +38,18 @@ export class UserService {
   public getUserId(username: string): Observable<number> {
     return this.http.get<number>(`${this.usersUrl}/id/${username}`);
   }
+  public setUserContext(user: any) {
+    localStorage.setItem('username', user.username);
+    localStorage.setItem('userid', user.id);
+  }
 
+
+  public getUserContext() {
+    const user = {
+      username: localStorage.getItem('username'),
+      id: Number(localStorage.getItem('userid')),
+    };
+  }
 
   
 }

@@ -46,6 +46,7 @@ public class CampaignController {
         // Create a new Campaign object
         Campaign newCampaign = new Campaign();
         newCampaign.setCampaignName(campaignDTO.getCampaignName());
+        newCampaign.setCampaignDescription(campaignDTO.getCampaignDescription());
         // Set the owner (user)
         newCampaign.setOwner(currentUser);
 

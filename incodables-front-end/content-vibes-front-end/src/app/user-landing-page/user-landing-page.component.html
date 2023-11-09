@@ -29,8 +29,8 @@
   <!--Page Content-->
   <div style="margin-left: 15%">
     <p class="campaign-header">Game Sessions</p>
-    <h1>Welcome, {{ username }}!</h1>
-  
+    <h1>Welcome, {{ username }}!</h1> 
+  <!-- wait until user service is complete to store username -->
     <button type="submit" class="primary-submit-button" *ngFor="let campaign of campaigns" (click)="onCampaignClick(campaign.id)">
       {{ campaign.name }}
     </button>

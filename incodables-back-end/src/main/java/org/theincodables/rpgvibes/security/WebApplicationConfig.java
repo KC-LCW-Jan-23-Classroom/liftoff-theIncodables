@@ -1,5 +1,6 @@
 package org.theincodables.rpgvibes.security;
 
+import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +12,13 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class WebApplicationConfig implements WebMvcConfigurer {
+
+//
+//        @Bean
+//        public CookieSameSiteSupplier applicationCookieSameSiteSupplier() {
+//            return CookieSameSiteSupplier.ofStrict();
+//        }
+//
 
 
 //    @Bean

@@ -3,6 +3,8 @@ package org.theincodables.rpgvibes.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.UserRepository;
@@ -41,6 +43,9 @@ public class LoginController {
 
     public static HttpSession setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+       // session.setAttribute("SameSite", "strict");
+       // session.setAttribute("Secure", "true");
+
         return session;
     }
 
@@ -48,7 +53,6 @@ public class LoginController {
     @PostMapping("")
     public ResponseEntity processLoginForm(@RequestBody LoginFormDTO loginFormDTO,
                                            HttpServletRequest request) {
-        System.out.println(loginFormDTO.toString());
         LoginFormDTO convertedLoginDTO = new LoginFormDTO(loginFormDTO.username, loginFormDTO.password);
 
 
@@ -65,7 +69,13 @@ public class LoginController {
 
 
         HttpSession session = setUserInSession(request.getSession(), theUser);
-        return ResponseEntity.ok(theUser);
+        HttpHeaders headers = new HttpHeaders();
+       // headers.add("SameSite","strict");
+       // headers.add("secure","true");
+
+
+     //  return  ResponseEntity.status(HttpStatus.OK).headers(headers).body(theUser);
+       return ResponseEntity.ok(theUser);
 
     }
 

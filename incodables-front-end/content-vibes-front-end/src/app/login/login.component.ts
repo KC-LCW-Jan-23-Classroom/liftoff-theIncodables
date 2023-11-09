@@ -4,19 +4,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginDTO } from '../model/login-dto';
 import { UserContext } from '../model/user-context';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  providers: [UserService],
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   user: LoginDTO;
-  userContext: UserContext;
+  //userContext: UserContext;
   errors: any[] = [];
-  isLoggedIn: boolean = false; 
-  
-
+  isLoggedIn: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +27,7 @@ export class LoginComponent {
       if (null == id) return;
     });
     this.user = new LoginDTO();
-    this.userContext = new UserContext();
+    //this.userContext = new UserContext();
   }
 
   onSubmit() {
@@ -43,12 +41,14 @@ export class LoginComponent {
 
     this.userService.login(this.user).subscribe((result) => {
       if (result) {
-        this.userService.setUserContext(result.id);
+        this.userService.setUserContext(result);
         console.log(this.userService.getUserContext());
-        this.router.navigate(['/user-landing-page', { username: this.user.username }]);
-    
+        this.router.navigate([
+          '/user-landing-page',
+          { username: this.user.username },
+        ]);
       } else {
-        console.log("Login failed.");
+        console.log('Login failed.');
       }
     });
   }

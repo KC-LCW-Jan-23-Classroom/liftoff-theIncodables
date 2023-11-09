@@ -1,3 +1,4 @@
-export class UserContext {
-    id!: number;
+export interface UserContext {
+  id: number;
+  username: string;
 }

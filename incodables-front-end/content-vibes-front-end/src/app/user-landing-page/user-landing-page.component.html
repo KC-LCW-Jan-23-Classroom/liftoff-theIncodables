@@ -3,18 +3,27 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 <body>
   <!--Sidebar-->
-  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%">
-    <h3 class="w3-bar-item">Campaigns</h3>
+  <div class="container w3-sidebar w3-light-grey w3-bar-block" style="width: 15%">
+    <h4 class="w3-bar-item campaign-header-2 text-center">Campaigns</h4>
     <a href="#" class="w3-bar-item w3-button" *ngFor="let campaign of campaigns">
       {{ campaign.name }}
     </a>
-    <a href="/campaign" class="add-campaign-button" title="Create new campaign">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        class="bi bi-plus"
-      ></svg>
-    </a>
+    <a
+        href="/campaign"
+        class="add-campaign-button"
+        title="Create new campaign"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          class="bi bi-plus"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+          />
+        </svg>
+      </a>
   </div>
 
   <!--Page Content-->

@@ -254,15 +254,29 @@ p, label {
     color:  #5D576Bff;
 }
 
+.campaign-header-2 {
+    font-size:23px;
+    text-align: center;
+    font-family: "IM-Fell-DW", serif;
+    margin: auto;
+    color:  #5D576Bff;
+}
+
 
 /* Add Campaign Button (in progress. someone help please)*/
 .add-campaign-button > svg {
-    width:20px;
-    height:20px;
+    width:40px;
+    height:40px;
 }
 
 .add-campaign-button {
-    color: white
+    background-color: rgba(157, 127, 82, 0.783);
+    color: white;
+    border-radius: 10px;
+    margin: auto;
+    text-align: center;
+    display: block;
+    width: 40%;
 }
 
 .add-campaign-button:hover {

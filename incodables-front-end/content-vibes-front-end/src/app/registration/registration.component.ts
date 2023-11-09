@@ -9,10 +9,11 @@ import { UserService } from '../service/user-service/user.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
+
 export class RegistrationComponent {
   user: RegisterDTO;
   errors: any[] = [];
-  registrationSuccessful: boolean = true;
+  registrationSuccessful: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,18 +24,13 @@ export class RegistrationComponent {
         const id = this.route.snapshot.paramMap.get('token');
         console.log('router subscription fired token:' + id);
         if (id === null) return;
-        this.registrationSuccessful = true;
+        // this.registrationSuccessful = true;
       });
       this.user = new RegisterDTO();
     }
 
   onSubmit() {
-    if (this.registrationSuccessful) {
-     
-      this.router.navigate(['/campaign-session'], { queryParams: { registrationSuccessful: true } });
-      return; 
-    }
-
+ 
     // form validation
     if (!this.user.username || !this.user.email || !this.user.password || !this.user.verify) {
       if (!this.user.username) this.errors.push('Username is required.');
@@ -49,7 +45,7 @@ export class RegistrationComponent {
     this.userService.save(this.user).subscribe((result) => {
     console.log(result);
     this.registrationSuccessful = true;
-    this.router.navigate(['/campaign-session', { username: this.user.username }]);
+    this.router.navigate(['/login', { username: this.user.username }]);
   });
     
   }

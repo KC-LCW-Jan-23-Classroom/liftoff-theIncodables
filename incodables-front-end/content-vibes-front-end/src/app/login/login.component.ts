@@ -15,6 +15,7 @@ export class LoginComponent {
   errors: any[] = [];
   isLoggedIn: boolean = false; 
   username: string = '';
+  
 
   //   credentials: any = {}; // Data binding with your login form
   //
@@ -45,6 +46,7 @@ export class LoginComponent {
       const id = this.route.snapshot.paramMap.get('token');
       console.log('router subscription fired token:' + id);
       if (null == id) return;
+      // this.firstLogin = true;
     });
     this.user = new LoginDTO();
   }
@@ -59,10 +61,11 @@ export class LoginComponent {
     }
 
     this.userService.findByUsername(this.user).subscribe((result) => {
-      if (result) {
+    console.log(result)
+    if (result.campaigns.length) {
         this.router.navigate(['/user-landing-page', { username: this.user.username }]);
       } else {
-        console.log("Login failed.");
+        this.router.navigate(['/campaign-session', { username: this.user.username}]);
       }
     });
   }

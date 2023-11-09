@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { UserService } from '../service/user-service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginDTO } from '../model/login-dto';
-import { UserContext } from '../model/user-context';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +12,7 @@ import { UserContext } from '../model/user-context';
 export class LoginComponent {
   user: LoginDTO;
   //userContext: UserContext;
+
   errors: any[] = [];
   isLoggedIn: boolean = false;
 
@@ -43,6 +43,8 @@ export class LoginComponent {
       if (result) {
         this.userService.setUserContext(result);
         console.log(this.userService.getUserContext());
+        console.log(result);
+
         this.router.navigate([
           '/user-landing-page',
           { username: this.user.username },

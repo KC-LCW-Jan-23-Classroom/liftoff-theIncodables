@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { UserService } from '../service/user-service/user.service';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { CampaignDTO } from '../model/campaign-dto';
 import { CampaignService } from '../service/campaign.service';
-import { UserService } from '../service/user-service/user.service';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-campaign-session',
   templateUrl: './campaign-session.component.html',
@@ -18,6 +21,7 @@ export class CampaignSessionComponent {
     private campaignService: CampaignService,
     private userService: UserService
   ) {
+    console.log('CampaignSessionComponent constructor called');
     this.campaignDTO = new CampaignDTO();
   }
 

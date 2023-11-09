@@ -1,6 +1,7 @@
 package org.theincodables.rpgvibes.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -17,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/login")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials ="true")
 public class LoginController {
 
     @Autowired
@@ -53,6 +54,10 @@ public class LoginController {
     @PostMapping("")
     public ResponseEntity processLoginForm(@RequestBody LoginFormDTO loginFormDTO,
                                            HttpServletRequest request) {
+                                           HttpServletRequest request, HttpServletResponse response) {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("SameSite=None");
+        System.out.println(loginFormDTO.toString());
         LoginFormDTO convertedLoginDTO = new LoginFormDTO(loginFormDTO.username, loginFormDTO.password);
 
 
@@ -67,7 +72,6 @@ public class LoginController {
             return ResponseEntity.badRequest().build();
         }
 
-
         HttpSession session = setUserInSession(request.getSession(), theUser);
         HttpHeaders headers = new HttpHeaders();
        // headers.add("SameSite","strict");
@@ -76,8 +80,11 @@ public class LoginController {
 
      //  return  ResponseEntity.status(HttpStatus.OK).headers(headers).body(theUser);
        return ResponseEntity.ok(theUser);
+        response.setHeader("Set-Cookie", "JSESSIONID=" + session.getId() + "; Path=/; HttpOnly; Secure; SameSite=None; Domain=localhost:8080");
+        return ResponseEntity.ok(theUser);
 
     }
+
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
@@ -85,4 +92,5 @@ public class LoginController {
         return "redirect:/login";
     }
 
+}
 }

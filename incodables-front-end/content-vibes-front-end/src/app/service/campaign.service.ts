@@ -20,6 +20,11 @@ export class CampaignService {
       `${this.baseUrl}/campaigns/create`,
       campaignDTO
     );
+
+    return this.http.post<Campaign>(
+      `${this.baseUrl}/campaigns/create`,
+      campaignDTO
+    );
   }
 
   getAllCampaigns(): Observable<Campaign[]> {

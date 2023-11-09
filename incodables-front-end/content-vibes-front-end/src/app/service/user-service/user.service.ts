@@ -24,7 +24,10 @@ export class UserService {
   }
 
   public login(user: LoginDTO): Observable<any> {
-    return this.http.post(this.loginUrl, user);
+    const httpOptions = {
+      withCredentials: true,
+    };
+    return this.http.post(this.loginUrl, user, httpOptions);
   }
   public logout() {
     return this.http.get(this.logoutUrl);

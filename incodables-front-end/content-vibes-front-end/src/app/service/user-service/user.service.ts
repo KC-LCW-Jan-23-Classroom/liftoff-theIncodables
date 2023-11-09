@@ -4,11 +4,11 @@ import { RegisterDTO } from '../../model/register';
 import { Observable } from 'rxjs';
 import { LoginDTO } from '../../model/login-dto';
 
+
 @Injectable()
 export class UserService {
   private usersUrl: string;
   private loginUrl: string;
-  private user: any;
   
 
   constructor(private http: HttpClient) {
@@ -24,7 +24,10 @@ export class UserService {
 
 
   public login(user: LoginDTO):Observable<any> {
-    return this.http.post(this.loginUrl, user);
+    const httpOptions = {
+      withCredentials: true,
+    };
+    return this.http.post(this.loginUrl, user, httpOptions);
   }
 
   public save(user: RegisterDTO) {
@@ -35,14 +38,6 @@ export class UserService {
     return this.http.get<number>(`${this.usersUrl}/id/${username}`);
   }
 
-  public setUserContext(user: any){
-    this.user = user;
 
-  
-  }
-  public getUserContext() {
-    return this.user;
-  }
- 
   
 }

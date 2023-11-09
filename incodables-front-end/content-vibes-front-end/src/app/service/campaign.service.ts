@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Campaign } from '../model/campaign';
 import { CampaignDTO } from '../model/campaign-dto'; 
-import { UserService } from './user-service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +10,10 @@ import { UserService } from './user-service/user.service';
 export class CampaignService {
   private baseUrl = 'http://localhost:8080'; // Update with your Spring Boot backend URL
 
-  constructor(private http: HttpClient, private userService: UserService) {}
+  constructor(private http: HttpClient) {}
 
   createCampaign(campaignDTO: CampaignDTO): Observable<Campaign> {
-    campaignDTO.owner = this.userService.getUserContext();
-    console.log(this.userService.getUserContext());
+
     return this.http.post<Campaign>(`${this.baseUrl}/campaigns/create`, campaignDTO);
   }
 

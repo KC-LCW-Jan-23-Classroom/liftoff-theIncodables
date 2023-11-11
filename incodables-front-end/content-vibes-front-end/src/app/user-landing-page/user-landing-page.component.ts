@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../service/user-service/user.service';
 
 type Campaign = {
   id: number;
@@ -20,11 +21,8 @@ export class UserLandingPageComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
-    this.username = null;
-    this.route.params.subscribe((params) => {
-      this.username = params['username'];
-    });
+  constructor(private route: ActivatedRoute, private http: HttpClient, private userService: UserService) {
+    this.username = this.userService.getUserInfo();
 
     this.http.get<Campaign[]>('http://localhost:8080/campaigns/all').subscribe((campaigns) => {
       this.campaigns = campaigns;

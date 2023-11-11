@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { RegisterDTO } from '../../model/register';
 import { Observable } from 'rxjs';
 import { LoginDTO } from '../../model/login-dto';
+import { UserModel } from 'src/app/model/user-model';
 
 
 @Injectable()
@@ -35,21 +36,12 @@ export class UserService {
     return this.http.post<RegisterDTO>(this.usersUrl, user);
   }
 
-  public getUserId(username: string): Observable<number> {
-    return this.http.get<number>(`${this.usersUrl}/id/${username}`);
-  }
-  public setUserContext(user: any) {
-    localStorage.setItem('username', user.username);
-    localStorage.setItem('userid', user.id);
+  public setUserInfo(user: UserModel) {
+      localStorage.setItem("username", user.username);
   }
 
-
-  public getUserContext() {
-    const user = {
-      username: localStorage.getItem('username'),
-      id: Number(localStorage.getItem('userid')),
-    };
+  public getUserInfo() {
+   let username = localStorage.getItem("username");
+   return username;
   }
-
-  
 }

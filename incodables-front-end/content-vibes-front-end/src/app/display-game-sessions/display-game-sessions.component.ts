@@ -29,16 +29,16 @@ export class DisplayGameSessionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.campaignService.getAllCampaigns().subscribe((campaigns: any[]) => {
-      this.campaigns=campaigns;
-      console.log(campaigns);
-    });
-    console.log('sessions: ', this.sessions);
+    // this.campaignService.getAllCampaigns().subscribe((campaigns: any[]) => {
+    //   this.campaigns=campaigns;
+    //   console.log(campaigns);
+    // });
+    // console.log('sessions: ', this.sessions);
   }
 
-  getSessions(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8080/campaigns/all', { withCredentials: true });
-  }
+  // getSessions(): Observable<any[]> {
+  //   return this.http.get<any[]>('http://localhost:8080/campaigns/all', { withCredentials: true });
+  // }
 
   isAddSession(session: any) {
     if (session.name == 'add') {

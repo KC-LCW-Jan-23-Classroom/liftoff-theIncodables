@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { CampaignDTO } from '../model/campaign-dto';
 import { CampaignService } from '../service/campaign.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +16,11 @@ export class CampaignSessionComponent {
   campaignDescription!: string;
   campaignDTO: CampaignDTO;
   errors: string[] = []; // Initialize the errors array
-  registrationSuccessful: boolean | undefined;
+  // registrationSuccessful: boolean | undefined;
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private campaignService: CampaignService,
 
   ) {
@@ -40,6 +43,8 @@ export class CampaignSessionComponent {
     this.campaignService.createCampaign(this.campaignDTO).subscribe(
       (createdCampaign) => {
         console.log('Campaign created:', createdCampaign);
+        this.router.navigate(['/user-landing-page']);
+
         // Add any additional handling after campaign creation, such as navigation or notifications
       },
       (error) => {

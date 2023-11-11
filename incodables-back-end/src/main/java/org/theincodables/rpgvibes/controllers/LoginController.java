@@ -68,7 +68,7 @@ public class LoginController {
         }
 
         HttpSession session = setUserInSession(request.getSession(), theUser);
-        response.setHeader("Set-Cookie", "JSESSIONID=" + session.getId() + "; Path=/; HttpOnly; Secure; SameSite=None; Domain=localhost:8080");
+//        response.setHeader("Set-Cookie", "JSESSIONID=" + session.getId() + "; Path=/; HttpOnly; Secure; SameSite=None; Domain=localhost:8080");
         return ResponseEntity.ok(theUser);
 
     }

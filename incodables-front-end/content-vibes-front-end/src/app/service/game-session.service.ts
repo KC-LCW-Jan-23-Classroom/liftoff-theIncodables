@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { Campaign } from '../model/campaign';
-// import { CampaignDTO } from '../model/campaign-dto'; 
+import { GameSession } from '../model/game-session';
+import { GameSessionDto } from '../model/game-session-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class GameSessionService {
 
   constructor(private http: HttpClient) {}
 
-  createGameSession(gameSessionDTO: gameSessionDTO): Observable<gameSession> {
+  createGameSession(campaignId: number,gameSessionDTO: GameSessionDto): Observable<GameSession> {
     console.log('game session:', gameSessionDTO);
     return this.http.post<GameSession>(
       `${this.baseUrl}/create/{campaignId}`,

@@ -15,6 +15,7 @@ import { UserLandingPageComponent } from './user-landing-page/user-landing-page.
 import { CampaignSessionComponent } from './campaign-session/campaign-session.component';
 import { DisplayGameSessionsComponent } from './display-game-sessions/display-game-sessions.component';
 import { CampaignService } from './service/campaign.service';
+import { GameSessionService } from './service/game-session.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { CampaignService } from './service/campaign.service';
     DisplayGameSessionsComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
-  providers: [UserService, CampaignService],
+  providers: [UserService, CampaignService, GameSessionService],
   
 
   bootstrap: [AppComponent]

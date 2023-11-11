@@ -28,11 +28,11 @@ export class CampaignService {
   }
 
   getCampaignById(campaignId: number): Observable<Campaign> {
-    return this.http.get<Campaign>(`${this.baseUrl}/campaigns/${campaignId}`);
+    return this.http.get<Campaign>(`${this.baseUrl}/campaigns/${campaignId},`, {withCredentials:true});
   }
 
   deleteCampaign(campaignId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/campaigns/delete/${campaignId}`);
+    return this.http.delete<void>(`${this.baseUrl}/campaigns/delete/${campaignId}`, {withCredentials:true});
   }
 }
 

@@ -283,6 +283,11 @@ p, label {
     color:  #5D576Bff;
     text-shadow: #d333ff;
     transition: width .2s, height .2s, color .2s ease-in-out;
+    > svg {
+        width:40px;
+        height:40px;
+        filter: drop-shadow(3px 3px 3px #d333ff);
+    }
 }
 
 .four {

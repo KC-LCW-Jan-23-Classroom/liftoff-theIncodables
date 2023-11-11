@@ -207,6 +207,14 @@ p, label {
     font-size: 14px;
   }
 
+  .welcome-msg {
+    color: #5D576B;
+    margin-top: 1em;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 5s;
+}
+
   .game-session-card-style {
     height: 200px;
     margin: 0;
@@ -246,15 +254,29 @@ p, label {
     color:  #5D576Bff;
 }
 
+.campaign-header-2 {
+    font-size:23px;
+    text-align: center;
+    font-family: "IM-Fell-DW", serif;
+    margin: auto;
+    color:  #5D576Bff;
+}
+
 
 /* Add Campaign Button (in progress. someone help please)*/
 .add-campaign-button > svg {
-    width:20px;
-    height:20px;
+    width:40px;
+    height:40px;
 }
 
 .add-campaign-button {
-    color: white
+    background-color: rgba(157, 127, 82, 0.783);
+    color: white;
+    border-radius: 10px;
+    margin: auto;
+    text-align: center;
+    display: block;
+    width: 40%;
 }
 
 .add-campaign-button:hover {
@@ -262,3 +284,34 @@ p, label {
     text-shadow: #d333ff;
     transition: width .2s, height .2s, color .2s ease-in-out;
 }
+
+.four {
+    background-color: white;
+    font-size: 3rem;
+    font-family: "IM-Fell-DW", serif;
+}
+.four .type {
+    padding-top:.5em;
+    width: auto;
+    margin: auto;
+}
+.four h3 {
+    width: 31ch;
+    border-right: 4px solid black;
+    margin: .5em auto;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite alternate;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+}
+

@@ -9,9 +9,11 @@ import { UserService } from '../service/user-service/user.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
+
 export class RegistrationComponent {
   user: RegisterDTO;
   errors: any[] = [];
+  registrationSuccessful: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,30 +21,36 @@ export class RegistrationComponent {
     private userService: UserService
   ) {
     this.route.params.subscribe((data) => {
-      const id = this.route.snapshot.paramMap.get('token');
-      console.log('router subscription fired token:' + id);
-      if (null == id) return;
-    });
-    this.user = new RegisterDTO();
-  }
+        const id = this.route.snapshot.paramMap.get('token');
+        console.log('router subscription fired token:' + id);
+        if (id === null) return;
+        // this.registrationSuccessful = true;
+      });
+      this.user = new RegisterDTO();
+    }
 
   onSubmit() {
-
+ 
+    // form validation
     if (!this.user.username || !this.user.email || !this.user.password || !this.user.verify) {
-    
       if (!this.user.username) this.errors.push('Username is required.');
       if (!this.user.email) this.errors.push('Email is required.');
       if (!this.user.password) this.errors.push('Password is required.');
       if (!this.user.verify) this.errors.push('Verification password is required.');
-   
-      return;
+      
+      if (this.errors.length > 0) return;
     }
 
-    this.userService.save(this.user).subscribe((result) => console.log(result));
-  
-    this.router.navigate(['/user-landing-page', { username: this.user.username }]);
-
-    }
+      // Continue with user registration logic
+    this.userService.save(this.user).subscribe((result) => {
+    console.log(result);
+    this.registrationSuccessful = true;
+    this.router.navigate(['/login', { username: this.user.username }]);
+  });
+    
   }
+
+  
+}
 
 

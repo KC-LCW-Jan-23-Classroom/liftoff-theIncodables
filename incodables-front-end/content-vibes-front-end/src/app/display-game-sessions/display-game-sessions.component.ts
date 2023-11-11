@@ -3,10 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CampaignService } from '../service/campaign.service';
+
+
 @Component({
   selector: 'app-display-game-sessions',
   templateUrl: './display-game-sessions.component.html',
   styleUrls: ['./display-game-sessions.component.css'],
+  inputs: ['campaignId'],
 })
 export class DisplayGameSessionsComponent implements OnInit {
   username: string | null;

@@ -8,6 +8,7 @@ import { GameSessionComponent } from './game-session/game-session.component';
 import { UserLandingPageComponent } from './user-landing-page/user-landing-page.component';
 import { CampaignSessionComponent } from './campaign-session/campaign-session.component';
 
+
 const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
   { path: 'login', component: LoginComponent },

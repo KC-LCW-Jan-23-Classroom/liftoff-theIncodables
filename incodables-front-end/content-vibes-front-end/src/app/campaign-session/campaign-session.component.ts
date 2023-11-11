@@ -15,6 +15,7 @@ export class CampaignSessionComponent {
   campaignDescription!: string;
   campaignDTO: CampaignDTO;
   errors: string[] = []; // Initialize the errors array
+  registrationSuccessful: boolean | undefined;
 
   constructor(
     private campaignService: CampaignService,
@@ -48,7 +49,14 @@ export class CampaignSessionComponent {
 
 
   }
+  
+  // ngOnInit() {
+  //   this.route.queryParams.subscribe((params) => {
+  //     this.registrationSuccessful = params['registrationSuccessful'] === 'true';
+  //     console.log(this.registrationSuccessful); 
+  //   });
 }
+
 
     // // Call the campaign service to create the campaign
     // this.campaignService.createCampaign(this.campaignDTO).subscribe({

@@ -16,8 +16,6 @@ export class LoginComponent {
   errors: any[] = [];
   isLoggedIn: boolean = false; 
   
-
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -27,6 +25,7 @@ export class LoginComponent {
       const id = this.route.snapshot.paramMap.get('token');
       console.log('router subscription fired token:' + id);
       if (null == id) return;
+      // this.firstLogin = true;
     });
     this.user = new LoginDTO();
 
@@ -41,15 +40,14 @@ export class LoginComponent {
       return;
     }
 
-    this.userService.login(this.user).subscribe((result) => {
-      if (result) {
-;
-        console.log(result);
 
+    this.userService.login(this.user).subscribe((result) => {
+    console.log(result)
+    if (result.campaigns.length) {
         this.router.navigate(['/user-landing-page', { username: this.user.username }]);
     
       } else {
-        console.log("Login failed.");
+        this.router.navigate(['/campaign-session', { username: this.user.username}]);
       }
     });
   }

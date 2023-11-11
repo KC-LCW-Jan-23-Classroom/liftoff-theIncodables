@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class GameSession extends AbstractEntity{
 
     private String gameSessionName;
+    private String gameSessionDescription;
 
 //    @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<MusicTrack> musicTracks = new ArrayList<>();
@@ -27,12 +28,24 @@ public class GameSession extends AbstractEntity{
         this.campaign = campaign;
     }
 
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
     public String getGameSessionName() {
         return gameSessionName;
     }
 
     public void setGameSessionName(String gameSessionName) {
         this.gameSessionName = gameSessionName;
+    }
+
+    public String getGameSessionDescription() {
+        return gameSessionDescription;
+    }
+
+    public void setGameSessionDescription(String gameSessionDescription) {
+        this.gameSessionDescription = gameSessionDescription;
     }
 
     public String getDate() {

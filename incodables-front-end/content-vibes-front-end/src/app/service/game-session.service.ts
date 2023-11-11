@@ -9,31 +9,30 @@ import { GameSessionDto } from '../model/game-session-dto';
 })
 export class GameSessionService {
   private baseUrl = 'http://localhost:8080/game'; // Update with your Spring Boot backend URL
-  userService: any;
 
   constructor(private http: HttpClient) {}
 
   createGameSession(campaignId: number,gameSessionDTO: GameSessionDto): Observable<GameSession> {
     console.log('game session:', gameSessionDTO);
     return this.http.post<GameSession>(
-      `${this.baseUrl}/create/{campaignId}`,
+      `${this.baseUrl}/create/${campaignId}`,
       gameSessionDTO,
       { withCredentials: true }
     );
   }
 
-  // getAllCampaigns(): Observable<Campaign[]> {
+  getAllGameSessionsByCampaign(campaignId: number): Observable<GameSession[]> {
 
-  //   return this.http.get<Campaign[]>(`${this.baseUrl}/campaigns/all`,{ withCredentials: true });
-  // }
+    return this.http.get<GameSession[]>(`${this.baseUrl}/campaign/${campaignId}`,{ withCredentials: true });
+  }
 
-  // getCampaignById(campaignId: number): Observable<Campaign> {
-  //   return this.http.get<Campaign>(`${this.baseUrl}/campaigns/${campaignId}`);
-  // }
+  getGameSessionById(gameSessionId: number): Observable<GameSession> {
+    return this.http.get<GameSession>(`${this.baseUrl}/${gameSessionId}`,{withCredentials:true});
+  }
 
-  // deleteCampaign(campaignId: number): Observable<void> {
-  //   return this.http.delete<void>(`${this.baseUrl}/campaigns/delete/${campaignId}`);
-  // }
+  deleteGameSession(campaignId: number, gameSessionId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}//delete/${campaignId}/${gameSessionId}`);
+  }
 }
 
 

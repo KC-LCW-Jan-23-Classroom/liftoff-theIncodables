@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../service/user-service/user.service';
 import { CampaignService } from '../service/campaign.service';
 import { Campaign } from '../model/campaign';
@@ -23,17 +23,13 @@ export class UserLandingPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private http: HttpClient,
     private userService: UserService,
     private campaignService: CampaignService
   ) {
     this.username = this.userService.getUserInfo();
 
-    // this.http
-    //   .get<Campaign[]>('http://localhost:8080/campaigns/all')
-    //   .subscribe((campaigns) => {
-    //     this.campaigns = campaigns;
-    //   });
   }
 
   ngOnInit(): void {
@@ -47,5 +43,8 @@ export class UserLandingPageComponent implements OnInit {
 
   onCampaignClick(campaignId: number) {
     this.selectedCampaignId = campaignId;
+    this.router.navigate(['/display-game-session', campaignId]);
   }
+
+
 }

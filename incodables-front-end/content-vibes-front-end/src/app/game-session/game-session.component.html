@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit()" #gameForm="ngForm">
         <input
             type="text"
-            [(ngModel)]="gameName"
+            [(ngModel)]="gameSessionName"
             class="form-control"
             id="gameName"
             name="gameName"
@@ -12,7 +12,7 @@
         />
         <input
             type="text"
-            [(ngModel)]="description"
+            [(ngModel)]="gameSessionDescription"
             class="form-control"
             id="gameDescription"
             name="gameDescription"

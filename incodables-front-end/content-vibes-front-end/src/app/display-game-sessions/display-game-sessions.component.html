@@ -4,14 +4,14 @@
       *ngIf="!isAddSession(session)"
       class="text-white col-lg-12 game-session-card-style"
     >
-      {{ session.name }}
+      {{ session.gameSessionName }}
     </div>
     <div
-      *ngIf="isAddSession(session)"
+    
       class="text-white col-lg-12 game-session-card-style"
     >
       <a
-        href="/game-session"
+      [routerLink]="['/game-session-form', campaignId]"
         class="add-session-button"
         title="Create new game session"
       >

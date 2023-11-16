@@ -35,6 +35,9 @@
       {{ campaign.name }}
     </button>
   
-    <app-display-game-sessions [campaignId]="selectedCampaignId"></app-display-game-sessions>
-  </div>
+    <app-display-game-sessions [campaignId]="selectedCampaignId" [setSelectedGameSession]="setSelectedGameSession"></app-display-game-sessions>
+    <br>
+    <app-music-selection [selectedSession]="selectedSession"></app-music-selection>
+    
+    </div>
 </body>

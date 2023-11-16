@@ -60,7 +60,11 @@ export class LoginComponent {
       return;
     }
 
+
     this.userService.findByUsername(this.user).subscribe((result) => {
+      if (result) {
+        this.userService.setUserInfo(result);
+      }
     console.log(result)
     if (result.campaigns.length) {
         this.router.navigate(['/user-landing-page', { username: this.user.username }]);
@@ -68,5 +72,7 @@ export class LoginComponent {
         this.router.navigate(['/campaign-session', { username: this.user.username}]);
       }
     });
+
+
   }
 }

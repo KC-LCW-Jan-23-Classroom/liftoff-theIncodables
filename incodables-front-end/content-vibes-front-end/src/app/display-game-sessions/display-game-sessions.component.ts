@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +18,8 @@ export class DisplayGameSessionsComponent implements OnInit {
     { name: 'test', date: '50/69/78' },
     { name: 'add', date: '50/69/78' },
   ];
+
+  @Input() setSelectedGameSession: any;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     this.username = null;

@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { MusicSelectionComponent } from '../music-selection/music-selection.component';
+import { GameSessions } from '../model/gamesession-model';
+
+
 
 type Campaign = {
   id: number;
@@ -17,10 +21,10 @@ export class UserLandingPageComponent implements OnInit {
   username: string | null;
   campaigns: Campaign[] = [];
   selectedCampaignId: number | null = null;
-
-
-
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  
+  selectedSession: GameSessions | undefined;
+ 
+  constructor(private route: ActivatedRoute, private http: HttpClient, @Inject(MusicSelectionComponent) private musicSelectionComponent: MusicSelectionComponent) {
     this.username = null;
     this.route.params.subscribe((params) => {
       this.username = params['username'];
@@ -29,11 +33,22 @@ export class UserLandingPageComponent implements OnInit {
     this.http.get<Campaign[]>('http://localhost:8080/campaigns/all').subscribe((campaigns) => {
       this.campaigns = campaigns;
     });
+
   }
 
   ngOnInit(): void {}
 
+  setSelectedGameSession(session:any){
+    this.setSelectedGameSession = session;
+  }
+
   onCampaignClick(campaignId: number) {
     this.selectedCampaignId = campaignId;
+
+    this.musicSelectionComponent.selectedTracks = [
+      'Track 1',
+      'Track 2',
+      'Track 3',
+    ];
   }
 }

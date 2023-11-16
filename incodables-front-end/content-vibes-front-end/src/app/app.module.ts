@@ -16,6 +16,7 @@ import { CampaignSessionComponent } from './campaign-session/campaign-session.co
 import { DisplayGameSessionsComponent } from './display-game-sessions/display-game-sessions.component';
 import { CampaignService } from './service/campaign.service';
 import { GameSessionService } from './service/game-session.service';
+import { MusicSelectionComponent } from './music-selection/music-selection.component';
 
 
 @NgModule({
@@ -30,9 +31,10 @@ import { GameSessionService } from './service/game-session.service';
     UserLandingPageComponent,
     CampaignSessionComponent,
     DisplayGameSessionsComponent,
+    MusicSelectionComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
-  providers: [UserService, CampaignService, GameSessionService],
+  providers: [UserService, CampaignService, GameSessionService,MusicSelectionComponent],
   
 
   bootstrap: [AppComponent]

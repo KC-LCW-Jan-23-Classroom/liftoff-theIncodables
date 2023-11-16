@@ -309,6 +309,48 @@ p, label {
     animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite alternate;
 }
 
+/*music selection*/
+
+  .music-selection {
+    text-align: center;
+  }
+  
+  .music-selection-button {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    margin: 20px auto;
+    margin-right: 20px;
+    padding: 10px;
+    background-color: #5D576Bff !important;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: Lato !important;
+  }
+  
+  .music-selection-button img {
+    height: 20px;
+    margin-right: 10px;
+    filter: invert(100%);
+  }
+
+  .music-selection-button img:hover {
+    filter: invert(0%);
+  }
+  
+  .music-selection-button:hover {
+    background-color: #e2cfb6;
+    color: #000;
+    letter-spacing: 10px;
+    font-family: Lato;
+    box-shadow: 0 0 10px #d333ff;
+  }
+  /*end music selection*/
+
 @keyframes typing {
     from {
         width: 0;

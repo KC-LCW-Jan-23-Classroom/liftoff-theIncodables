@@ -3,12 +3,14 @@
     <div
       *ngIf="!isAddSession(session)"
       class="text-white col-lg-12 game-session-card-style"
+      onclick="setSelectedGameSession(session)"
     >
       {{ session.gameSessionName }}
     </div>
     <div
     
       class="text-white col-lg-12 game-session-card-style"
+      
     >
       <a
       [routerLink]="['/game-session-form', campaignId]"

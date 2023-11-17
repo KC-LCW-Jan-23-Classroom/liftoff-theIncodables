@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-display-game-sessions',
   templateUrl: './display-game-sessions.component.html',
@@ -18,6 +17,7 @@ export class DisplayGameSessionsComponent implements OnInit {
     { name: 'test', date: '50/69/78' },
     { name: 'add', date: '50/69/78' },
   ];
+  clickedSession: any = {};
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     this.username = null;
@@ -42,5 +42,29 @@ export class DisplayGameSessionsComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  expandGameSession(i: number, session: any) {
+    //first, animate clicked on div. onclick
+    const div = document.getElementsByClassName(
+      'game-session-card-style--back'
+    )[i];
+    div.setAttribute(
+      'style',
+      'width: 300%; height: 200%; transition: width 20ms, height 20ms; transition-timing-function: ease-in;'
+    );
+
+    //then, show reeaaal div.
+    const gamesesh = document.getElementsByClassName(
+      'game-session-expandeddddd'
+    )[0];
+    this.clickedSession = session;
+    setTimeout(function () {
+      gamesesh.setAttribute('style', 'display: block;');
+    }, 1000);
+  }
+
+  getClickedSession() {
+    return this.clickedSession;
   }
 }

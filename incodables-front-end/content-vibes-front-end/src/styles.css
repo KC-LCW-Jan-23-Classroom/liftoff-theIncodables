@@ -215,17 +215,8 @@ p, label {
     animation: fadeIn 5s;
 }
 
-  .game-session-card-style {
-    height: 200px;
-    margin: 0;
-    margin-top: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #C9B79Cff;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
+
+
 .add-session-button {
     color: white;
 

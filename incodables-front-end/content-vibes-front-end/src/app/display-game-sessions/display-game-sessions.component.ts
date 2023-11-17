@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +18,8 @@ export class DisplayGameSessionsComponent implements OnInit {
     { name: 'add', date: '50/69/78' },
   ];
   clickedSession: any = {};
+
+  @Input() setSelectedGameSession: any;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     this.username = null;
@@ -45,6 +47,9 @@ export class DisplayGameSessionsComponent implements OnInit {
   }
 
   expandGameSession(i: number, session: any) {
+    //tamaras function - can go here or in the onclick??? which do we want
+    this.setSelectedGameSession(session);
+
     //first, animate clicked on div. onclick
     const div = document.getElementsByClassName(
       'game-session-card-style--back'

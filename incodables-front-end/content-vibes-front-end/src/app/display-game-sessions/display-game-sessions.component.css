@@ -57,13 +57,45 @@ transform: rotateY(180deg);
     transform: rotateY(180deg);    
 }
 
-.game-session-expandeddddd {
+.game-session-expanded {
     z-index: 1000;
     background-color: #C9B79Cff;
+    color: white;
     width: 100%;
     height: 400px;
     position: relative;
-    top: -406px;
+    top: -206px;
     border-radius: 5px;
     display: none;
+}
+
+.exit-expanded {
+    float: right;
+    transform:rotate(45deg);
+}
+
+.exit-session-button {
+    color: white;
+
+}
+
+.exit-session-button>svg {
+    width: 60px;
+    height: 60px;
+}
+
+.exit-session-button:hover {
+    color: #5D576Bff;
+    text-shadow: #d333ff;
+    transition: color .2s ease-in-out;
+
+    >svg {
+        filter: drop-shadow(3px 3px 3px #d333ff);
+    }
+
+}
+
+.expanded-contents {
+    padding-top: 40px;
+    > p {color: white;}
 }

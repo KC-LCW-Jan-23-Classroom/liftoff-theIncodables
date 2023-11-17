@@ -56,15 +56,31 @@ export class DisplayGameSessionsComponent implements OnInit {
 
     //then, show reeaaal div.
     const gamesesh = document.getElementsByClassName(
-      'game-session-expandeddddd'
+      'game-session-expanded'
     )[0];
     this.clickedSession = session;
     setTimeout(function () {
       gamesesh.setAttribute('style', 'display: block;');
-    }, 1000);
+    }, 23);
+
+    setTimeout(function () {
+      div.setAttribute(
+        'style',
+        'width: 100%; height: 100%; transition: width 20ms, height 20ms; transition-timing-function: ease-in;'
+      );
+    }, 25);
   }
 
   getClickedSession() {
     return this.clickedSession;
+  }
+
+  closeClickedSession() {
+    const gamesesh = document.getElementsByClassName(
+      'game-session-expanded'
+    )[0];
+    this.clickedSession = {};
+
+    gamesesh.setAttribute('style', 'display: none;');
   }
 }

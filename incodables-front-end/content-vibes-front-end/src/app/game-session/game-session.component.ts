@@ -1,49 +1,70 @@
-import { Component } from '@angular/core';
-import { RegisterDTO } from '../model/register';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../service/user-service/user.service';
+import { GameSessionDto } from '../model/game-session-dto';
+import { GameSessionService } from '../service/game-session.service';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-game-session',
   templateUrl: './game-session.component.html',
   styleUrls: ['./game-session.component.css'],
+  
 })
-export class GameSessionComponent {
-  gameName: string = "";
-  description: string = "";
-  date: string = "";
+export class GameSessionComponent implements OnInit {
+  gameSessionName!: string;
+  gameSessionDescription!: string;
+  date!: string;
+  gameSessionDTO: GameSessionDto;
+  campaignId!: number;
   errors: string[] = []; // Initialize the errors array
+  // registrationSuccessful: boolean | undefined;
 
-  constructor(private userService: UserService) {} // Inject UserService
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private gameSessionService: GameSessionService,
 
-  updateGameName(newName: string) {
-    this.gameName = newName;
+  ) {
+    this.gameSessionDTO = new GameSessionDto();
+  }
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.campaignId = +params['campaignId'];
+      console.log('Campaign ID:', this.campaignId);
+    });
   }
 
   onSubmit() {
+    console.log("clicked")
     // Reset the errors array
     this.errors = [];
-
-    if (!this.gameName || !this.description || !this.date) {
-      if (!this.gameName) this.errors.push('Game Name is required.');
-      if (!this.description) this.errors.push('Description is required.');
-      if (!this.date) this.errors.push('Date is required.');
+    if (!this.gameSessionName || !this.gameSessionDescription|| !this.date ) {
+      if (!this.gameSessionName) this.errors.push('Game Session Name is required.');
+      if (!this.gameSessionDescription) this.errors.push('Description is required.');
+      if (!this.date)this.errors.push('Date is required');
       return; // Don't proceed with form submission if there are errors.
     }
 
-    // You can create an object to hold the form data and send it to the service
-    const formData = {
-      gameName: this.gameName,
-      description: this.description,
-      date: this.date,
-    };
+    this.gameSessionDTO.gameSessionName = this.gameSessionName;
+    this.gameSessionDTO.gameSessionDescription = this.gameSessionDescription;
+    this.gameSessionDTO.date = this.date;
+      //  Call the campaign service to create the campaign
+    this.gameSessionService.createGameSession(this.campaignId,this.gameSessionDTO).subscribe(
+      (createdGameSession) => {
+        console.log('Form values:', this.gameSessionName, this.gameSessionDescription, this.date);
+
+        console.log('Game Session created:', createdGameSession);
+        this.router.navigate(['/user-landing-page']);
+
+        // Add any additional handling after campaign creation, such as navigation or notifications
+      },
+      (error) => {
+        console.error('Error creating game session:', error);
+      }
+    );
+
+
   }
 }
-  //   this.userService.save(this.gameName).subscribe(
-  //     (result) => console.log(result),
-  //     (error) => {
-      //I think we need to add this to back end data?
-  //     }
-  //   );
-  // }
-

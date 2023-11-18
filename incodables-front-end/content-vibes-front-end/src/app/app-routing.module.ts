@@ -7,7 +7,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { GameSessionComponent } from './game-session/game-session.component';
 import { UserLandingPageComponent } from './user-landing-page/user-landing-page.component';
 import { CampaignSessionComponent } from './campaign-session/campaign-session.component';
-
+import { DisplayGameSessionsComponent } from './display-game-sessions/display-game-sessions.component';
 
 const routes: Routes = [
   { path: 'homepage', component: HomepageComponent },
@@ -15,9 +15,10 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: '', redirectTo: '/homepage', pathMatch: 'full' }, // Default route
-  { path: 'game-session', component: GameSessionComponent },
+  { path: 'game-session-form/:campaignId', component: GameSessionComponent },
   {path: 'user-landing-page', component: UserLandingPageComponent},
-  {path: 'campaign-session', component: CampaignSessionComponent}
+  {path: 'campaign-session', component: CampaignSessionComponent},
+  {path: 'display-game-session/:campaignId', component: DisplayGameSessionsComponent}
 ];
 
 @NgModule({

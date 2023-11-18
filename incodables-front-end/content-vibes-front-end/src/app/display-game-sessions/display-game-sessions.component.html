@@ -1,22 +1,18 @@
 <div class="user-landing container">
-  <div
-    class="user-landing-ngfor col-lg-2"
-    *ngFor="let session of sessions; index as i"
-  >
-    <div class="flip-card" *ngIf="!isAddSession(session)">
-      <div class="flip-card-inner">
-        <div
-          class="text-white col-lg-12 game-session-card-style game-session-card-style--front"
-        >
-          {{ session.name }}
-        </div>
-        <div
-          *ngIf="!isAddSession(session)"
-          (click)="
+  <div class="user-landing-ngfor col-lg-2" *ngFor="let session of sessions; index as i">
+    <div
+      *ngIf="!isAddSession(session)"
+      class="flip-card"
+      
+    >
+    <div class="flip-card-inner">
+      <div class="text-white col-lg-12 game-session-card-style game-session-card-style--front">
+      {{ session.gameSessionName }}
+
+    </div>
+    <div *ngIf="!isAddSession(session)" (click)="
             expandGameSession(i, session); setSelectedGameSession(session)
-          "
-          class="text-white col-lg-12 game-session-card-style game-session-card-style--back"
-        >
+          " class="text-white col-lg-12 game-session-card-style game-session-card-style--back">
           {{ session.date }}
           <!-- <ul *ngFor="let track of session.tracks">
         <li>{{ track.name }}</li>
@@ -25,12 +21,9 @@
       </div>
     </div>
 
-    <div
-      *ngIf="isAddSession(session)"
-      class="text-white col-lg-12 game-session-card-style"
-    >
+    <div *ngIf="isAddSession(session)" class="text-white col-lg-12 game-session-card-style">
       <a
-        href="/game-session"
+        [routerLink]="['/game-session-form', campaignId]"
         class="add-session-button"
         title="Create new game session"
       >
@@ -47,21 +40,11 @@
       </a>
     </div>
   </div>
-
   <div class="game-session-expanded" *ngIf="getClickedSession() as session">
-    <div
-      class="exit-session-button exit-expanded"
-      (click)="closeClickedSession()"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        class="bi bi-plus"
-        viewBox="0 0 16 16"
-      >
+    <div class="exit-session-button exit-expanded" (click)="closeClickedSession()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
         <path
-          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-        />
+          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
       </svg>
     </div>
     <div class="expanded-contents container">

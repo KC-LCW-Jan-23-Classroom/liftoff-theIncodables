@@ -5,22 +5,31 @@ import { Observable } from 'rxjs';
 import { LoginDTO } from '../../model/login-dto';
 import { UserModel } from 'src/app/model/user-model';
 
+
 @Injectable()
 export class UserService {
   private usersUrl: string;
   private loginUrl: string;
+  private user: any;
+  
 
   constructor(private http: HttpClient) {
     this.usersUrl = 'http://localhost:8080/users';
     this.loginUrl = 'http://localhost:8080/login';
   }
+  
+  
 
   public findAll(): Observable<RegisterDTO[]> {
     return this.http.get<RegisterDTO[]>(this.usersUrl);
   }
 
-  public findByUsername(user: LoginDTO):Observable<any> {
-    return this.http.post(this.loginUrl, user);
+
+  public login(user: LoginDTO):Observable<any> {
+    const httpOptions = {
+      withCredentials: true,
+    };
+    return this.http.post(this.loginUrl, user, httpOptions);
   }
 
   public save(user: RegisterDTO) {

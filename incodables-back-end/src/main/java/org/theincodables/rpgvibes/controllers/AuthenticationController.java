@@ -3,6 +3,7 @@ package org.theincodables.rpgvibes.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.UserRepository;
 import org.theincodables.rpgvibes.models.User;
@@ -53,7 +54,15 @@ public class AuthenticationController {
 
         return newUser;
     }
-
+    @GetMapping("/id/{username}")
+    public ResponseEntity<Integer> getUserIdByUsername(@PathVariable String username) {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            return ResponseEntity.ok(user.getId());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().invalidate();

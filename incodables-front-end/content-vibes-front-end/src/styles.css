@@ -315,24 +315,27 @@ p, label {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1000; /* Ensure it appears above the content*/
 }
 
-/* Style for the links in the audio navigation bar */
-.navbar a {
+  /* Style for the links in the audio navigation bar */
+  .navbar a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: #ccc;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-}
+  }
 
-.navbar a:hover {
+  .navbar a:hover {
     background-color: #ddd;
     color: black;
-}
+  }
 
-/* Add some padding to the page content to prevent overlapping with the fixed navbar */
-.content {
+  /* Add some padding to the page content to prevent overlapping with the fixed navbar */
+  .content {
     padding: 60px;
-}
+    flex: 1; /* Allow content to take remaining vertical space */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+  }

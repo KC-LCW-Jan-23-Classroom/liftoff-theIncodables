@@ -6,18 +6,18 @@ import { UserService } from '../service/user-service/user.service';
 @Component({
   selector: 'app-campaign-session',
   templateUrl: './campaign-session.component.html',
-  styleUrls: ['./campaign-session.component.css']
+  styleUrls: ['./campaign-session.component.css'],
 })
-export class CampaignSessionComponent implements OnInit{
-  campaignName: string = "";
-  description: string = "";
-  date: string = "";
+export class CampaignSessionComponent implements OnInit {
+  campaignName: string = '';
+  description: string = '';
+  date: string = '';
   errors: string[] = []; // Initialize the errors array
   registrationSuccessful: boolean | undefined;
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute ,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
@@ -32,7 +32,7 @@ export class CampaignSessionComponent implements OnInit{
     if (!this.campaignName || !this.description || !this.date) {
       if (!this.campaignName) this.errors.push('Campaign Name is required.');
       if (!this.description) this.errors.push('Description is required.');
-      if (!this.date) this.errors.push('Date is required.');
+      // if (!this.date) this.errors.push('Date is required.');
       return; // Don't proceed with form submission if there are errors.
     }
 
@@ -43,11 +43,11 @@ export class CampaignSessionComponent implements OnInit{
       date: this.date,
     };
   }
-  
+
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.registrationSuccessful = params['registrationSuccessful'] === 'true';
-      console.log(this.registrationSuccessful); 
+      console.log(this.registrationSuccessful);
     });
-}
+  }
 }

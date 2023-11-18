@@ -16,6 +16,7 @@ import { CampaignSessionComponent } from './campaign-session/campaign-session.co
 import { DisplayGameSessionsComponent } from './display-game-sessions/display-game-sessions.component';
 import { CampaignService } from './service/campaign.service';
 import { GameSessionService } from './service/game-session.service';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { MusicSelectionComponent } from './music-selection/music-selection.component';
 
 
@@ -31,6 +32,7 @@ import { MusicSelectionComponent } from './music-selection/music-selection.compo
     UserLandingPageComponent,
     CampaignSessionComponent,
     DisplayGameSessionsComponent,
+    AudioPlayerComponent,
     MusicSelectionComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],

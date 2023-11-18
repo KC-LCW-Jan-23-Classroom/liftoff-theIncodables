@@ -37,8 +37,10 @@ body {
 }
 
 p {
-font-family: "Lato", Helvetica, sans-serif;
-color: #2D231Eff;
+/* font-family: "Lato", Helvetica, sans-serif;
+color: #2D231Eff; */
+font-family: "IM-Fell-DW";
+    src: url(./Fonts/IMFellDWPicaSC-Regular.ttf);
 }
 
 button {

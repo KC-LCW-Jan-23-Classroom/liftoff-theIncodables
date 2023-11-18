@@ -19,10 +19,8 @@ export class CampaignSessionComponent {
   // registrationSuccessful: boolean | undefined;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private campaignService: CampaignService,
-
   ) {
     console.log('CampaignSessionComponent constructor called');
     this.campaignDTO = new CampaignDTO();
@@ -55,22 +53,4 @@ export class CampaignSessionComponent {
 
   }
   
-  // ngOnInit() {
-  //   this.route.queryParams.subscribe((params) => {
-  //     this.registrationSuccessful = params['registrationSuccessful'] === 'true';
-  //     console.log(this.registrationSuccessful); 
-  //   });
 }
-
-
-    // // Call the campaign service to create the campaign
-    // this.campaignService.createCampaign(this.campaignDTO).subscribe({
-    //   next: (createdCampaign) => {
-    //     console.log('Campaign created:', createdCampaign);
-    //     // Add any additional handling after campaign creation, such as navigation or notifications
-    //   },
-    //   error: (error) => {
-    //     console.error('Error creating campaign:', error);
-    //   }
-    // });
-

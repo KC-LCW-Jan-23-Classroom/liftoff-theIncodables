@@ -47,9 +47,6 @@ export class DisplayGameSessionsComponent implements OnInit {
   }
 
   expandGameSession(i: number, session: any) {
-    //tamaras function - can go here or in the onclick??? which do we want
-    this.setSelectedGameSession(session);
-
     //first, animate clicked on div. onclick
     const div = document.getElementsByClassName(
       'game-session-card-style--back'

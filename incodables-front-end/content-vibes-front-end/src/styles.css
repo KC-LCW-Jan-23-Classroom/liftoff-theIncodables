@@ -386,7 +386,7 @@ p, label {
 
   /* Add some padding to the page content to prevent overlapping with the fixed navbar */
   .content {
-    padding: 60px;
+    padding: 20px;
     flex: 1; /* Allow content to take remaining vertical space */
     overflow-y: auto; /* Enable vertical scrolling for the content */
   }

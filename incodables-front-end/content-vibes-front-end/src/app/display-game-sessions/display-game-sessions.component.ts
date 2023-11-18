@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { CampaignService } from '../service/campaign.service';
 import { GameSessionService } from '../service/game-session.service';
 
 @Component({
@@ -13,37 +11,31 @@ import { GameSessionService } from '../service/game-session.service';
 })
 export class DisplayGameSessionsComponent implements OnInit {
   username: string | null;
-  campaignId: number | null = null; 
-  sessions: any[] = []
-  campaigns: any[]=[];
+  @Input() campaignId: number | null = null;
+  @Input() sessions: any[] = [];
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
-  constructor(private route: ActivatedRoute, private http: HttpClient, private gameSessionService: GameSessionService) {
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private gameSessionService: GameSessionService
+  ) {
     this.username = null;
-    this.route.params.subscribe((params) => {
-    
-      this.username = params['username'];
-      this.campaignId = +params['campaignId'];
-      console.log('Campaign ID in DisplayGameSessionsComponent:', this.campaignId);
-      
-      
-    });
   }
   ngOnInit(): void {
     if (this.campaignId !== null) {
-      this.gameSessionService.getAllGameSessionsByCampaign(this.campaignId).subscribe((sessions: any[]) => {
-        this.sessions = sessions;
-        
-        console.log('sessions: ', this.sessions);
-      });
+      this.gameSessionService
+        .getAllGameSessionsByCampaign(this.campaignId)
+        .subscribe((sessions: any[]) => {
+          this.sessions = sessions;
+          this.sessions.push({ name: 'add' });
+          console.log('sessions: ', this.sessions);
+        });
     }
   }
 
-
   isAddSession(session: any) {
- 
     if (session.name == 'add') {
-    
       return true;
     }
     return false;

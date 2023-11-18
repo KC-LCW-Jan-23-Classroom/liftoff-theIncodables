@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../service/user-service/user.service';
 import { CampaignService } from '../service/campaign.service';
 import { Campaign } from '../model/campaign';
 import { MusicSelectionComponent } from '../music-selection/music-selection.component';
+import { GameSessions } from '../model/gamesession-model';
+import { GameSessionService } from '../service/game-session.service';
 
 @Component({
   selector: 'app-user-landing-page',
@@ -15,14 +15,13 @@ export class UserLandingPageComponent implements OnInit {
   username: string | null;
   campaigns: Campaign[] = [];
   selectedCampaignId: number | null = null;
-  // selectedSession: GameSessions | undefined;
+  selectedSession: GameSessions | undefined;
+  sessions: any[] = [];
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient,
     private userService: UserService,
     private campaignService: CampaignService,
+    private gameSessionService: GameSessionService,
     @Inject(MusicSelectionComponent)
     private musicSelectionComponent: MusicSelectionComponent
   ) {
@@ -43,12 +42,17 @@ export class UserLandingPageComponent implements OnInit {
 
   onCampaignClick(campaignId: number) {
     this.selectedCampaignId = campaignId;
-    this.router.navigate(['/display-game-session', campaignId]);
-
+    if (this.selectedCampaignId !== null) {
+      this.gameSessionService.getAllGameSessionsByCampaign(this.selectedCampaignId).subscribe((sessions: any[]) => {
+        this.sessions = sessions;
+        this.sessions.push({name:"add"});
+        console.log('sessions: ', this.sessions);
+      });
     this.musicSelectionComponent.selectedTracks = [
       'Track 1',
       'Track 2',
       'Track 3',
     ];
   }
+}
 }

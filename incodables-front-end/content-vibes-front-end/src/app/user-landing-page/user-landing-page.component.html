@@ -5,9 +5,9 @@
   <!--Sidebar-->
   <div class="container w3-sidebar w3-light-grey w3-bar-block" style="width: 15%">
     <h4 class="w3-bar-item campaign-header-2 text-center">Campaigns</h4>
-    <a href="#" class="w3-bar-item w3-button" *ngFor="let campaign of campaigns">
-      {{ campaign.campaignName }}
-    </a>
+    <div  class="w3-bar-item w3-button" *ngFor="let campaign of campaigns">
+     <div (click)="onCampaignClick(campaign.id)">{{ campaign.campaignName }}</div> 
+    </div>
     <a
         href="/campaign-session"
         class="add-campaign-button"
@@ -31,14 +31,11 @@
     <p class="campaign-header">Game Sessions</p>
     <h1>Welcome, {{ username }}!</h1> 
   <!-- wait until user service is complete to store username -->
-    <button type="submit" class="primary-submit-button" *ngFor="let campaign of campaigns" (click)="onCampaignClick(campaign.id)">
-      {{ campaign.campaignName }}
-    </button>
+
   
-    <!-- <app-display-game-sessions [campaignId]="selectedCampaignId" [setSelectedGameSession]="setSelectedGameSession"></app-display-game-sessions> -->
-    <app-display-game-sessions [campaignId]="selectedCampaignId"></app-display-game-sessions>
+    <app-display-game-sessions [sessions]="sessions" [campaignId]="selectedCampaignId" [setSelectedGameSession]="setSelectedGameSession"></app-display-game-sessions>
     <br>
-    <!-- <app-music-selection [selectedSession]="selectedSession"></app-music-selection> -->
+    <app-music-selection [selectedSession]="selectedSession"></app-music-selection>
     
     </div>
 </body>

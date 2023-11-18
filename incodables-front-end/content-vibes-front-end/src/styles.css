@@ -357,6 +357,8 @@ p, label {
 
 /* Style for the audio navigation bar */
 .navbar {
+    text-align: center;
+    align-items: center;
     overflow: hidden;
     background-color: #C9B79Cff;
     position: fixed;
@@ -367,6 +369,8 @@ p, label {
 
   /* Style for the links in the audio navigation bar */
   .navbar a {
+    text-align: center;
+    align-items: center;
     float: left;
     display: block;
     color: #ccc;

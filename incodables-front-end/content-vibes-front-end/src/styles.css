@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 @font-face {
@@ -63,19 +62,6 @@ button {
   }
 
 
-/*
- --Primary accent red: #B92121ff;
---Tan light: #EBDFCBff;
---Tan medium: #C9B79Cff;
---purple: #5D576Bff;
---black: #2D231Eff; */
-
-/* CSS reset or normalize styles go here if needed */
-
-body {
-    font-family: "Lato", Arial, Helvetica, sans-serif;
-}
-
 .header {
     text-align: center;
     color: #B92121ff;
@@ -97,10 +83,6 @@ body {
     margin-top: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    /* position: absolute; */
-    /* top: 40%;
-    left: 50%; */
-    /* transform: translate(-50%, -50%); */
 }
 
 .rpg-forms-style h2 {
@@ -181,6 +163,7 @@ body {
     color: #B92121ff !important;
 }
 
+/* Style override */
 div.bg-dark-custom {
     background-color: #EBDFCBff;
 }
@@ -226,26 +209,31 @@ p, label {
     justify-content: center;
     align-items: center;
 }
+
+
+/* User Landing Page "+" button */
 .add-session-button {
     color: white;
+  }
 
-}
-.add-session-button > svg {
-    width:80px;
-    height:80px;
-}
+  .add-session-button > svg {
+        width:80px;
+        height:80px;
+  }
 
-.add-session-button:hover {
+  .add-session-button:hover {
     color:  #5D576Bff;
     text-shadow: #d333ff;
     transition: width .2s, height .2s, color .2s ease-in-out;
-
-   > svg {
+      > svg {
         width:120px;
         height:120px;
         filter: drop-shadow(3px 3px 3px #d333ff);
-    }
-}
+        }
+  }
+
+
+/* User Landing Page Header */
 .campaign-header {
     font-size:30px;
     text-align: center;
@@ -254,6 +242,7 @@ p, label {
     color:  #5D576Bff;
 }
 
+/* User Landing Page Sidebar Header */
 .campaign-header-2 {
     font-size:23px;
     text-align: center;
@@ -263,13 +252,13 @@ p, label {
 }
 
 
-/* Add Campaign Button (in progress. someone help please)*/
+/* User Landing Page Sidebar "+" button */
 .add-campaign-button > svg {
     width:40px;
     height:40px;
-}
+  }
 
-.add-campaign-button {
+  .add-campaign-button {
     background-color: rgba(157, 127, 82, 0.783);
     color: white;
     border-radius: 10px;
@@ -277,14 +266,16 @@ p, label {
     text-align: center;
     display: block;
     width: 40%;
-}
+  }
 
-.add-campaign-button:hover {
+  .add-campaign-button:hover {
     color:  #5D576Bff;
     text-shadow: #d333ff;
     transition: width .2s, height .2s, color .2s ease-in-out;
-}
+  }
 
+
+  /* Campaign Session */
 .four {
     background-color: white;
     font-size: 3rem;
@@ -304,6 +295,7 @@ p, label {
     animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite alternate;
 }
 
+
 @keyframes typing {
     from {
         width: 0;
@@ -315,3 +307,32 @@ p, label {
     }
 }
 
+
+/* Style for the audio navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #C9B79Cff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Style for the links in the audio navigation bar */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add some padding to the page content to prevent overlapping with the fixed navbar */
+.content {
+    padding: 60px;
+}

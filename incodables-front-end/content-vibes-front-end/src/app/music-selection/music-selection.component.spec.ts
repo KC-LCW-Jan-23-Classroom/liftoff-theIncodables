@@ -8,7 +8,7 @@ describe('MusicSelectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MusicSelectionComponent]
+      declarations: [MusicSelectionComponent],
     });
     fixture = TestBed.createComponent(MusicSelectionComponent);
     component = fixture.componentInstance;

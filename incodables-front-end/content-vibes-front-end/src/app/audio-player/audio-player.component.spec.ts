@@ -8,7 +8,7 @@ describe('AudioPlayerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AudioPlayerComponent]
+      declarations: [AudioPlayerComponent],
     });
     fixture = TestBed.createComponent(AudioPlayerComponent);
     component = fixture.componentInstance;

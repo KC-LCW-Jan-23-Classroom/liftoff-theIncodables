@@ -1,10 +1,21 @@
 <div class="music-selection">
   <p class="campaign-header">Music Sessions</p>
-  
-  <button type="button" class="music-selection-button"><img src="https://img.icons8.com/ios/50/circled-play--v1.png" alt="Play" (click)="playTrackPreview()">Preview</button>
-  
-  <button type="submit" class="music-selection-button"><img src="https://img.icons8.com/ios/50/add.png" alt="Add" (click)="addTrack()">Add</button>
+
+  <button type="button" class="music-selection-button">
+    <img
+      src="https://img.icons8.com/ios/50/circled-play--v1.png"
+      alt="Play"
+      (click)="playTrackPreview()"
+    />Preview
+  </button>
+
+  <button type="submit" class="music-selection-button">
+    <img
+      src="https://img.icons8.com/ios/50/add.png"
+      alt="Add"
+      (click)="addTrack()"
+    />Add
+  </button>
 
   <audio id="track-preview-audio" src="/path/to/track/preview.mp3"></audio>
 </div>
-

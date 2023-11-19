@@ -8,13 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.CampaignRepository;
 import org.theincodables.rpgvibes.data.GameSessionRepository;
+import org.theincodables.rpgvibes.data.MusicTrackRepository;
 import org.theincodables.rpgvibes.exceptions.UnauthorizedException;
 import org.theincodables.rpgvibes.models.Campaign;
 import org.theincodables.rpgvibes.models.GameSession;
+import org.theincodables.rpgvibes.models.MusicTracks;
 import org.theincodables.rpgvibes.models.User;
 import org.theincodables.rpgvibes.models.dto.GameSessionDTO;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,22 +27,9 @@ public class GameSessionController {
     @Autowired
     private GameSessionRepository gameSessionRepository;
     @Autowired
-    private LoginController loginController;
-
-    @Autowired
-    private CampaignController campaignController;
+    private MusicTrackRepository musicTrackRepository;
     @Autowired
     private CampaignRepository campaignRepository;
-
-    private User checkAuthorization(HttpServletRequest request) {
-        User currentUser = loginController.getUserFromSession(request.getSession());
-        if (currentUser == null) {
-            throw new UnauthorizedException("User not authorized."); // Create a custom exception for unauthorized access
-        }
-        return currentUser;
-    }
-
-
 
     @GetMapping("/campaign/{campaignId}")
     public ResponseEntity<List<GameSession>> getAllGameSessionsByCampaign(@PathVariable Integer campaignId, HttpServletRequest request) {
@@ -77,6 +65,7 @@ public class GameSessionController {
 
         return new ResponseEntity<>(newGameSession, HttpStatus.CREATED);
     }
+
     @GetMapping("/{gameSessionId}")
     public ResponseEntity<GameSession> getGameSessionById(@PathVariable Integer gameSessionId) {
         GameSession gameSession = gameSessionRepository.findById(gameSessionId)
@@ -84,6 +73,7 @@ public class GameSessionController {
 
         return new ResponseEntity<>(gameSession, HttpStatus.OK);
     }
+
     @DeleteMapping("/delete/{campaignId}/{gameSessionId}")
     public ResponseEntity<Void> deleteGameSession(@PathVariable Integer gameSessionId, @PathVariable Integer campaignId, HttpServletRequest request) {
         // Fetch the associated campaign
@@ -110,6 +100,20 @@ public class GameSessionController {
         }
 
     }
+
+    @GetMapping("/tracks/{gameSessionId} ")
+    public ResponseEntity<List<MusicTracks>> getAllMusicTracksForGameSession(@PathVariable Integer gameSessionId) {
+        Optional<GameSession> gameSessionOptional = gameSessionRepository.findById(gameSessionId);
+        if (gameSessionOptional.isPresent()){
+            GameSession gameSession = gameSessionOptional.get();
+            List<MusicTracks> musicTracks = gameSession.getMusicTracks();
+            return new ResponseEntity<>(musicTracks, HttpStatus.OK);
+        } else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 
 
 }

@@ -1,11 +1,11 @@
 package org.theincodables.rpgvibes.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class GameSession extends AbstractEntity{
@@ -13,8 +13,8 @@ public class GameSession extends AbstractEntity{
     private String gameSessionName;
     private String gameSessionDescription;
 
-//    @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<MusicTrack> musicTracks = new ArrayList<>();
+    @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MusicTracks> musicTracks = new ArrayList<>();
 
     private String date;
 
@@ -54,5 +54,23 @@ public class GameSession extends AbstractEntity{
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public List<MusicTracks> getMusicTracks() {
+        return musicTracks;
+    }
+
+    public void setMusicTracks(List<MusicTracks> musicTracks) {
+        this.musicTracks = musicTracks;
+    }
+
+    public void addMusicTrack(MusicTracks musicTrack) {
+        musicTracks.add(musicTrack);
+        musicTrack.setGameSession(this);
+    }
+
+    public void removeMusicTrack(MusicTracks musicTrack) {
+        musicTracks.remove(musicTrack);
+        musicTrack.setGameSession(null);
     }
 }

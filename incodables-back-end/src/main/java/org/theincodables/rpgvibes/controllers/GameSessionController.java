@@ -101,7 +101,7 @@ public class GameSessionController {
 
     }
 
-    @GetMapping("/tracks/{gameSessionId} ")
+    @GetMapping("/tracks/{gameSessionId}")
     public ResponseEntity<List<MusicTracks>> getAllMusicTracksForGameSession(@PathVariable Integer gameSessionId) {
         Optional<GameSession> gameSessionOptional = gameSessionRepository.findById(gameSessionId);
         if (gameSessionOptional.isPresent()){
@@ -112,8 +112,23 @@ public class GameSessionController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+@PostMapping("tracks/add/{gameSessionId}")
+    public ResponseEntity<Void> addMusicTracksToGameSession (@PathVariable Integer gameSessionId, @RequestBody MusicTracks musicTrack){
+        Optional<GameSession> gameSessionOptional = gameSessionRepository.findById(gameSessionId);
+        if (gameSessionOptional.isPresent()){
 
+            GameSession gameSession = gameSessionOptional.get();
+            //save music track to repository
+            musicTrack.setGameSession(gameSession);
+            musicTrackRepository.save(musicTrack);
+            gameSession.addMusicTrack(musicTrack);
+            gameSessionRepository.save(gameSession);
 
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+}
 
 
 }

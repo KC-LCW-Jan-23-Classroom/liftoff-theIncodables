@@ -1,5 +1,6 @@
 package org.theincodables.rpgvibes.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,6 +12,7 @@ public class MusicTracks extends AbstractEntity{
 
     @ManyToOne
     @JoinColumn(name = "game_session_id", referencedColumnName = "id")
+    @JsonIgnore
     private GameSession gameSession;
 
     public GameSession getGameSession() {

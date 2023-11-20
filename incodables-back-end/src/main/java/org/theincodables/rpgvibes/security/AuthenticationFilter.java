@@ -1,8 +1,7 @@
 package org.theincodables.rpgvibes.security;
 
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
+import jakarta.servlet.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -18,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class AuthenticationFilter implements HandlerInterceptor {
+public class AuthenticationFilter implements  Filter {
 
     @Autowired
     UserRepository userRepository;
@@ -38,11 +37,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
     }
 
     //@Override
-    public boolean preHandle(HttpServletRequest request,
-                             HttpServletResponse response,
-                             Object handler,
-                             FilterChain filterChain
-                            ) throws IOException, ServletException {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler, FilterChain filterChain) throws IOException, ServletException {
 
         // Don't require sign-in for whitelisted pages
         if (isWhitelisted(request.getRequestURI())) {
@@ -59,8 +54,15 @@ public class AuthenticationFilter implements HandlerInterceptor {
         }
         filterChain.doFilter(request, response);
         // The user is NOT logged in
-       // response.sendRedirect("/login");
+        // response.sendRedirect("/login");
         return false;
     }
-
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        chain.doFilter(request, response);
+    }
+//    @Override
+//    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+//
+//    }
 }

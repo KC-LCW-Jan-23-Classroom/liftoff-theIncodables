@@ -11,11 +11,12 @@ import java.time.LocalDateTime;
 public class GameSession extends AbstractEntity{
 
     private String gameSessionName;
+    private String gameSessionDescription;
 
 //    @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<MusicTrack> musicTracks = new ArrayList<>();
 
-    private LocalDate dateCreated;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "campaign_id", referencedColumnName = "id")
@@ -27,6 +28,10 @@ public class GameSession extends AbstractEntity{
         this.campaign = campaign;
     }
 
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
     public String getGameSessionName() {
         return gameSessionName;
     }
@@ -35,11 +40,19 @@ public class GameSession extends AbstractEntity{
         this.gameSessionName = gameSessionName;
     }
 
-    public LocalDate getDate() {
-        return dateCreated;
+    public String getGameSessionDescription() {
+        return gameSessionDescription;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.dateCreated = date.toLocalDate();
+    public void setGameSessionDescription(String gameSessionDescription) {
+        this.gameSessionDescription = gameSessionDescription;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RegisterDTO } from '../model/register';
 import { UserService } from '../service/user-service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginDTO } from '../model/login-dto';
-import { HttpResponse, HttpStatusCode } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-login',
@@ -12,31 +12,10 @@ import { HttpResponse, HttpStatusCode } from '@angular/common/http';
 })
 export class LoginComponent {
   user: LoginDTO;
+
   errors: any[] = [];
   isLoggedIn: boolean = false; 
-  username: string = '';
   
-
-  //   credentials: any = {}; // Data binding with your login form
-  //
-  //   constructor(private userService: UserService) {}
-  //
-  //   login() {
-  //     this.userService.login(this.credentials)
-  //       .subscribe(
-  //         response => {
-  //           // Handle successful login
-  //           console.log("success")
-  //         },
-  //         error => {
-  //           // Handle login error
-  //           console.log("failure")
-  //         }
-  //       );
-  //   }
-
-
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -49,6 +28,7 @@ export class LoginComponent {
       // this.firstLogin = true;
     });
     this.user = new LoginDTO();
+
   }
 
   onSubmit() {
@@ -61,13 +41,14 @@ export class LoginComponent {
     }
 
 
-    this.userService.findByUsername(this.user).subscribe((result) => {
+    this.userService.login(this.user).subscribe((result) => {
       if (result) {
         this.userService.setUserInfo(result);
       }
     console.log(result)
     if (result.campaigns.length) {
         this.router.navigate(['/user-landing-page', { username: this.user.username }]);
+    
       } else {
         this.router.navigate(['/campaign-session', { username: this.user.username}]);
       }

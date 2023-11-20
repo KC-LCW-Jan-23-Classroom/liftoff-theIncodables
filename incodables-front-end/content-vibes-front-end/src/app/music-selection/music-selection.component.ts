@@ -10,7 +10,7 @@ export interface TrackPreview {
 @Component({
   selector: 'app-music-selection',
   templateUrl: './music-selection.component.html',
-  styleUrls: ['./music-selection.component.css']
+  styleUrls: ['./music-selection.component.css'],
 })
 
 export class MusicSelectionComponent implements OnInit {
@@ -32,11 +32,9 @@ export class MusicSelectionComponent implements OnInit {
   selectedTracks: string[] = [];
   selectedTrackObjects: TrackPreview[] = [];
 
-
   @Input() track: TrackPreview | undefined;
   @Input() selectedSession: GameSessions | undefined;
 
-  
   constructor() {
     this.selectedSession = new GameSessions();
   }

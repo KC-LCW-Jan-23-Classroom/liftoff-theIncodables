@@ -10,6 +10,9 @@ import java.util.List;
 public class Campaign extends AbstractEntity {
     @NotNull
     private String campaignName;
+    @NotNull
+    private String campaignDescription;
+
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
@@ -18,11 +21,14 @@ public class Campaign extends AbstractEntity {
     private List<GameSession> gameSessions = new ArrayList<>();
 
 
-    public Campaign() {}
-
-    public Campaign(@NotNull String campaignName) {
-        this.campaignName = campaignName;
+    public Campaign() {
     }
+
+    public Campaign(@NotNull String campaignName, @NotNull String campaignDescription) {
+        this.campaignName = campaignName;
+        this.campaignDescription = campaignDescription;
+    }
+
 
     public String getCampaignName() {
         return campaignName;
@@ -32,6 +38,13 @@ public class Campaign extends AbstractEntity {
         this.campaignName = campaignName;
     }
 
+    public String getCampaignDescription() {
+        return campaignDescription;
+    }
+
+    public void setCampaignDescription(String campaignDescription) {
+        this.campaignDescription = campaignDescription;
+    }
     public void setOwner(User owner) {
         this.owner = owner;
     }

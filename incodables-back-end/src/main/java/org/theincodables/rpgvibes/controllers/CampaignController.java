@@ -18,7 +18,6 @@ import java.util.Optional;
 @RequestMapping("/campaigns")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CampaignController {
-    //autowired for .getUserFromSession method
     @Autowired
     private LoginController loginController;
 
@@ -47,6 +46,7 @@ public class CampaignController {
         // Create a new Campaign object
         Campaign newCampaign = new Campaign();
         newCampaign.setCampaignName(campaignDTO.getCampaignName());
+        newCampaign.setCampaignDescription(campaignDTO.getCampaignDescription());
         // Set the owner (user)
         newCampaign.setOwner(currentUser);
 

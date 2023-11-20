@@ -15,6 +15,7 @@ import org.theincodables.rpgvibes.models.GameSession;
 import org.theincodables.rpgvibes.models.MusicTracks;
 import org.theincodables.rpgvibes.models.User;
 import org.theincodables.rpgvibes.models.dto.GameSessionDTO;
+import org.theincodables.rpgvibes.models.dto.MusicTracksDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -113,18 +114,21 @@ public class GameSessionController {
         }
     }
 @PostMapping("tracks/add/{gameSessionId}")
-    public ResponseEntity<Void> addMusicTracksToGameSession (@PathVariable Integer gameSessionId, @RequestBody MusicTracks musicTrack){
+    public ResponseEntity<MusicTracks> addMusicTracksToGameSession (@PathVariable Integer gameSessionId, @RequestBody MusicTracksDTO musicTracksDTO){
         Optional<GameSession> gameSessionOptional = gameSessionRepository.findById(gameSessionId);
         if (gameSessionOptional.isPresent()){
 
             GameSession gameSession = gameSessionOptional.get();
             //save music track to repository
-            musicTrack.setGameSession(gameSession);
-            musicTrackRepository.save(musicTrack);
-            gameSession.addMusicTrack(musicTrack);
+            MusicTracks newMusicTrack = new MusicTracks();
+            newMusicTrack.setTrackUrl(musicTracksDTO.getTrackUrl());
+            newMusicTrack.setTitle(musicTracksDTO.getTitle());
+            newMusicTrack.setGameSession(gameSession);
+            newMusicTrack = musicTrackRepository.save(newMusicTrack);
+            gameSession.addMusicTrack(newMusicTrack);
             gameSessionRepository.save(gameSession);
 
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(newMusicTrack, HttpStatus.CREATED);
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 import org.theincodables.rpgvibes.models.MusicTracks;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface MusicTrackRepository extends CrudRepository <MusicTracks, Integer> {
     List<MusicTracks> findByGameSessionId(Integer gameSessionId);

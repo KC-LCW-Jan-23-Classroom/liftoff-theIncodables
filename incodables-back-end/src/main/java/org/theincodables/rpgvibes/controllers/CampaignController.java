@@ -27,7 +27,7 @@ public class CampaignController {
     private User checkAuthorization(HttpServletRequest request) {
         User currentUser = loginController.getUserFromSession(request.getSession());
         if (currentUser == null) {
-            throw new UnauthorizedException("User not authorized."); // Create a custom exception for unauthorized access
+            throw new UnauthorizedException("User not authorized."); //exception for unauthorized access
         }
         return currentUser;
     }
@@ -38,7 +38,6 @@ public class CampaignController {
         User currentUser;
         try {
             currentUser = checkAuthorization(request);
-            // Your code for authorized access here
         } catch (UnauthorizedException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -63,15 +62,17 @@ public class CampaignController {
         User currentUser;
         try {
             currentUser = checkAuthorization(request);
-            // Your code for authorized access here
+            //exception catch if not logged in
         } catch (UnauthorizedException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-
+        //fetch campaigns of user in session
         List<Campaign> campaigns = currentUser.getCampaigns();
         if (campaigns.isEmpty()) {
+            //handling if no campaigns
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        //return campaigns and OK status
         return new ResponseEntity<>(campaigns, HttpStatus.OK);
     }
 
@@ -82,7 +83,7 @@ public class CampaignController {
         User currentUser;
         try {
             currentUser = checkAuthorization(request);
-            // Your code for authorized access here
+            // exception catch if not logged in
         } catch (UnauthorizedException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -93,7 +94,7 @@ public class CampaignController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Campaign campaign = campaignOptional.get();
-
+        //return campaign and OK Status
         return new ResponseEntity<>(campaign, HttpStatus.OK);
     }
 
@@ -103,7 +104,7 @@ public class CampaignController {
         User currentUser;
         try {
             currentUser = checkAuthorization(request);
-            // Your code for authorized access here
+            // exception catch if not logged in
         } catch (UnauthorizedException ex) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }

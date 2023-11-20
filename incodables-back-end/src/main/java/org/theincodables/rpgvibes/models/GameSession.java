@@ -2,8 +2,6 @@ package org.theincodables.rpgvibes.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,17 +58,12 @@ public class GameSession extends AbstractEntity{
         return musicTracks;
     }
 
-    public void setMusicTracks(List<MusicTracks> musicTracks) {
-        this.musicTracks = musicTracks;
-    }
+
 
     public void addMusicTrack(MusicTracks musicTrack) {
         musicTracks.add(musicTrack);
         musicTrack.setGameSession(this);
     }
 
-    public void removeMusicTrack(MusicTracks musicTrack) {
-        musicTracks.remove(musicTrack);
-        musicTrack.setGameSession(null);
-    }
+
 }

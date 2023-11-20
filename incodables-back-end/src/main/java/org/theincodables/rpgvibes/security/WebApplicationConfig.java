@@ -22,21 +22,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class WebApplicationConfig implements WebMvcConfigurer {
 
 
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.addAllowedOrigin("http://localhost:4200");
-//        configuration.addAllowedMethod("OPTIONS");
-//        configuration.addAllowedOrigin("http://localhost:8080");
-////        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-//        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-//        configuration.setAllowCredentials(true);
-//        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors(withDefaults()).csrf(csfc -> csfc.disable());
@@ -56,7 +41,7 @@ public class WebApplicationConfig implements WebMvcConfigurer {
     public FilterRegistrationBean<AuthenticationFilter> authenticationFilterRegistration() {
         FilterRegistrationBean<AuthenticationFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(authenticationFilter());
-        registrationBean.addUrlPatterns("/*"); // Adjust the URL pattern
+        registrationBean.addUrlPatterns("/*");
         return registrationBean;
     }
 

@@ -1,7 +1,5 @@
 package org.theincodables.rpgvibes.models.dto;
 
-import java.sql.Date;
-
 public class GameSessionDTO {
     private String gameSessionName;
     private String gameSessionDescription;

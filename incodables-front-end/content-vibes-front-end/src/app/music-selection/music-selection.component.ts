@@ -15,18 +15,18 @@ export interface TrackPreview {
 
 export class MusicSelectionComponent implements OnInit {
   musicTracks: TrackPreview[] = [
-    { id: '709397', url: 'https://freesound.org/people/guitarman213/sounds/709397/', name: 'Fantasy Cinematic Music Four' },
-    { id: '698282', url: 'https://freesound.org/people/TheoJT/sounds/698282/', name: 'Peaceful Fantasy Music' },
-    { id: '511311', url: 'https://freesound.org/people/TheoJT/sounds/511311/', name: 'Fantasy Classical Themes' },
-    { id: '595715', url: 'https://freesound.org/people/szegvari/sounds/595715/', name: 'Haunted Hall - Cinematic Fantasy Music Thriller Orchestra atmo Amb soundscape.wav' },
-    { id: '595853', url: 'https://freesound.org/people/szegvari/sounds/595853/', name: 'Old ritual - Fantasy Background Soundscape Haunted Atmo Music Synth Drum Orchestra - Mastered.wav' },
-    { id: '614092', url: 'https://freesound.org/people/szegvari/sounds/614092/', name: 'Dark Atmo Sea Beach Sad Mood Myst Thriller Fantasy.wav' },
-    { id: '489035', url: 'https://freesound.org/people/Michael-DB/sounds/489035/', name: 'Game-Music-01' },
-    { id: '624018', url: 'https://freesound.org/people/Michael-DB/sounds/624018/', name: 'Cinematic Music-04' },
-    { id: '569401', url: 'https://freesound.org/people/Michael-DB/sounds/569401/', name: 'Cinematic Music - Relinquish' },
-    { id: '569400', url: 'https://freesound.org/people/Michael-DB/sounds/569400/', name: 'Cinematic Music - Judgements' },
-    { id: '416632', url: 'https://freesound.org/people/Sirkoto51/sounds/416632/', name: 'Castle Music Loop #1' },
-    { id: '609900', url: 'https://freesound.org/people/szegvari/sounds/609900/', name: 'Slow Sea Orchestra Big Orchestral String Piano Myst Drama Love Cinematic Music Surround.wav' }
+    { id: '709397', url: 'https://cdn.freesound.org/previews/709/709397_15345947-hq.mp3', name: 'Fantasy Cinematic Music Four' },
+    { id: '698282', url: 'https://cdn.freesound.org/previews/698/698282_6627602-hq.mp3', name: 'Peaceful Fantasy Music' },
+    { id: '511311', url: 'https://cdn.freesound.org/previews/511/511311_6627602-hq.mp3', name: 'Fantasy Classical Themes' },
+    { id: '595715', url: 'https://cdn.freesound.org/previews/595/595715_2282212-hq.mp3', name: 'Haunted Hall - Cinematic Fantasy Music Thriller Orchestra atmo Amb soundscape.wav' },
+    { id: '595853', url: 'https://cdn.freesound.org/previews/595/595853_2282212-hq.mp3', name: 'Old ritual - Fantasy Background Soundscape Haunted Atmo Music Synth Drum Orchestra - Mastered.wav' },
+    { id: '614092', url: 'https://cdn.freesound.org/previews/614/614092_2282212-hq.mp3', name: 'Dark Atmo Sea Beach Sad Mood Myst Thriller Fantasy.wav' },
+    { id: '489035', url: 'https://cdn.freesound.org/previews/489/489035_4977896-hq.mp3', name: 'Game-Music-01' },
+    { id: '624018', url: 'https://cdn.freesound.org/previews/624/624018_4977896-hq.mp3', name: 'Cinematic Music-04' },
+    { id: '569401', url: 'https://cdn.freesound.org/previews/569/569401_4977896-hq.mp3', name: 'Cinematic Music - Relinquish' },
+    { id: '569400', url: 'https://cdn.freesound.org/previews/569/569400_4977896-hq.mp3', name: 'Cinematic Music - Judgements' },
+    { id: '416632', url: 'https://cdn.freesound.org/previews/416/416632_5225777-hq.mp3', name: 'Castle Music Loop #1' },
+    { id: '609900', url: 'https://cdn.freesound.org/previews/609/609900_2282212-hq.mp3', name: 'Slow Sea Orchestra Big Orchestral String Piano Myst Drama Love Cinematic Music Surround.wav' }
   ];
   
   selectedTracks: string[] = [];
@@ -53,12 +53,11 @@ export class MusicSelectionComponent implements OnInit {
     }
   }
 
-  playTrackPreview() {
-      const audioElement = document.getElementById('track-preview-audio');
-
-      if (audioElement instanceof HTMLAudioElement && this.track) {
-        audioElement.src = this.track.url;
-        audioElement.play();
+  playTrackPreview(trackUrl: string) {
+    const audioElement = document.getElementById('track-preview-audio') as HTMLAudioElement;
+    if (audioElement) {
+      audioElement.src = trackUrl;
+      audioElement.play();
       } 
   }
 }

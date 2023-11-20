@@ -1,21 +1,21 @@
 <div class="music-selection">
   <p class="campaign-header">Music Sessions</p>
 
-  <button type="button" class="music-selection-button">
-    <img
-      src="https://img.icons8.com/ios/50/circled-play--v1.png"
-      alt="Play"
-      (click)="playTrackPreview()"
-    />Preview
-  </button>
+  <div *ngFor="let track of musicTracks">
+    <div class="music-track">
+      <p class="track-name">{{ track.name }}</p>
 
-  <button type="submit" class="music-selection-button">
-    <img
-      src="https://img.icons8.com/ios/50/add.png"
-      alt="Add"
-      (click)="addTrack()"
-    />Add
-  </button>
+      <button type="button" class="music-selection-button" (click)="playTrackPreview(track.url)">
+        <img src="https://img.icons8.com/ios/50/circled-play--v1.png" alt="Play">
+        Preview
+      </button>
 
-  <audio id="track-preview-audio" src="/path/to/track/preview.mp3"></audio>
+      <button type="button" class="music-selection-button" (click)="addTrack(track)">
+        <img src="https://img.icons8.com/ios/50/add.png" alt="Add">
+        Add
+      </button>
+    </div>
+  </div>
+
+  <audio id="track-preview-audio" src=""></audio>
 </div>

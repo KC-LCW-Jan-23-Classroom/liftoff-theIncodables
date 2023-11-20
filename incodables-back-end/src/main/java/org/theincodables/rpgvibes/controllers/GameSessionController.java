@@ -143,6 +143,8 @@ public class GameSessionController {
             newMusicTrack.setTrackUrl(musicTracksDTO.getTrackUrl());
             //set the title
             newMusicTrack.setTitle(musicTracksDTO.getTitle());
+            //set the freeSoundId
+            newMusicTrack.setFreeSoundId(musicTracksDTO.getFreeSoundId());
             //set the gameSession
             newMusicTrack.setGameSession(gameSession);
             //save to musicTrackRepository

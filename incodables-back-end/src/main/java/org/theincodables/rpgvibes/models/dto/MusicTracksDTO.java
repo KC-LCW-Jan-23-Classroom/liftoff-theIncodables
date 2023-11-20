@@ -4,7 +4,7 @@ public class MusicTracksDTO {
 
     private String title;
     private String trackUrl;
-
+    private String freeSoundId;
     private Integer gameSessionId;
 
     public MusicTracksDTO(String title, String trackUrl) {
@@ -30,6 +30,14 @@ public class MusicTracksDTO {
 
     public Integer getGameSessionId() {
         return gameSessionId;
+    }
+
+    public String getFreeSoundId() {
+        return freeSoundId;
+    }
+
+    public void setFreeSoundId(String freeSoundId) {
+        this.freeSoundId = freeSoundId;
     }
 }
 

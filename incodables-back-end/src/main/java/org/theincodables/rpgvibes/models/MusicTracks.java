@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 public class MusicTracks extends AbstractEntity{
     private String title;
     private String trackUrl;
-
+    private String freeSoundId;
     @ManyToOne
     @JoinColumn(name = "game_session_id", referencedColumnName = "id")
     @JsonIgnore
@@ -37,5 +37,13 @@ public class MusicTracks extends AbstractEntity{
 
     public void setTrackUrl(String trackUrl) {
         this.trackUrl = trackUrl;
+    }
+
+    public String getFreeSoundId() {
+        return freeSoundId;
+    }
+
+    public void setFreeSoundId(String freeSoundId) {
+        this.freeSoundId = freeSoundId;
     }
 }

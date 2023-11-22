@@ -36,7 +36,6 @@ public class AuthenticationFilter implements  Filter {
         return false;
     }
 
-    //@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler, FilterChain filterChain) throws IOException, ServletException {
 
         // Don't require sign-in for whitelisted pages
@@ -61,8 +60,5 @@ public class AuthenticationFilter implements  Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         chain.doFilter(request, response);
     }
-//    @Override
-//    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-//
-//    }
+
 }

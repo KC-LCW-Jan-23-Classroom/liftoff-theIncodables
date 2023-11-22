@@ -54,6 +54,7 @@ public class AuthenticationController {
 
         return newUser;
     }
+
     @GetMapping("/id/{username}")
     public ResponseEntity<Integer> getUserIdByUsername(@PathVariable String username) {
         User user = userRepository.findByUsername(username);
@@ -63,6 +64,7 @@ public class AuthenticationController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().invalidate();

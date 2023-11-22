@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.theincodables.rpgvibes.data.UserRepository;
@@ -49,9 +48,7 @@ public class LoginController {
 
     @PostMapping("")
     public ResponseEntity processLoginForm(@RequestBody LoginFormDTO loginFormDTO,
-                                           HttpServletRequest request, HttpServletResponse response) {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("SameSite=None");
+                                           HttpServletRequest request) {
         System.out.println(loginFormDTO.toString());
         LoginFormDTO convertedLoginDTO = new LoginFormDTO(loginFormDTO.username, loginFormDTO.password);
 
@@ -68,7 +65,6 @@ public class LoginController {
         }
 
         HttpSession session = setUserInSession(request.getSession(), theUser);
-//        response.setHeader("Set-Cookie", "JSESSIONID=" + session.getId() + "; Path=/; HttpOnly; Secure; SameSite=None; Domain=localhost:8080");
         return ResponseEntity.ok(theUser);
 
     }

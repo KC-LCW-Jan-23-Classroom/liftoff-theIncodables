@@ -215,6 +215,12 @@ p, label {
 
 /* User Landing Page "+" button */
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; 
+}
 
 .add-session-button {
     color: white;
@@ -229,11 +235,18 @@ p, label {
     width: 300px; /* Adjust the width as needed */
     height: 30px; /* Adjust the height as needed */
     background-color: #C9B79C;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     border-radius: 5px;
+    font-family: "Lato", sans-serif;
+  }
+
+  .add-first-game-session-button:hover {
+    color:  #5D576Bff;
+    text-shadow: #d333ff;
+    transition: width .2s, height .2s, color .2s ease-in-out;
+    > svg {
+      
+      filter: drop-shadow(3px 3px 3px #d333ff);
+      }
   }
 
   .add-session-button:hover {

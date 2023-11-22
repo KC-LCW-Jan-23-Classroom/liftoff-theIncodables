@@ -225,6 +225,17 @@ p, label {
         height:80px;
   }
 
+  .add-first-game-session-button > svg {
+    width: 300px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    background-color: #C9B79C;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+  }
+
   .add-session-button:hover {
     color:  #5D576Bff;
     text-shadow: #d333ff;

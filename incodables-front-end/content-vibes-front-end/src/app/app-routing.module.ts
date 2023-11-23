@@ -19,6 +19,7 @@ const routes: Routes = [
   {path: 'user-landing-page', component: UserLandingPageComponent},
   {path: 'campaign-session', component: CampaignSessionComponent},
   {path: 'display-game-session', component: DisplayGameSessionsComponent}
+  
 ];
 
 @NgModule({

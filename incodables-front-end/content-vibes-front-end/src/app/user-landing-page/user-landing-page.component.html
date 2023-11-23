@@ -9,6 +9,7 @@
   >
     <h4 class="w3-bar-item campaign-header-2 text-center">Campaigns</h4>
     <div class="w3-bar-item w3-button" *ngFor="let campaign of campaigns">
+      
       <div (click)="onCampaignClick(campaign.id)">
         {{ campaign.campaignName }}
       </div>

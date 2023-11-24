@@ -19,7 +19,6 @@ import { GameSessionService } from './service/game-session.service';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { MusicSelectionComponent } from './music-selection/music-selection.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,9 +35,14 @@ import { MusicSelectionComponent } from './music-selection/music-selection.compo
     MusicSelectionComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
-  providers: [UserService, CampaignService, GameSessionService,MusicSelectionComponent],
-  
+  providers: [
+    UserService,
+    CampaignService,
+    GameSessionService,
+    MusicSelectionComponent,
+    NavBarComponent,
+  ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

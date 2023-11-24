@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { UserService } from '../service/user-service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginDTO } from '../model/login-dto';
-
-
 
 @Component({
   selector: 'app-login',
@@ -14,8 +12,8 @@ export class LoginComponent {
   user: LoginDTO;
 
   errors: any[] = [];
-  isLoggedIn: boolean = false; 
-  
+  isLoggedIn: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -28,7 +26,6 @@ export class LoginComponent {
       // this.firstLogin = true;
     });
     this.user = new LoginDTO();
-
   }
 
   onSubmit() {
@@ -40,20 +37,22 @@ export class LoginComponent {
       return;
     }
 
-
     this.userService.login(this.user).subscribe((result) => {
       if (result) {
         this.userService.setUserInfo(result);
       }
-    console.log(result)
-    if (result.campaigns.length) {
-        this.router.navigate(['/user-landing-page', { username: this.user.username }]);
-    
+      console.log(result);
+      if (result.campaigns.length) {
+        this.router.navigate([
+          '/user-landing-page',
+          { username: this.user.username },
+        ]);
       } else {
-        this.router.navigate(['/campaign-session', { username: this.user.username}]);
+        this.router.navigate([
+          '/campaign-session',
+          { username: this.user.username },
+        ]);
       }
     });
-
-
   }
 }

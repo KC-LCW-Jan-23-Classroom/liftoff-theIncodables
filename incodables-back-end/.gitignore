@@ -1,7 +1,6 @@
 HELP.md
-rpgvibes/.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
+incodables-back-end/.gradle
+incodables-back-end/gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
@@ -22,6 +21,8 @@ bin/
 *.iws
 *.iml
 *.ipr
+*.lock
+*.bin
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/

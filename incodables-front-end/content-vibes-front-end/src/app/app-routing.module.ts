@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'about-us', component: AboutUsComponent },
-  { path: '', redirectTo: '/homepage', pathMatch: 'full' }, // Default route
+  { path: '', redirectTo: '/homepage', pathMatch: 'full' },
+  { path: '', redirectTo: '/user-landing-page', pathMatch: 'full' }, 
   { path: 'game-session-form/:campaignId', component: GameSessionComponent },
   {path: 'user-landing-page', component: UserLandingPageComponent},
   {path: 'campaign-session', component: CampaignSessionComponent},

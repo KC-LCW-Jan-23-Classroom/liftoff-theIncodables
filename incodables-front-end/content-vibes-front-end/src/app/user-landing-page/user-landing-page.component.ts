@@ -7,6 +7,7 @@ import { GameSessions } from '../model/gamesession-model';
 import { GameSessionService } from '../service/game-session.service';
 import { GameSessionDto } from '../model/game-session-dto';
 import { GameSession } from '../model/game-session';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-landing-page',
@@ -28,7 +29,9 @@ export class UserLandingPageComponent implements OnInit {
     private campaignService: CampaignService,
     private gameSessionService: GameSessionService,
     @Inject(MusicSelectionComponent)
-    private musicSelectionComponent: MusicSelectionComponent
+    private musicSelectionComponent: MusicSelectionComponent,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.username = this.userService.getUserInfo();
   }

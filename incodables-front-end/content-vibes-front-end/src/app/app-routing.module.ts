@@ -16,9 +16,10 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: '', redirectTo: '/homepage', pathMatch: 'full' }, // Default route
   { path: 'game-session-form/:campaignId', component: GameSessionComponent },
-  {path: 'user-landing-page', component: UserLandingPageComponent},
-  {path: 'campaign-session', component: CampaignSessionComponent},
-  {path: 'display-game-session', component: DisplayGameSessionsComponent}
+  { path: 'user-landing-page', component: UserLandingPageComponent },
+  { path: 'campaign-session', component: CampaignSessionComponent },
+  { path: 'display-game-session', component: DisplayGameSessionsComponent },
+  { path: 'logout', component: LoginComponent },
 ];
 
 @NgModule({

@@ -81,7 +81,9 @@ testem.log
 Thumbs.db
 
 HELP.md
-incodables-back-end/.gradlebuild/
+incodables-back-end/.gradle
+incodables-back-end/rpgvibes/.gradle
+
 incodables-back-end/gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/

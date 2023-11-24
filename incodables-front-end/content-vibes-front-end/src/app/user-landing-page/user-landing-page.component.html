@@ -10,6 +10,7 @@
     <h4 class="w3-bar-item campaign-header-2 text-center">Campaigns</h4>
     <div class="w3-bar-item w3-button" *ngFor="let campaign of campaigns">
       <div (click)="onCampaignClick(campaign.id)">
+        
         {{ campaign.campaignName }}
       </div>
     </div>
@@ -43,10 +44,25 @@
       [sessions]="sessions"
       [campaignId]="selectedCampaignId"
       [setSelectedGameSession]="setSelectedGameSession"
+
+      
     ></app-display-game-sessions>
+
+    <div class="button-container" *ngIf="selectedCampaignId !== null && isFirstGameSession">
+      <a [routerLink]="['/game-session-form', selectedCampaignId]" class="add-first-game-session-button" title="Create new game session">
+        <!-- SVG icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-size="8">Add First Game Session</text>
+        </svg>
+      </a>
+    </div>
+    
+
     <br />
+
+
     <app-music-selection
-      [selectedSession]="selectedSession"
+      [selectedSession]="selectedGameSession"
     ></app-music-selection>
   </div>
 </body>

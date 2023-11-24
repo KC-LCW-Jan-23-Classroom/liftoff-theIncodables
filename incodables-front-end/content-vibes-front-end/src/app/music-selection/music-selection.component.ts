@@ -60,4 +60,5 @@ export class MusicSelectionComponent implements OnInit {
       audioElement.play();
       } 
   }
+  
 }

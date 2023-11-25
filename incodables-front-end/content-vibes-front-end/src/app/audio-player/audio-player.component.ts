@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.css'],
 })
-export class AudioPlayerComponent {}
+export class AudioPlayerComponent {
+  isGameSelected = false;
+
+  onSelectGameSession() {
+    this.isGameSelected = true;
+  }
+}

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GameSessionService } from '../service/game-session.service';
 import { TrackPreview } from '../music-selection/music-selection.component';
 
+
 @Component({
   selector: 'app-display-game-sessions',
   templateUrl: './display-game-sessions.component.html',
@@ -15,7 +16,7 @@ export class DisplayGameSessionsComponent implements OnInit {
   @Input() sessions: any[] = [];
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
-  constructor(private gameSessionService: GameSessionService) {
+  constructor(private gameSessionService: GameSessionService, ) {
     this.username = null;
   }
   ngOnInit(): void {

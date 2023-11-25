@@ -5,9 +5,9 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { GameSessions } from '../model/gamesession-model';
 import { MusicTrack } from '../model/music-track';
 import { GameSessionService } from '../service/game-session.service';
+
 
 export interface TrackPreview {
   id: string;
@@ -92,7 +92,6 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
   @Input() activeSession: any;
 
   constructor(private gameSessionService: GameSessionService) {
-    // this.selectedSession = new GameSessions;
   }
 
   ngOnInit(): void {
@@ -130,6 +129,7 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
             (addedTrack: MusicTrack) => {
               console.log('Track added successfully:', addedTrack);
               // Optionally, you can update your UI or perform additional actions here
+              
             },
             (error: any) => {
               console.error('Error adding track:', error);

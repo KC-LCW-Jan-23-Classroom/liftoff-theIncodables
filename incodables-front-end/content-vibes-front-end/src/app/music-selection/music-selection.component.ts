@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { GameSessions } from '../model/gamesession-model';
 
 export interface TrackPreview {
@@ -13,7 +13,7 @@ export interface TrackPreview {
   styleUrls: ['./music-selection.component.css'],
 })
 
-export class MusicSelectionComponent implements OnInit {
+export class MusicSelectionComponent implements OnInit, OnChanges {
   musicTracks: TrackPreview[] = [
     { id: '709397', url: 'https://cdn.freesound.org/previews/709/709397_15345947-hq.mp3', name: 'Fantasy Cinematic Music Four' },
     { id: '698282', url: 'https://cdn.freesound.org/previews/698/698282_6627602-hq.mp3', name: 'Peaceful Fantasy Music' },
@@ -34,21 +34,31 @@ export class MusicSelectionComponent implements OnInit {
 
   @Input() track: TrackPreview | undefined;
   @Input() selectedSession: GameSessions | undefined;
+  @Input() gamesession:any;
 
   constructor() {
-    this.selectedSession = new GameSessions();
+    // this.selectedSession = new GameSessions;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { console.log('Received game session in MusicSelectionComponent:', this.gamesession);}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['gamesession']) {
+      console.log('gamesessions changed:', changes['gamesession'].currentValue);
+      this.gamesession = changes['gamesession'].currentValue;
+    }
+  }
 
   addTrack(track: TrackPreview) {
+    console.log("click")
+    console.log(this.gamesession)
     if (track && typeof track === 'object' && track.hasOwnProperty('id')) {
       this.selectedTracks.push(track.id);
       this.selectedTrackObjects.push(track);
   
       if (this.selectedSession != undefined) {
         const trackIdToAdd = track.id;
-        this.selectedSession.tracks.push(trackIdToAdd);
+        this.gamesession.musicTracks.push(trackIdToAdd);
       }
     }
   }

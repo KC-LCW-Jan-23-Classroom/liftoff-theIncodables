@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { GameSessionService } from '../service/game-session.service';
@@ -10,6 +10,7 @@ import { GameSessionService } from '../service/game-session.service';
   inputs: ['campaignId'],
 })
 export class DisplayGameSessionsComponent implements OnInit {
+  @Output() selectedGameSessionChange = new EventEmitter<any>();
   username: string | null;
   @Input() campaignId: number | null = null;
   @Input() sessions: any[] = [];
@@ -56,6 +57,7 @@ export class DisplayGameSessionsComponent implements OnInit {
       'game-session-expanded'
     )[0];
     this.clickedSession = session;
+    this.selectedGameSessionChange.emit(session);
     setTimeout(function () {
       gamesesh.setAttribute('style', 'display: block;');
     }, 23);

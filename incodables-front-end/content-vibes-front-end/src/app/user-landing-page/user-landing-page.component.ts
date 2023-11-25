@@ -19,6 +19,7 @@ export class UserLandingPageComponent implements OnInit {
   campaigns: Campaign[] = [];
   selectedCampaignId: number | null = null;
   selectedGameSession: any;
+  selectedSession:any;
   // selectedSession: GameSessions | undefined;
   sessions: any[] = [];
   isFirstGameSession: boolean = true; 
@@ -42,6 +43,11 @@ export class UserLandingPageComponent implements OnInit {
       console.log(campaigns);
     });
     console.log('campaigns: ', this.campaigns);
+  }
+  onSelectedGameSessionChange(gameSession: any): void {
+    console.log('Received game session:', gameSession);
+
+    this.selectedSession = gameSession;
   }
 
   setSelectedGameSession(session: any) {

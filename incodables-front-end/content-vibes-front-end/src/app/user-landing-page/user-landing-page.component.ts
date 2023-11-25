@@ -3,7 +3,6 @@ import { UserService } from '../service/user-service/user.service';
 import { CampaignService } from '../service/campaign.service';
 import { Campaign } from '../model/campaign';
 import { MusicSelectionComponent } from '../music-selection/music-selection.component';
-import { GameSessions } from '../model/gamesession-model';
 import { GameSessionService } from '../service/game-session.service';
 import { GameSessionDto } from '../model/game-session-dto';
 import { GameSession } from '../model/game-session';
@@ -20,7 +19,6 @@ export class UserLandingPageComponent implements OnInit {
   selectedCampaignId: number | null = null;
   selectedGameSession: any;
   selectedSession:any;
-  // selectedSession: GameSessions | undefined;
   sessions: any[] = [];
   isFirstGameSession: boolean = true; 
 
@@ -51,7 +49,6 @@ export class UserLandingPageComponent implements OnInit {
   }
 
   setSelectedGameSession(session: any) {
-    // this.setSelectedGameSession = session;
     this.selectedGameSession = session;
   }
 

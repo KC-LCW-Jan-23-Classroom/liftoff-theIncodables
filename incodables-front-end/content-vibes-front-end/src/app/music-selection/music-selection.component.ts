@@ -36,33 +36,33 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
 
   @Input() track: TrackPreview | undefined;
   @Input() selectedSession: GameSessions | undefined;
-  @Input() gamesession:any;
+  @Input() activeSession:any;
 
   constructor(private gameSessionService: GameSessionService) {
     // this.selectedSession = new GameSessions;
   }
 
-  ngOnInit(): void { console.log('Received game session in MusicSelectionComponent:', this.gamesession);}
+  ngOnInit(): void { console.log('Received game session in MusicSelectionComponent:', this.activeSession);}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['gamesession']) {
-      console.log('gamesessions changed:', changes['gamesession'].currentValue);
-      this.gamesession = changes['gamesession'].currentValue;
+    if (changes['activeSession']) {
+      console.log('activeSession changed:', changes['activeSession'].currentValue);
+      this.activeSession = changes['activeSession'].currentValue;
     }
   }
 
   addTrack(track: TrackPreview) {
-    console.log("click")
-    console.log(this.gamesession)
+    // console.log("click")
+    // console.log(this.gamesession)
     if (track && typeof track === 'object' && track.hasOwnProperty('id')) {
       this.selectedTracks.push(track.id);
       this.selectedTrackObjects.push(track);
   
-      if (this.gamesession != undefined) {
+      if (this.activeSession != undefined) {
         const trackIdToAdd = track.id;
-        this.gamesession.musicTracks.push(trackIdToAdd);
+        this.activeSession.musicTracks.push(trackIdToAdd);
         this.gameSessionService
-        .addMusicTracksToGameSession(this.gamesession.id, {
+        .addMusicTracksToGameSession(this.activeSession.id, {
           trackUrl: track.url,
           title: track.name,
           freeSoundId: track.id,
@@ -90,5 +90,7 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
       audioElement.play();
       } 
   }
+
+  
   
 }

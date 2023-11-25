@@ -49,7 +49,12 @@
     </div>
     <div class="expanded-contents container">
       {{ session.date }}
+      <div *ngFor="let track of session.musicTracks; let i = index">
+        <input type="text" [(ngModel)]="track.title" placeholder="track.title">
+        <button (click)="playTrack(track)">Play</button>
+      </div>
       <p>Someday there will be music tracks here!</p>
+
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { GameSessionService } from '../service/game-session.service';
+import { TrackPreview } from '../music-selection/music-selection.component';
 
 @Component({
   selector: 'app-display-game-sessions',
@@ -17,8 +18,7 @@ export class DisplayGameSessionsComponent implements OnInit {
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
   constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient,
+
     private gameSessionService: GameSessionService
   ) {
     this.username = null;
@@ -44,6 +44,7 @@ export class DisplayGameSessionsComponent implements OnInit {
 
   expandGameSession(i: number, session: any) {
     //first, animate clicked on div. onclick
+
     const div = document.getElementsByClassName(
       'game-session-card-style--back'
     )[i];
@@ -58,6 +59,8 @@ export class DisplayGameSessionsComponent implements OnInit {
     )[0];
     this.clickedSession = session;
     this.selectedGameSessionChange.emit(session);
+    console.log(session);
+    console.log('Music Tracks:', session.musicTracks);
     setTimeout(function () {
       gamesesh.setAttribute('style', 'display: block;');
     }, 23);
@@ -82,4 +85,11 @@ export class DisplayGameSessionsComponent implements OnInit {
 
     gamesesh.setAttribute('style', 'display: none;');
   }
+  playTrack(track: TrackPreview) {
+    const audioElement = document.getElementById('audio-player') as HTMLAudioElement;
+    if (audioElement) {
+      audioElement.src = track.url;
+      audioElement.play();
+    }
+}
 }

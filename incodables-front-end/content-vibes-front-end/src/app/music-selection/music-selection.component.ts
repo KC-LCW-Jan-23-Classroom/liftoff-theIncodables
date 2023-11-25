@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameSessions } from '../model/gamesession-model';
+import { AudioService } from '../service/audio-service';
 
 export interface TrackPreview {
   id: string;
@@ -35,7 +36,9 @@ export class MusicSelectionComponent implements OnInit {
   @Input() track: TrackPreview | undefined;
   @Input() selectedSession: GameSessions | undefined;
 
-  constructor() {
+  // private audioElement: HTMLAudioElement = new Audio();
+
+  constructor(private audioService: AudioService) {
     this.selectedSession = new GameSessions();
   }
 
@@ -54,11 +57,20 @@ export class MusicSelectionComponent implements OnInit {
   }
 
   playTrackPreview(trackUrl: string) {
-    const audioElement = document.getElementById('track-preview-audio') as HTMLAudioElement;
-    if (audioElement) {
-      audioElement.src = trackUrl;
-      audioElement.play();
-      } 
-  }
-  
+    this.audioService.audioUrl = trackUrl;
 }
+
+  stopTrack() {
+    this.audioService.audioUrl = '';
+  }
+}
+
+
+ //   const audioElement = document.getElementById('track-preview-audio') as HTMLAudioElement;
+  //   if (audioElement) {
+  //     audioElement.src = trackUrl;
+  //     audioElement.play();
+  //     } 
+  // 
+
+

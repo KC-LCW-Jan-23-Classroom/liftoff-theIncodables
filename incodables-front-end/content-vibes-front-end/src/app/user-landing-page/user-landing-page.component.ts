@@ -42,6 +42,7 @@ export class UserLandingPageComponent implements OnInit {
       console.log(campaigns);
     });
     console.log('campaigns: ', this.campaigns);
+    this.sessions = [{ name: 'add' }];
   }
 
   setSelectedGameSession(session: any) {
@@ -86,4 +87,3 @@ createNewGameSession(campaignId: number | null) {
   }
 }
 }
-

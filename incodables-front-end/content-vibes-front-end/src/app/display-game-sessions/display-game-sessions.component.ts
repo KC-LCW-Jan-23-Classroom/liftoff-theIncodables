@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 import { GameSessionService } from '../service/game-session.service';
 import { TrackPreview } from '../music-selection/music-selection.component';
 
@@ -11,16 +9,13 @@ import { TrackPreview } from '../music-selection/music-selection.component';
   inputs: ['campaignId'],
 })
 export class DisplayGameSessionsComponent implements OnInit {
-  @Output() selectedGameSessionChange = new EventEmitter<any>();
+  @Output() activeGameSession = new EventEmitter<any>();
   username: string | null;
   @Input() campaignId: number | null = null;
   @Input() sessions: any[] = [];
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
-  constructor(
-
-    private gameSessionService: GameSessionService
-  ) {
+  constructor(private gameSessionService: GameSessionService) {
     this.username = null;
   }
   ngOnInit(): void {
@@ -58,9 +53,9 @@ export class DisplayGameSessionsComponent implements OnInit {
       'game-session-expanded'
     )[0];
     this.clickedSession = session;
-    this.selectedGameSessionChange.emit(session);
-    console.log(session);
-    console.log('Music Tracks:', session.musicTracks);
+    this.activeGameSession.emit(session);
+    // console.log(session);
+    // console.log('Music Tracks:', session.musicTracks);
     setTimeout(function () {
       gamesesh.setAttribute('style', 'display: block;');
     }, 23);
@@ -86,10 +81,25 @@ export class DisplayGameSessionsComponent implements OnInit {
     gamesesh.setAttribute('style', 'display: none;');
   }
   playTrack(track: TrackPreview) {
-    const audioElement = document.getElementById('audio-player') as HTMLAudioElement;
+    const audioElement = document.getElementById(
+      'audio-player'
+    ) as HTMLAudioElement;
     if (audioElement) {
       audioElement.src = track.url;
       audioElement.play();
     }
-}
+  }
+  removeTrack(gameSessionId: number, musicTrackId: number, index: number) {
+    this.gameSessionService
+      .removeMusicTrackFromGameSession(gameSessionId, musicTrackId)
+      .subscribe(
+        () => {
+          console.log('Music track removed successfully');
+          this.clickedSession.musicTracks.splice(index, 1);
+        },
+        (error) => {
+          console.error('Error removing music track', error);
+        }
+      );
+  }
 }

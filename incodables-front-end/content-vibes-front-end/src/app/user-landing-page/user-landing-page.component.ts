@@ -20,7 +20,7 @@ export class UserLandingPageComponent implements OnInit {
   selectedCampaignId: number | null = null;
   selectedGameSession: any;
   // selectedSession: GameSessions | undefined;
-  sessions: any[] = [{ name: 'add' }]; 
+  sessions: any[] = [];
   isFirstGameSession: boolean = true; 
 
 
@@ -42,6 +42,7 @@ export class UserLandingPageComponent implements OnInit {
       console.log(campaigns);
     });
     console.log('campaigns: ', this.campaigns);
+    this.sessions = [{ name: 'add' }];
   }
 
   setSelectedGameSession(session: any) {
@@ -54,7 +55,7 @@ export class UserLandingPageComponent implements OnInit {
     if (this.selectedCampaignId !== null) {
       this.gameSessionService.getAllGameSessionsByCampaign(this.selectedCampaignId).subscribe((sessions: any[]) => {
         this.sessions = sessions;
-        this.sessions.push({ name: 'add' });
+        this.sessions.push({name:"add"});
         this.isFirstGameSession = this.sessions.length === 0;
         console.log('sessions: ', this.sessions);
       });
@@ -86,4 +87,3 @@ createNewGameSession(campaignId: number | null) {
   }
 }
 }
-

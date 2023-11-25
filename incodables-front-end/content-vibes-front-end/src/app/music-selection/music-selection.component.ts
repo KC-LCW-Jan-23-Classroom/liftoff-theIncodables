@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { GameSessions } from '../model/gamesession-model';
+import { MusicTrack } from '../model/music-track';
+import { GameSessionService } from '../service/game-session.service';
 
 export interface TrackPreview {
   id: string;
@@ -36,7 +38,7 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
   @Input() selectedSession: GameSessions | undefined;
   @Input() gamesession:any;
 
-  constructor() {
+  constructor(private gameSessionService: GameSessionService) {
     // this.selectedSession = new GameSessions;
   }
 
@@ -56,12 +58,30 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
       this.selectedTracks.push(track.id);
       this.selectedTrackObjects.push(track);
   
-      if (this.selectedSession != undefined) {
+      if (this.gamesession != undefined) {
         const trackIdToAdd = track.id;
         this.gamesession.musicTracks.push(trackIdToAdd);
+        this.gameSessionService
+        .addMusicTracksToGameSession(this.gamesession.id, {
+          trackUrl: track.url,
+          title: track.name,
+          freeSoundId: track.id,
+        })
+        .subscribe(
+          (addedTrack: MusicTrack) => {
+            console.log('Track added successfully:', addedTrack);
+            // Optionally, you can update your UI or perform additional actions here
+          },
+          (error: any) => {
+            console.error('Error adding track:', error);
+            // Handle the error appropriately, e.g., show an error message to the user
+          }
+        );
+    }
+        
       }
     }
-  }
+  
 
   playTrackPreview(trackUrl: string) {
     const audioElement = document.getElementById('track-preview-audio') as HTMLAudioElement;

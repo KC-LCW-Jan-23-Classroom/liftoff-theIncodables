@@ -36,7 +36,7 @@ public class GameSessionController {
         List<GameSession> gameSessions = gameSessionRepository.findByCampaignId(campaignId);
         //handle case where no campaign at campaignId
         if (gameSessions.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(gameSessions,HttpStatus.OK);
         }
         //return gameSessions that belong to campaignId
         return new ResponseEntity<>(gameSessions, HttpStatus.OK);

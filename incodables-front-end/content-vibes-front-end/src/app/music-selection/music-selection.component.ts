@@ -91,6 +91,7 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
 
   @Input() track: TrackPreview | undefined;
   @Input() activeSession: any;
+  selectedSession: any;
 
   constructor(
     private gameSessionService: GameSessionService,

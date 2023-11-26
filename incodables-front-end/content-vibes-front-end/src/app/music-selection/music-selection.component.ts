@@ -79,6 +79,7 @@ export class MusicSelectionComponent implements OnInit {
 
   selectedTracks: string[] = [];
   selectedTrackObjects: TrackPreview[] = [];
+  previewPlaying: boolean = false;
 
   @Input() track: TrackPreview | undefined;
   @Input() selectedSession: GameSessions | undefined;

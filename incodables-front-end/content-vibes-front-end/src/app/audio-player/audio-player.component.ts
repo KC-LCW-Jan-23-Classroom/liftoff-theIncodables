@@ -12,31 +12,37 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
 
   private audioServiceSubscription: any;
 
-  constructor(private audioService: AudioService) {}
+  constructor(protected audioService: AudioService) {}
 
   ngOnInit(): void {
-    this.audioServiceSubscription = this.audioService.audioUrl$.subscribe(url => {
-      this.audioUrl = url;
-      this.playAudio();
-    });
+    // this.audioServiceSubscription = this.audioService.audioUrl$.subscribe(url => {
+    //   this.audioUrl = url;
+    //   this.playAudio();
+    // });
   }
 
   ngOnDestroy(): void {
-    this.audioServiceSubscription.unsubscribe();
+    //this.audioServiceSubscription.unsubscribe();
   }
 
-  playAudio() {
-    if (this.audioUrl) {
-      this.audioElement.pause();
-      this.audioElement.currentTime = 0;
-      this.audioElement.src = this.audioUrl;
-      this.audioElement.play().catch(error => {
-        console.error('Failed to play audio:', error);
-      });
-    } else {
-      // stop audio logic here using this.audioElemnt
-      this.audioElement.pause();
-      this.audioElement.currentTime = 0;
-    }
+  // playAudio() {
+  //   if (this.audioUrl) {
+  //     this.audioElement.pause();
+  //     this.audioElement.currentTime = 0;
+  //     this.audioElement.src = this.audioUrl;
+  //     this.audioElement.play().catch((error) => {
+  //       console.error('Failed to play audio:', error);
+  //     });
+  //   } else {
+  //     // stop audio logic here using this.audioElemnt
+  //     this.audioElement.pause();
+  //     this.audioElement.currentTime = 0;
+  //   }
+  // }
+
+  test() {
+    console.log(this.audioService.getAudioUrl());
+
+    //const audioPlayer =
   }
 }

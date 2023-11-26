@@ -18,6 +18,7 @@ import { CampaignService } from './service/campaign.service';
 import { GameSessionService } from './service/game-session.service';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { MusicSelectionComponent } from './music-selection/music-selection.component';
+import { AudioService } from './service/audio-service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MusicSelectionComponent } from './music-selection/music-selection.compo
     GameSessionService,
     MusicSelectionComponent,
     NavBarComponent,
+    AudioService,
   ],
 
   bootstrap: [AppComponent],

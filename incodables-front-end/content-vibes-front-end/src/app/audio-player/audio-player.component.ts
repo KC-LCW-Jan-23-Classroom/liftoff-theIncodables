@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { AudioService } from '../service/audio-service';
 
 @Component({
@@ -11,7 +11,7 @@ export class AudioPlayerComponent {
   audioElement: HTMLAudioElement = new Audio();
   isGameSelected = false;
 
-  private audioServiceSubscription: any;
+  // private audioServiceSubscription: any;
 
   constructor(protected audioService: AudioService) {}
 

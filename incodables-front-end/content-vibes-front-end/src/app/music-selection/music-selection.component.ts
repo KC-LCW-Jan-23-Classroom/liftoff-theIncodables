@@ -90,7 +90,6 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
   previewPlaying: boolean = false;
 
   @Input() track: TrackPreview | undefined;
-  // @Input() selectedSession: GameSessions | undefined;
   @Input() activeSession: any;
 
   constructor(
@@ -172,10 +171,3 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
     //this.audioService.audioUrl = '';
   }
 }
-
-//   const audioElement = document.getElementById('track-preview-audio') as HTMLAudioElement;
-//   if (audioElement) {
-//     audioElement.src = trackUrl;
-//     audioElement.play();
-//     }
-//

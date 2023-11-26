@@ -382,6 +382,13 @@ p, label {
 
 
 /* Style for the audio navigation bar */
+.audio-container {
+  position:relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .navbar {
     text-align: center;
     align-items: center;

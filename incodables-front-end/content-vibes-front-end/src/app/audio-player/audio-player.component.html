@@ -9,12 +9,14 @@
     <div class="container">
       <!-- Navigation Bar -->
       <div class="audio-navbar">
+        <ng-container *ngIf="isGameSelected">
         <!-- Audio Player -->
         <audio controls>
           <source src="" type="" />
           Your browser does not support the audio element.
         </audio>
-      </div>
+      </ng-container>
+    </div>
 
       <!-- Page Content -->
       <div class="content">

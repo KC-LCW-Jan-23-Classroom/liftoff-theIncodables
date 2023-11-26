@@ -1,6 +1,7 @@
-<div class="music-selection">
+<div class="music-selection" *ngIf="selectedSession">
   <p class="campaign-header">Music Sessions</p>
 
+  
   <div *ngFor="let track of musicTracks">
     <div class="music-track">
       <p class="track-name">{{ track.name }}</p>
@@ -16,6 +17,7 @@
       </button>
     </div>
   </div>
+
 
   <audio id="track-preview-audio" src=""></audio>
 </div>

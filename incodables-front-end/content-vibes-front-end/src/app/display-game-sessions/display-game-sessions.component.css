@@ -2,6 +2,7 @@
     display: flex;
     flex-direction:row;
     flex-wrap: wrap;
+    margin-top: -40px;
 }
 .user-landing-ngfor {
     margin-right: 15px;
@@ -41,11 +42,12 @@ transform: rotateY(180deg);
 }
 
 
-.flip-card {
+.flip-card { 
     background-color: transparent;
     height: 200px;
     /* border: 1px solid #f1f1f1; */
     perspective: 1000px;
+    margin-top: 20px;
 }
 
 .game-session-card-style--front {

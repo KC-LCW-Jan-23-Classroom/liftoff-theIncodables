@@ -33,6 +33,7 @@ import { MusicSelectionComponent } from './music-selection/music-selection.compo
     DisplayGameSessionsComponent,
     AudioPlayerComponent,
     MusicSelectionComponent,
+    
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [

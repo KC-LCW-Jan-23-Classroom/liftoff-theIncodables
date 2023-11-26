@@ -7,18 +7,19 @@
   <body>
     <!-- Container -->
     <div class="audio-container">
-      <div class="audio-navbar">
-        <audio
-          controls
-          id="mediaPlayer-src"
-          src="{{ audioService.getAudioUrl() }}"
-        >
-          <!-- <source type="audio/mpeg" /> -->
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <!-- Page Content -->
-      <div class="content"></div>
+      <!-- <ng-container *ngIf="isGameSelected" class="audio-navbar"> -->
+      <!-- Audio Player -->
+      <audio
+        controls
+        id="mediaPlayer-src"
+        src="{{ audioService.getAudioUrl() }}"
+      >
+        Your browser does not support the audio element.
+      </audio>
+      <!-- </ng-container> -->
     </div>
+
+    <!-- Page Content -->
+    <div class="content"></div>
   </body>
 </html>

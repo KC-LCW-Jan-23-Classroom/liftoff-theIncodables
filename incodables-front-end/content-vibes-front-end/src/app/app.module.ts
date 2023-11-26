@@ -34,6 +34,7 @@ import { AudioService } from './service/audio-service';
     DisplayGameSessionsComponent,
     AudioPlayerComponent,
     MusicSelectionComponent,
+    
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [

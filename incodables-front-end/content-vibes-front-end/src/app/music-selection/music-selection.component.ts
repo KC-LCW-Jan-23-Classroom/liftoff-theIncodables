@@ -1,6 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { GameSessions } from '../model/gamesession-model';
 import { AudioService } from '../service/audio-service';
+import { GameSessionService } from '../service/game-session.service';
+import { MusicTrack } from '../model/music-track';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 
 export interface TrackPreview {
   id: string;
@@ -13,7 +21,7 @@ export interface TrackPreview {
   templateUrl: './music-selection.component.html',
   styleUrls: ['./music-selection.component.css'],
 })
-export class MusicSelectionComponent implements OnInit {
+export class MusicSelectionComponent implements OnInit, OnChanges {
   musicTracks: TrackPreview[] = [
     {
       id: '709397',
@@ -82,15 +90,32 @@ export class MusicSelectionComponent implements OnInit {
   previewPlaying: boolean = false;
 
   @Input() track: TrackPreview | undefined;
-  @Input() selectedSession: GameSessions | undefined;
+  // @Input() selectedSession: GameSessions | undefined;
+  @Input() activeSession: any;
 
-  // private audioElement: HTMLAudioElement = new Audio();
-
-  constructor(private audioService: AudioService) {
-    this.selectedSession = new GameSessions();
+  constructor(
+    private gameSessionService: GameSessionService,
+    protected audioService: AudioService
+  ) {
+    // this.selectedSession = new GameSessions();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(
+      'Received game session in MusicSelectionComponent:',
+      this.activeSession
+    );
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['activeSession']) {
+      console.log(
+        'activeSession changed:',
+        changes['activeSession'].currentValue
+      );
+      this.activeSession = changes['activeSession'].currentValue;
+    }
+  }
 
   addTrack(track: TrackPreview) {
     this.audioService.setAudioUrl(track.url);
@@ -99,9 +124,25 @@ export class MusicSelectionComponent implements OnInit {
       this.selectedTracks.push(track.id);
       this.selectedTrackObjects.push(track);
 
-      if (this.selectedSession != undefined) {
+      if (this.activeSession != undefined) {
         const trackIdToAdd = track.id;
-        this.selectedSession.tracks.push(trackIdToAdd);
+        this.activeSession.musicTracks.push(trackIdToAdd);
+        this.gameSessionService
+          .addMusicTracksToGameSession(this.activeSession.id, {
+            trackUrl: track.url,
+            title: track.name,
+            freeSoundId: track.id,
+          })
+          .subscribe(
+            (addedTrack: MusicTrack) => {
+              console.log('Track added successfully:', addedTrack);
+              // Optionally, you can update your UI or perform additional actions here
+            },
+            (error: any) => {
+              console.error('Error adding track:', error);
+              // Handle the error appropriately, e.g., show an error message to the user
+            }
+          );
       }
     }
   }

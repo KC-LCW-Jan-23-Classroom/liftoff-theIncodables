@@ -7,9 +7,10 @@ public class MusicTracksDTO {
     private String freeSoundId;
     private Integer gameSessionId;
 
-    public MusicTracksDTO(String title, String trackUrl) {
+    public MusicTracksDTO(String title, String trackUrl, String freeSoundId) {
         this.title = title;
         this.trackUrl = trackUrl;
+        this.freeSoundId =freeSoundId;
     }
 
     public String getTitle() {

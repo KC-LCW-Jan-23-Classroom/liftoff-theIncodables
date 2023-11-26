@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GameSession } from '../model/game-session';
 import { GameSessionDto } from '../model/game-session-dto';
+import { MusicTrack } from '../model/music-track';
+import { MusicTrackDto } from '../model/music-track-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,21 @@ export class GameSessionService {
 
   deleteGameSession(campaignId: number, gameSessionId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/delete/${campaignId}/${gameSessionId}`);
+  }
+  getAllMusicTracksForGameSession(gameSessionId: number): Observable<MusicTrack[]> {
+    return this.http.get<MusicTrack[]>(`${this.baseUrl}/tracks/${gameSessionId}`);
+  }
+
+  getMusicTrackById(musicTrackId: number): Observable<MusicTrack> {
+    return this.http.get<MusicTrack>(`${this.baseUrl}/tracks/id/${musicTrackId}`);
+  }
+
+  addMusicTracksToGameSession(gameSessionId: number, musicTracksDTO: MusicTrackDto): Observable<MusicTrack> {
+    return this.http.post<MusicTrack>(`${this.baseUrl}/tracks/add/${gameSessionId}`, musicTracksDTO);
+  }
+
+  removeMusicTrackFromGameSession(gameSessionId: number, musicTrackId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/remove/${gameSessionId}/${musicTrackId}`);
   }
 }
 

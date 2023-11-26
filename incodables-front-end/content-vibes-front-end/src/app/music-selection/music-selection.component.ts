@@ -1,3 +1,7 @@
+import { GameSessions } from '../model/gamesession-model';
+import { AudioService } from '../service/audio-service';
+import { GameSessionService } from '../service/game-session.service';
+import { MusicTrack } from '../model/music-track';
 import {
   Component,
   Input,
@@ -5,9 +9,6 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { MusicTrack } from '../model/music-track';
-import { GameSessionService } from '../service/game-session.service';
-
 
 export interface TrackPreview {
   id: string;
@@ -86,13 +87,17 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
 
   selectedTracks: string[] = [];
   selectedTrackObjects: TrackPreview[] = [];
+  previewPlaying: boolean = false;
 
   @Input() track: TrackPreview | undefined;
-  // @Input() selectedSession: GameSessions | undefined;
   @Input() activeSession: any;
   selectedSession: any;
 
-  constructor(private gameSessionService: GameSessionService) {
+  constructor(
+    private gameSessionService: GameSessionService,
+    protected audioService: AudioService
+  ) {
+    // this.selectedSession = new GameSessions();
   }
 
   ngOnInit(): void {
@@ -113,6 +118,8 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
   }
 
   addTrack(track: TrackPreview) {
+    this.audioService.setAudioUrl(track.url);
+
     if (track && typeof track === 'object' && track.hasOwnProperty('id')) {
       this.selectedTracks.push(track.id);
       this.selectedTrackObjects.push(track);
@@ -130,7 +137,6 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
             (addedTrack: MusicTrack) => {
               console.log('Track added successfully:', addedTrack);
               // Optionally, you can update your UI or perform additional actions here
-              
             },
             (error: any) => {
               console.error('Error adding track:', error);
@@ -142,12 +148,27 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
   }
 
   playTrackPreview(trackUrl: string) {
+    this.audioService.setAudioUrl(trackUrl);
+
     const audioElement = document.getElementById(
       'track-preview-audio'
     ) as HTMLAudioElement;
     if (audioElement) {
       audioElement.src = trackUrl;
+
+      if (this.previewPlaying) {
+        audioElement.pause();
+        this.previewPlaying = false;
+        return;
+      }
+
       audioElement.play();
+
+      this.previewPlaying = true;
     }
+  }
+
+  stopTrack() {
+    //this.audioService.audioUrl = '';
   }
 }

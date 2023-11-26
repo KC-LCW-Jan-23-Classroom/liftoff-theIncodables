@@ -6,24 +6,20 @@
 
   <body>
     <!-- Container -->
-    <div class="container">
-      <!-- Navigation Bar -->
-      <div class="audio-navbar">
-        <ng-container *ngIf="isGameSelected">
-        <!-- Audio Player -->
-        <audio controls>
-          <source src="" type="" />
-          Your browser does not support the audio element.
-        </audio>
-      </ng-container>
+    <div class="audio-container">
+      <!-- <ng-container *ngIf="isGameSelected" class="audio-navbar"> -->
+      <!-- Audio Player -->
+      <audio
+        controls
+        id="mediaPlayer-src"
+        src="{{ audioService.getAudioUrl() }}"
+      >
+        Your browser does not support the audio element.
+      </audio>
+      <!-- </ng-container> -->
     </div>
 
-      <!-- Page Content -->
-      <div class="content">
-        <!-- <h2>Scroll down the page</h2> -->
-        <!--TODO: Music tracks here-->
-        <!-- <p>Music tracks</p> -->
-      </div>
-    </div>
+    <!-- Page Content -->
+    <div class="content"></div>
   </body>
 </html>

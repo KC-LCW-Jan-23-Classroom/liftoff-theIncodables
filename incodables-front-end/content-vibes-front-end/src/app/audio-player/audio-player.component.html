@@ -8,11 +8,14 @@
     <!-- Container -->
     <div class="audio-container">
       <div class="audio-navbar">
-        <audio controls>
-          <source src="" type="audio/mpeg" />
+        <audio
+          controls
+          id="mediaPlayer-src"
+          src="{{ audioService.getAudioUrl() }}"
+        >
+          <!-- <source type="audio/mpeg" /> -->
           Your browser does not support the audio element.
         </audio>
-        <button (click)="test()"></button>
       </div>
       <!-- Page Content -->
       <div class="content"></div>

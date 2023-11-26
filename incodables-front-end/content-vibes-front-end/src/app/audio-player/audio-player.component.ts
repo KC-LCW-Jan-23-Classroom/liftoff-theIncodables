@@ -39,10 +39,4 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
   //     this.audioElement.currentTime = 0;
   //   }
   // }
-
-  test() {
-    console.log(this.audioService.getAudioUrl());
-
-    //const audioPlayer =
-  }
 }

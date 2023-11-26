@@ -93,6 +93,8 @@ export class MusicSelectionComponent implements OnInit {
   ngOnInit(): void {}
 
   addTrack(track: TrackPreview) {
+    this.audioService.setAudioUrl(track.url);
+
     if (track && typeof track === 'object' && track.hasOwnProperty('id')) {
       this.selectedTracks.push(track.id);
       this.selectedTrackObjects.push(track);
@@ -106,7 +108,23 @@ export class MusicSelectionComponent implements OnInit {
 
   playTrackPreview(trackUrl: string) {
     this.audioService.setAudioUrl(trackUrl);
-    console.log(this.audioService.getAudioUrl());
+
+    const audioElement = document.getElementById(
+      'track-preview-audio'
+    ) as HTMLAudioElement;
+    if (audioElement) {
+      audioElement.src = trackUrl;
+
+      if (this.previewPlaying) {
+        audioElement.pause();
+        this.previewPlaying = false;
+        return;
+      }
+
+      audioElement.play();
+
+      this.previewPlaying = true;
+    }
   }
 
   stopTrack() {

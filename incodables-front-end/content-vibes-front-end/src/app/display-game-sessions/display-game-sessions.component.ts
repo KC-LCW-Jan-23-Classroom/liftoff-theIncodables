@@ -4,7 +4,6 @@ import { TrackPreview } from '../music-selection/music-selection.component';
 import { AudioService } from '../service/audio-service';
 import { MusicTrack } from '../model/music-track';
 
-
 @Component({
   selector: 'app-display-game-sessions',
   templateUrl: './display-game-sessions.component.html',
@@ -19,7 +18,10 @@ export class DisplayGameSessionsComponent implements OnInit {
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
   isEditing = false;
-  constructor(private gameSessionService: GameSessionService, private audioService: AudioService) {
+  constructor(
+    private gameSessionService: GameSessionService,
+    private audioService: AudioService
+  ) {
     this.username = null;
   }
   ngOnInit(): void {
@@ -97,21 +99,57 @@ export class DisplayGameSessionsComponent implements OnInit {
         }
       );
   }
-
   clearTrackTitle(track: any) {
-    track.title = ''; // Clear the track title
-    const editableButton = document.querySelector('.editable-button');
+    // Check if the track has an originalTitle property
+    if (!track.hasOwnProperty('originalTitle')) {
+      // If not, set the originalTitle to the current title
+      track.originalTitle = track.title;
+    }
+  
+    // Check if the title is empty
+    if (!track.title.trim()) {
+      // If it's empty, set it back to the original title
+      track.title = track.originalTitle;
+      
+    } else {
+      // If it's not empty, clear the track title
+
+      track.originalTitle = track.title;
+      track.title = '';
+      
+    }
+  
+    // Manually reset the form control for this track
+    const editableButton = document.querySelector(`#editable-button-${track.id}`);
     if (editableButton) {
       editableButton.innerHTML = ''; // Clear the content of the editable-button div
+  
+      // Manually reset the form control
+      editableButton.dispatchEvent(new Event('input', { bubbles: true }));
     }
   }
+
   saveTrackName(track: any) {
     const trackIdToString = track.id.toString();
+    // Check if the title is empty
+    if (!track.title.trim()) {
+      track.name = track.title;
+      console.log('Title is empty. No need to update.');
+      return;
+    }
+
+      // Check if the title is the same as the original title
+  if (track.title === track.originalTitle) {
+    console.log('Title is not changed. No need to update.');
+    return;
+  }
     // Assuming you have a method in your service to update the track name
-    this.gameSessionService.updateMusicTrackName(trackIdToString, track.title)
+    this.gameSessionService
+      .updateMusicTrackName(trackIdToString, track.title)
       .subscribe(
         () => {
           console.log('Track name updated successfully');
+          track.originalTitle = track.title;
           // Optionally, you can update your UI or perform additional actions here
         },
         (error: any) => {
@@ -121,9 +159,8 @@ export class DisplayGameSessionsComponent implements OnInit {
       );
   }
 
-  //method for debugging 
-//   logTrackInfo(track: TrackPreview): void {
-//   console.log('Track Info:', track);
-// }
-
+  //method for debugging
+  //   logTrackInfo(track: TrackPreview): void {
+  //   console.log('Track Info:', track);
+  // }
 }

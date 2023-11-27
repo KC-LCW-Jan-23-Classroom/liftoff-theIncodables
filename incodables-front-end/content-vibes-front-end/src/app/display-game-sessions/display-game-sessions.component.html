@@ -67,8 +67,8 @@
     <div class="expanded-contents container" >
       {{ session.date }}
       <div *ngFor="let track of session.musicTracks; let i = index">
-        <input [(ngModel)]="track.title" placeholder="track.name" class="editable-button" (click)="clearTrackTitle(track)" (focusout)="saveTrackName(track)">
-          {{ track.title }} (Click to Add Custom Track Title)
+        <input [(ngModel)]="track.title" placeholder="Enter Custom Track Title" class="editable-button" (click)="clearTrackTitle(track)" (focusout)="saveTrackName(track)">
+          {{ track.title }} 
         
         <div class="track-buttons">
           <button class="playTrack" (click)="playTrack(track)">

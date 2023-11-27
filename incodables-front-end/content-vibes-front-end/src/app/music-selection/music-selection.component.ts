@@ -150,27 +150,10 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
   }
 
   playTrackPreview(trackUrl: string) {
-    this.audioService.setAudioUrl(trackUrl);
-
-    const audioElement = document.getElementById(
-      'track-preview-audio'
-    ) as HTMLAudioElement;
-    if (audioElement) {
-      audioElement.src = trackUrl;
-
-      if (this.previewPlaying) {
-        audioElement.pause();
-        this.previewPlaying = false;
-        return;
-      }
-
-      audioElement.play();
-
-      this.previewPlaying = true;
-    }
+    this.audioService.setSelectedTrack(trackUrl);
   }
 
   stopTrack() {
-    //this.audioService.audioUrl = '';
+    this.audioService.pause();
   }
 }

@@ -12,7 +12,8 @@
       <audio
         controls
         id="mediaPlayer-src"
-        src="{{ audioService.getAudioUrl() }}"
+        [src]="trackUrl" #audioPlayer
+        autoplay
       >
         Your browser does not support the audio element.
       </audio>

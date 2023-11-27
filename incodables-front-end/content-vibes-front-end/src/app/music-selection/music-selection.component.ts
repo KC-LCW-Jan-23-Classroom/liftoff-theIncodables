@@ -9,6 +9,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { switchMap } from 'rxjs';
 
 export interface TrackPreview {
   id: string;
@@ -132,15 +133,16 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
             trackUrl: track.url,
             title: track.name,
             freeSoundId: track.id,
-          })
+          }).pipe(
+            switchMap(() => this.gameSessionService.getAllMusicTracksForGameSession(this.activeSession.id))
+          )
           .subscribe(
-            (addedTrack: MusicTrack) => {
-              console.log('Track added successfully:', addedTrack);
-              // Optionally, you can update your UI or perform additional actions here
+            (updatedTracks: MusicTrack[]) => {
+              this.activeSession.musicTracks = updatedTracks; // Update local data
+              console.log('Track added successfully:', updatedTracks);
             },
             (error: any) => {
               console.error('Error adding track:', error);
-              // Handle the error appropriately, e.g., show an error message to the user
             }
           );
       }
@@ -148,27 +150,10 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
   }
 
   playTrackPreview(trackUrl: string) {
-    this.audioService.setAudioUrl(trackUrl);
-
-    const audioElement = document.getElementById(
-      'track-preview-audio'
-    ) as HTMLAudioElement;
-    if (audioElement) {
-      audioElement.src = trackUrl;
-
-      if (this.previewPlaying) {
-        audioElement.pause();
-        this.previewPlaying = false;
-        return;
-      }
-
-      audioElement.play();
-
-      this.previewPlaying = true;
-    }
+    this.audioService.setSelectedTrack(trackUrl);
   }
 
   stopTrack() {
-    //this.audioService.audioUrl = '';
+    this.audioService.pause();
   }
 }

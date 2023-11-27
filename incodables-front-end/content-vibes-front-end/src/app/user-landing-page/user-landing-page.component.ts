@@ -7,6 +7,7 @@ import { GameSessionService } from '../service/game-session.service';
 import { GameSessionDto } from '../model/game-session-dto';
 import { GameSession } from '../model/game-session';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AudioService } from '../service/audio-service';
 
 @Component({
   selector: 'app-user-landing-page',
@@ -21,13 +22,13 @@ export class UserLandingPageComponent implements OnInit {
   selectedSession: any;
   sessions: any[] = [];
   isFirstGameSession: boolean = true;
-
   constructor(
     private userService: UserService,
     private campaignService: CampaignService,
     private gameSessionService: GameSessionService,
     @Inject(MusicSelectionComponent)
     private musicSelectionComponent: MusicSelectionComponent,
+    private audioService: AudioService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -47,6 +48,8 @@ export class UserLandingPageComponent implements OnInit {
           this.isFirstGameSession = this.sessions.length === 0;
         });
     });
+
+    
   }
   onSelectedGameSessionChange(gameSession: any): void {
     console.log('Received game session:', gameSession);

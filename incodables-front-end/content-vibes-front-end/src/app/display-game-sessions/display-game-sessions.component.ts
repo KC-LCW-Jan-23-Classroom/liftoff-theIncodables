@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GameSessionService } from '../service/game-session.service';
 import { TrackPreview } from '../music-selection/music-selection.component';
+import { AudioService } from '../service/audio-service';
+import { MusicTrack } from '../model/music-track';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class DisplayGameSessionsComponent implements OnInit {
   @Input() sessions: any[] = [];
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
-  constructor(private gameSessionService: GameSessionService, ) {
+  constructor(private gameSessionService: GameSessionService, private audioService: AudioService) {
     this.username = null;
   }
   ngOnInit(): void {
@@ -26,7 +28,6 @@ export class DisplayGameSessionsComponent implements OnInit {
         .subscribe((sessions: any[]) => {
           this.sessions = sessions;
           this.sessions.push({ name: 'add' });
-          console.log('sessions: ', this.sessions);
         });
     }
   }
@@ -55,8 +56,6 @@ export class DisplayGameSessionsComponent implements OnInit {
     )[0];
     this.clickedSession = session;
     this.activeGameSession.emit(session);
-    // console.log(session);
-    // console.log('Music Tracks:', session.musicTracks);
     setTimeout(function () {
       gamesesh.setAttribute('style', 'display: block;');
     }, 23);
@@ -81,14 +80,8 @@ export class DisplayGameSessionsComponent implements OnInit {
 
     gamesesh.setAttribute('style', 'display: none;');
   }
-  playTrack(track: TrackPreview) {
-    const audioElement = document.getElementById(
-      'audio-player'
-    ) as HTMLAudioElement;
-    if (audioElement) {
-      audioElement.src = track.url;
-      audioElement.play();
-    }
+  playTrack(track: MusicTrack) {
+    this.audioService.setSelectedTrack(track.trackUrl);
   }
   removeTrack(gameSessionId: number, musicTrackId: number, index: number) {
     this.gameSessionService
@@ -103,4 +96,10 @@ export class DisplayGameSessionsComponent implements OnInit {
         }
       );
   }
+
+  //method for debugging 
+//   logTrackInfo(track: TrackPreview): void {
+//   console.log('Track Info:', track);
+// }
+
 }

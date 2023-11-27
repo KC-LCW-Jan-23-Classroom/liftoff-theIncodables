@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import { AudioService } from '../service/audio-service';
 
 @Component({
@@ -6,16 +6,51 @@ import { AudioService } from '../service/audio-service';
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.css'],
 })
-export class AudioPlayerComponent {
+export class AudioPlayerComponent implements OnChanges {
   audioUrl: string = '';
   audioElement: HTMLAudioElement = new Audio();
   isGameSelected = false;
+  @Input()
+  trackUrl!: string;
+  @Input()
+  trackTitle!: string;
+  @ViewChild('audioPlayer')
+  audioPlayer!: ElementRef;
 
-  // private audioServiceSubscription: any;
+  isPlaying = false;
+
+
+
 
   constructor(protected audioService: AudioService) {}
+  ngOnInit() {
+    this.audioService.selectedTrack$.subscribe(trackUrl => {
+      this.trackUrl = trackUrl || '';
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['trackUrl'] && this.trackUrl) {
+      this.play();
+    }
+  }
 
   onSelectGameSession() {
     this.isGameSelected = true;
   }
+  togglePlayPause() {
+    if (this.isPlaying) {
+      this.audioPlayer.nativeElement.pause();
+    } else {
+      this.audioPlayer.nativeElement.play();
+    }
+    this.isPlaying = !this.isPlaying;
+  }
+
+  private play() {
+    this.audioPlayer.nativeElement.src = this.trackUrl;
+    // this.audioPlayer.nativeElement.play();
+    this.isPlaying = true;
+  }
+
 }

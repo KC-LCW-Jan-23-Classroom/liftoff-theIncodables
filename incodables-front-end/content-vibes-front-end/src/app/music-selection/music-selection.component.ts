@@ -149,6 +149,7 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
     }
   }
 
+
   playTrackPreview(trackUrl: string) {
     this.audioService.setSelectedTrack(trackUrl);
   }

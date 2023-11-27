@@ -98,14 +98,29 @@ export class DisplayGameSessionsComponent implements OnInit {
       );
   }
 
-  // clearTrackTitle(track: any) {
-  //   track.title = ''; // Clear the track title
-  //   const editableButton = document.querySelector('.editable-button');
-  //   if (editableButton) {
-  //     editableButton.innerHTML = ''; // Clear the content of the editable-button div
-  //   }
-  // }
-  
+  clearTrackTitle(track: any) {
+    track.title = ''; // Clear the track title
+    const editableButton = document.querySelector('.editable-button');
+    if (editableButton) {
+      editableButton.innerHTML = ''; // Clear the content of the editable-button div
+    }
+  }
+  saveTrackName(track: any) {
+    const trackIdToString = track.id.toString();
+    // Assuming you have a method in your service to update the track name
+    this.gameSessionService.updateMusicTrackName(trackIdToString, track.title)
+      .subscribe(
+        () => {
+          console.log('Track name updated successfully');
+          // Optionally, you can update your UI or perform additional actions here
+        },
+        (error: any) => {
+          console.error('Error updating track name:', error);
+          // Handle the error appropriately, e.g., show an error message to the user
+        }
+      );
+  }
+
   //method for debugging 
 //   logTrackInfo(track: TrackPreview): void {
 //   console.log('Track Info:', track);

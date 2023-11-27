@@ -67,9 +67,9 @@
     <div class="expanded-contents container" >
       {{ session.date }}
       <div *ngFor="let track of session.musicTracks; let i = index">
-        <div contenteditable [(ngModel)]="track.title" placeholder="track.name" class="editable-button" >
+        <input [(ngModel)]="track.title" placeholder="track.name" class="editable-button" (click)="clearTrackTitle(track)" (focusout)="saveTrackName(track)">
           {{ track.title }} (Click to Add Custom Track Title)
-        </div>
+        
         <div class="track-buttons">
           <button class="playTrack" (click)="playTrack(track)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">

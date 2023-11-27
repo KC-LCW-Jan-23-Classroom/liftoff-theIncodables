@@ -18,6 +18,7 @@ export class DisplayGameSessionsComponent implements OnInit {
   @Input() sessions: any[] = [];
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
+  isEditing = false;
   constructor(private gameSessionService: GameSessionService, private audioService: AudioService) {
     this.username = null;
   }
@@ -97,6 +98,13 @@ export class DisplayGameSessionsComponent implements OnInit {
       );
   }
 
+  clearTrackTitle(track: any) {
+    track.title = ''; // Clear the track title
+    const editableButton = document.querySelector('.editable-button');
+    if (editableButton) {
+      editableButton.innerHTML = ''; // Clear the content of the editable-button div
+    }
+  }
   //method for debugging 
 //   logTrackInfo(track: TrackPreview): void {
 //   console.log('Track Info:', track);

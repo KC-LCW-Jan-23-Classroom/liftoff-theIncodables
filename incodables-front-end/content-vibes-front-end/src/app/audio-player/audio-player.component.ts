@@ -21,14 +21,11 @@ export class AudioPlayerComponent implements OnChanges {
 
 
 
-  // private audioServiceSubscription: any;
 
   constructor(protected audioService: AudioService) {}
   ngOnInit() {
     this.audioService.selectedTrack$.subscribe(trackUrl => {
       this.trackUrl = trackUrl || '';
-      // Optionally, you can play the track immediately upon receiving a new URL.
-      // this.play();
     });
   }
 

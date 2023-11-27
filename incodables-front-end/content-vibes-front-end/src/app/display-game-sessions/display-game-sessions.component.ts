@@ -28,7 +28,6 @@ export class DisplayGameSessionsComponent implements OnInit {
         .subscribe((sessions: any[]) => {
           this.sessions = sessions;
           this.sessions.push({ name: 'add' });
-          console.log('sessions: ', this.sessions);
         });
     }
   }
@@ -57,11 +56,6 @@ export class DisplayGameSessionsComponent implements OnInit {
     )[0];
     this.clickedSession = session;
     this.activeGameSession.emit(session);
-    // console.log(session);
-    console.log('Music Tracks:', session.musicTracks);
-    console.log('Track URLs:');
-    session.musicTracks.forEach((track: any) => {
-      console.log(track.trackUrl);});
     setTimeout(function () {
       gamesesh.setAttribute('style', 'display: block;');
     }, 23);
@@ -88,7 +82,6 @@ export class DisplayGameSessionsComponent implements OnInit {
   }
   playTrack(track: MusicTrack) {
     this.audioService.setSelectedTrack(track.trackUrl);
-  console.log('Selected Track URL:', track.trackUrl);
   }
   removeTrack(gameSessionId: number, musicTrackId: number, index: number) {
     this.gameSessionService
@@ -103,7 +96,10 @@ export class DisplayGameSessionsComponent implements OnInit {
         }
       );
   }
-  logTrackInfo(track: TrackPreview): void {
-  console.log('Track Info:', track);
-}
+
+  //method for debugging 
+//   logTrackInfo(track: TrackPreview): void {
+//   console.log('Track Info:', track);
+// }
+
 }

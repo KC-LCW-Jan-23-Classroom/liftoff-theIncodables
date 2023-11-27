@@ -68,7 +68,7 @@
       {{ session.date }}
       <div *ngFor="let track of session.musicTracks; let i = index">
         <input type="text" [(ngModel)]="track.title" placeholder="track.name" />
-        <button (click)="logTrackInfo(track); playTrack(track)">Play</button>
+        <button (click)="playTrack(track)">Play</button>
         <button (click)="removeTrack(session.id, track.id, i)">
           Remove Track
         </button>

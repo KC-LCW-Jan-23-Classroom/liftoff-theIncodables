@@ -16,6 +16,7 @@ import org.theincodables.rpgvibes.models.dto.GameSessionDTO;
 import org.theincodables.rpgvibes.models.dto.MusicTracksDTO;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -186,6 +187,28 @@ public class GameSessionController {
         }
 
     }
+    @PutMapping("/tracks/update/{musicTrackId}")
+    public ResponseEntity<MusicTracks> updateMusicTrackName(
+            @PathVariable Integer musicTrackId,
+            @RequestBody Map<String, String> requestBody
+    ) {
+        // Fetch track by musicTrackId in path
+        Optional<MusicTracks> musicTracksOptional = musicTrackRepository.findById(musicTrackId);
 
+        if (musicTracksOptional.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Track not found
+        }
+
+        MusicTracks musicTracks = musicTracksOptional.get();
+
+        // Update the track name
+        String newTitle = requestBody.get("title");
+        musicTracks.setTitle(newTitle);
+
+        // Save the updated track to the database
+        musicTrackRepository.save(musicTracks);
+
+        return new ResponseEntity<>(musicTracks, HttpStatus.OK);
+    }
 
 }

@@ -69,6 +69,7 @@ transform: rotateY(180deg);
     top: -206px;
     border-radius: 5px;
     display: none;
+    overflow:scroll;
 }
 
 .exit-expanded {
@@ -101,3 +102,59 @@ transform: rotateY(180deg);
     padding-top: 40px;
     > p {color: white;}
 }
+.editable-button{
+    border: 3px solid #5D576Bff;
+    /* border-radius: 5px; */
+    /* box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.3); */
+    display: flex;
+    justify-content: auto;
+    text-align: left;
+    padding-left:.5rem;
+    align-items: center;
+    position: relative;
+    width: 65%;
+    /* height: 100; */
+    background-color: white;
+}
+
+
+.track-name {
+    flex-grow: 1;
+    margin-right: 10px; 
+    width:100%;
+  }
+  
+.playTrack,
+.removeTrack, .editTrackName {
+  display: flex;
+  align-items: center;
+}
+  .track-container {
+    column-count: 2;
+    column-gap: 2%;
+    max-width:100%;
+  
+  }
+
+  .track-container-child {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    break-inside: avoid;
+    padding: 2px;
+  }
+  
+.editable-box {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  
+}
+  
+.track-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left:1em;
+    
+  }

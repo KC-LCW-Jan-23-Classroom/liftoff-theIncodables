@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { GameSessionService } from '../service/game-session.service';
 import { TrackPreview } from '../music-selection/music-selection.component';
 import { AudioService } from '../service/audio-service';
 import { MusicTrack } from '../model/music-track';
-
 
 @Component({
   selector: 'app-display-game-sessions',
@@ -18,7 +17,13 @@ export class DisplayGameSessionsComponent implements OnInit {
   @Input() sessions: any[] = [];
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
-  constructor(private gameSessionService: GameSessionService, private audioService: AudioService) {
+  inputValue: string = '';
+  @ViewChildren('myInput') myInputs!: QueryList<ElementRef>;
+
+  constructor(
+    private gameSessionService: GameSessionService,
+    private audioService: AudioService
+  ) {
     this.username = null;
   }
   ngOnInit(): void {
@@ -96,10 +101,76 @@ export class DisplayGameSessionsComponent implements OnInit {
         }
       );
   }
+  clearTrackTitle(track: any) {
+    // Check if the track has an originalTitle property
+    if (!track.hasOwnProperty('originalTitle')) {
+      // If not, set the originalTitle to the current title
+      track.originalTitle = track.title;
+    }
+  
+    // Check if the title is empty
+    if (!track.title.trim()) {
+      // If it's empty, set it back to the original title
+      track.title = track.originalTitle;
+      
+    } else {
+      // If it's not empty, clear the track title
 
-  //method for debugging 
-//   logTrackInfo(track: TrackPreview): void {
-//   console.log('Track Info:', track);
-// }
+      track.originalTitle = track.title;
+      track.title = '';
+      
+    }
+  
+    // Manually reset the form control for this track
+    const editableButton = document.querySelector(`#editable-button-${track.id}`);
+    if (editableButton) {
+      editableButton.innerHTML = ''; // Clear the content of the editable-button div
+  
+      // Manually reset the form control
+      editableButton.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  }
 
+  saveTrackName(track: any) {
+    const trackIdToString = track.id.toString();
+    // Check if the title is empty
+    if (!track.title.trim()) {
+      track.name = track.title;
+      console.log('Title is empty. No need to update.');
+      return;
+    }
+
+      // Check if the title is the same as the original title
+  if (track.title === track.originalTitle) {
+    console.log('Title is not changed. No need to update.');
+    return;
+  }
+    this.gameSessionService
+      .updateMusicTrackName(trackIdToString, track.title)
+      .subscribe(
+        () => {
+          console.log('Track name updated successfully');
+          track.originalTitle = track.title;
+          this.blurAllInputs();
+        },
+        (error: any) => {
+          console.error('Error updating track name:', error);
+        }
+      );
+  }
+  focusInput(index: number){
+    if (this.myInputs && this.myInputs.length > index) {
+      this.myInputs.toArray()[index].nativeElement.focus();
+    }
+  
+  }
+  private blurAllInputs() {
+    if (this.myInputs) {
+      this.myInputs.toArray().forEach(input => input.nativeElement.blur());
+    }
+  //method for debugging
+  //   logTrackInfo(track: TrackPreview): void {
+  //   console.log('Track Info:', track);
+  // }
+}
 }

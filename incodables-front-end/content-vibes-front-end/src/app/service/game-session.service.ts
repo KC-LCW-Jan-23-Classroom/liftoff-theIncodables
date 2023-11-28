@@ -46,7 +46,17 @@ export class GameSessionService {
   addMusicTracksToGameSession(gameSessionId: number, musicTracksDTO: MusicTrackDto): Observable<MusicTrack> {
     return this.http.post<MusicTrack>(`${this.baseUrl}/tracks/add/${gameSessionId}`, musicTracksDTO);
   }
-
+  updateMusicTrackName(trackId: string, newName: string): Observable<any> {
+    const url = `${this.baseUrl}/tracks/update/${trackId}`;
+    const body = { title: newName }; // Change "newName" to "title"
+    
+    console.log('Updating track:', trackId, 'with name:', newName);
+    
+    // Add headers to specify that you are sending JSON data
+    const headers = { 'Content-Type': 'application/json' };
+    
+    return this.http.put(url, body, { headers });
+  }
   removeMusicTrackFromGameSession(gameSessionId: number, musicTrackId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/remove/${gameSessionId}/${musicTrackId}`);
   }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { GameSessionService } from '../service/game-session.service';
 import { TrackPreview } from '../music-selection/music-selection.component';
 import { AudioService } from '../service/audio-service';
@@ -17,7 +17,9 @@ export class DisplayGameSessionsComponent implements OnInit {
   @Input() sessions: any[] = [];
   clickedSession: any = {};
   @Input() setSelectedGameSession: any;
-  isEditing = false;
+  inputValue: string = '';
+  @ViewChildren('myInput') myInputs!: QueryList<ElementRef>;
+
   constructor(
     private gameSessionService: GameSessionService,
     private audioService: AudioService
@@ -143,24 +145,32 @@ export class DisplayGameSessionsComponent implements OnInit {
     console.log('Title is not changed. No need to update.');
     return;
   }
-    // Assuming you have a method in your service to update the track name
     this.gameSessionService
       .updateMusicTrackName(trackIdToString, track.title)
       .subscribe(
         () => {
           console.log('Track name updated successfully');
           track.originalTitle = track.title;
-          // Optionally, you can update your UI or perform additional actions here
+          this.blurAllInputs();
         },
         (error: any) => {
           console.error('Error updating track name:', error);
-          // Handle the error appropriately, e.g., show an error message to the user
         }
       );
   }
-
+  focusInput(index: number){
+    if (this.myInputs && this.myInputs.length > index) {
+      this.myInputs.toArray()[index].nativeElement.focus();
+    }
+  
+  }
+  private blurAllInputs() {
+    if (this.myInputs) {
+      this.myInputs.toArray().forEach(input => input.nativeElement.blur());
+    }
   //method for debugging
   //   logTrackInfo(track: TrackPreview): void {
   //   console.log('Track Info:', track);
   // }
+}
 }

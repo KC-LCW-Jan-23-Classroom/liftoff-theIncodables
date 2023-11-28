@@ -125,7 +125,7 @@ transform: rotateY(180deg);
   }
   
 .playTrack,
-.removeTrack {
+.removeTrack, .editTrackName {
   display: flex;
   align-items: center;
 }

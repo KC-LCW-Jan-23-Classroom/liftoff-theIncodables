@@ -112,7 +112,7 @@ transform: rotateY(180deg);
     padding-left:.5rem;
     align-items: center;
     position: relative;
-    width: 30%;
+    width: 65%;
     /* height: 100; */
     background-color: white;
 }
@@ -121,6 +121,7 @@ transform: rotateY(180deg);
 .track-name {
     flex-grow: 1;
     margin-right: 10px; 
+    width:100%;
   }
   
 .playTrack,
@@ -129,12 +130,10 @@ transform: rotateY(180deg);
   align-items: center;
 }
   .track-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2.5px; 
     column-count: 2;
-    column-gap: 20px;
-    width: 100%;
+    column-gap: 2%;
+    max-width:100%;
+  
   }
 
   .track-container-child {
@@ -142,7 +141,7 @@ transform: rotateY(180deg);
     width: 100%;
     box-sizing: border-box;
     break-inside: avoid;
-    padding: 5px;
+    padding: 2px;
   }
   
 .editable-box {

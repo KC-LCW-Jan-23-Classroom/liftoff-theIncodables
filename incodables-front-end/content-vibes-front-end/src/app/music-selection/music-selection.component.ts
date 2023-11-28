@@ -42,47 +42,47 @@ export class MusicSelectionComponent implements OnInit, OnChanges {
     {
       id: '595715',
       url: 'https://cdn.freesound.org/previews/595/595715_2282212-hq.mp3',
-      name: 'Haunted Hall - Cinematic Fantasy Music Thriller Orchestra atmo Amb soundscape.wav',
+      name: 'Haunted Hall',
     },
     {
       id: '595853',
       url: 'https://cdn.freesound.org/previews/595/595853_2282212-hq.mp3',
-      name: 'Old ritual - Fantasy Background Soundscape Haunted Atmo Music Synth Drum Orchestra - Mastered.wav',
+      name: 'Old Ritual',
     },
     {
       id: '614092',
       url: 'https://cdn.freesound.org/previews/614/614092_2282212-hq.mp3',
-      name: 'Dark Atmo Sea Beach Sad Mood Myst Thriller Fantasy.wav',
+      name: 'Dark Thriller',
     },
     {
       id: '489035',
       url: 'https://cdn.freesound.org/previews/489/489035_4977896-hq.mp3',
-      name: 'Game-Music-01',
+      name: 'Game Music',
     },
     {
       id: '624018',
       url: 'https://cdn.freesound.org/previews/624/624018_4977896-hq.mp3',
-      name: 'Cinematic Music-04',
+      name: 'Cinematic Music',
     },
     {
       id: '569401',
       url: 'https://cdn.freesound.org/previews/569/569401_4977896-hq.mp3',
-      name: 'Cinematic Music - Relinquish',
+      name: 'Relinquish',
     },
     {
       id: '569400',
       url: 'https://cdn.freesound.org/previews/569/569400_4977896-hq.mp3',
-      name: 'Cinematic Music - Judgements',
+      name: 'Judgements',
     },
     {
       id: '416632',
       url: 'https://cdn.freesound.org/previews/416/416632_5225777-hq.mp3',
-      name: 'Castle Music Loop #1',
+      name: 'Castle Music',
     },
     {
       id: '609900',
       url: 'https://cdn.freesound.org/previews/609/609900_2282212-hq.mp3',
-      name: 'Slow Sea Orchestra Big Orchestral String Piano Myst Drama Love Cinematic Music Surround.wav',
+      name: 'Dramatic Orchestra',
     },
   ];
 

@@ -69,6 +69,7 @@ transform: rotateY(180deg);
     top: -206px;
     border-radius: 5px;
     display: none;
+    overflow:scroll;
 }
 
 .exit-expanded {
@@ -102,29 +103,59 @@ transform: rotateY(180deg);
     > p {color: white;}
 }
 .editable-button{
-    border: 0px solid rgba(100, 100, 100, 1);
-    border-radius: 12px;
-    box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.3);
+    border: 3px solid #5D576Bff;
+    /* border-radius: 5px; */
+    /* box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.3); */
     display: flex;
-    justify-content: center;
+    justify-content: auto;
+    text-align: left;
+    padding-left:.5rem;
     align-items: center;
     position: relative;
-    width: 25%;
-    height: 100;
-    background-color: #5D576Bff;
-
-
+    width: 30%;
+    /* height: 100; */
+    background-color: white;
 }
 
-.track-buttons {
-    display: flex;
-    gap: 2px; /* Adjust the gap as needed */
-    margin-top: 3px; /* Adjust the margin as needed */
-    margin-bottom: 3px;
+
+.track-name {
+    flex-grow: 1;
+    margin-right: 10px; 
   }
   
-  .playTrack,
-  .removeTrack {
+.playTrack,
+.removeTrack {
+  display: flex;
+  align-items: center;
+}
+  .track-container {
     display: flex;
-    width: auto;
+    align-items: center;
+    margin-bottom: 2.5px; 
+    column-count: 2;
+    column-gap: 20px;
+    width: 100%;
+  }
+
+  .track-container-child {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    break-inside: avoid;
+    padding: 5px;
+  }
+  
+.editable-box {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  
+}
+  
+.track-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left:1em;
+    
   }

@@ -49,7 +49,6 @@ public class LoginController {
     @PostMapping("")
     public ResponseEntity processLoginForm(@RequestBody LoginFormDTO loginFormDTO,
                                            HttpServletRequest request) {
-        System.out.println(loginFormDTO.toString());
         LoginFormDTO convertedLoginDTO = new LoginFormDTO(loginFormDTO.username, loginFormDTO.password);
 
 
